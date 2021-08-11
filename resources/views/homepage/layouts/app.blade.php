@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Gp - v4.3.0
