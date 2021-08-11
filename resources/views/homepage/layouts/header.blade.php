@@ -6,8 +6,8 @@
 
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-            <li><a class="nav-link text-uppercase active" href="/">Beranda</a></li>
-            <li><a class="nav-link text-uppercase" href="#">Berita</a></li>
+            <li><a class="nav-link text-uppercase {{ Request::is('/') ? 'active' : '' }}" href="{{ route('homepage.index') }}">Beranda</a></li>
+            <li><a class="nav-link text-uppercase {{ Request::is('news*') ? 'active' : '' }}" href="{{ route('homepage.news') }}">Berita</a></li>
             <li class="dropdown"><a href="#" class="text-uppercase"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="#">Hutan Kaltim</a></li>
