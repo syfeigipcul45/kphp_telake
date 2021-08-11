@@ -1,0 +1,28 @@
+.ml-1 {
+    margin-left: 0.5rem;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.my-2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.font-normal {
+    font-style: normal !important;
+}
+
+.btn.btn-brand {
+    background: #ffc451;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn.btn-brand:hover {
+    background: #000;
+    color: #ffc451;
+}
