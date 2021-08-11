@@ -11,4 +11,9 @@ class HomeController extends Controller
     {
         return view('homepage.index');
     }
+
+    public function news()
+    {
+        return view('homepage.news');
+    }
 }
