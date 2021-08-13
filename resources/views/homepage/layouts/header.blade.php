@@ -16,15 +16,15 @@
                     <li><a href="#">Penyuluhan dan Pemberdayaan Masyarakat Hutan</a></li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="#">Hutan Kaltim</a></li>
-                    <li><a href="#">Visi dan Misi</a></li>
-                    <li><a href="#">Struktur Organisasi</a></li>
+                    <li><a href="{{ route('homepage.kaltim') }}">Hutan Kaltim</a></li>
+                    <li><a href="{{ route('homepage.vision') }}">Visi dan Misi</a></li>
+                    <li><a href="{{ route('homepage.structure') }}">Struktur Organisasi</a></li>
                 </ul>
             </li>
             <li><a class="nav-link text-uppercase {{ Request::is('news*') ? 'active' : '' }}" href="{{ route('homepage.news') }}">Berita</a></li>
-            <li><a class="nav-link text-uppercase" href="#">Data Kehutanan</a></li>
+            <li><a class="nav-link text-uppercase {{ Request::is('forestry-data*') ? 'active' : '' }}" href="{{ route('homepage.forestry') }}">Data Kehutanan</a></li>
             <li><a class="nav-link text-uppercase {{ Request::is('contact*') ? 'active' : '' }}" href="{{ route('homepage.contact') }}">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

@@ -17,4 +17,10 @@ use App\Http\Controllers\Homepage\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
+Route::group(['prefix'=>'profile'], function() {
+    Route::get('kaltim-forest', [HomeController::class, 'kaltim'])->name('homepage.kaltim');
+    Route::get('vision-mission', [HomeController::class, 'vision'])->name('homepage.vision');
+    Route::get('organization-structure', [HomeController::class, 'structure'])->name('homepage.structure');
+});
+Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
