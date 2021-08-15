@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Homepage\HomeController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\Homepage\HomeController;
 |
 */
 
+// homepage section
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
 Route::group(['prefix'=>'profile'], function() {
@@ -24,3 +26,6 @@ Route::group(['prefix'=>'profile'], function() {
 });
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
+
+// dashboard section
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
