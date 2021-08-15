@@ -10,7 +10,7 @@
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Berita</h6>
-        <a href="#" class="btn btn-primary btn-icon-split">
+        <a href="{{ route('dashboard.news.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-newspaper"></i>
             </span>

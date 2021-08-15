@@ -30,4 +30,6 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.conta
 
 // dashboard section
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
+
 Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
+Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
