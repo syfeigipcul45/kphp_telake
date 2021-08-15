@@ -10,7 +10,7 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item active">
+<li class="nav-item">
     <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
@@ -25,11 +25,11 @@
 </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-    <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-newspaper"></i>
-        <span>Berita</span></a>
-</li>
+    <li class="nav-item {{ Request::is('management-news*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard.news.index') }}">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>Berita</span></a>
+    </li>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">

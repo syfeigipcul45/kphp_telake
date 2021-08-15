@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,5 @@ Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('hom
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
 
 // dashboard section
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
+Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');

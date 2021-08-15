@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('_dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- extra css -->
+    @yield('extra-css')
+
 </head>
 
 <body id="page-top">
@@ -101,12 +104,8 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('_dashboard/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ asset('_dashboard/vendor/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('_dashboard/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('_dashboard/js/demo/chart-pie-demo.js') }}"></script>
+    <!-- extra js -->
+    @yield('extra-js')
 
 </body>
 

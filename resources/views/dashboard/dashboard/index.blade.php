@@ -325,3 +325,12 @@
     </div>
 </div>
 @endsection
+
+@section('extra-js')
+<!-- Page level plugins -->
+<script src="{{ asset('_dashboard/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ asset('_dashboard/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('_dashboard/js/demo/chart-pie-demo.js') }}"></script>
+@endsection
