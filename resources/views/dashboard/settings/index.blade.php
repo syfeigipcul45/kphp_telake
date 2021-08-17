@@ -29,104 +29,114 @@
                 <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
             </div>
             <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Logo Utama
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <img id="preview-main" class="img-preview mb-2" alt="main logo" hidden />
-                            </div>
+                <form action="#" method="POST">
+
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Logo Utama
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="main-logo" class="btn btn-primary btn-file">
-                                    <span>Upload</span>
-                                    <!-- The file is stored here. -->
-                                    <input id="main-logo" type="file" onchange="previewMain(this);" name="main_logo" hidden />
-                                </label>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <img id="preview-main" class="img-preview mb-2" alt="main logo" hidden />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Favicon
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <img id="preview-favicon" class="img-favicon mb-2" alt="favicon logo" hidden />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="favicon-logo" class="btn btn-primary btn-file">
-                                    <span>Upload</span>
-                                    <!-- The file is stored here. -->
-                                    <input id="favicon-logo" type="file" onchange="previewFavicon(this);" name="favicon_logo" hidden />
-                                </label>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="main-logo" class="btn btn-primary btn-file">
+                                        <span>Upload</span>
+                                        <!-- The file is stored here. -->
+                                        <input id="main-logo" type="file" onchange="previewMain(this);" name="main_logo" hidden />
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Nomor Handphone
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Favicon
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <img id="preview-favicon" class="img-favicon mb-2" alt="favicon logo" hidden />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="favicon-logo" class="btn btn-primary btn-file">
+                                        <span>Upload</span>
+                                        <!-- The file is stored here. -->
+                                        <input id="favicon-logo" type="file" onchange="previewFavicon(this);" name="favicon_logo" hidden />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" />
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Nomor Handphone
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" />
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Email
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Email
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" />
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" />
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Alamat
+                        </div>
+                        <div class="col-lg-6">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Alamat
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Twitter
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" placeholder="https://twitter.com/username" />
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <textarea class="form-control" rows="3"></textarea>
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Facebook
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" placeholder="https://facebook.com/username" />
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Twitter
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Instagram
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" placeholder="https://instagram.com/username" />
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" placeholder="https://twitter.com/username" />
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            Youtube
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" placeholder="https://youtube.com/username" />
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Facebook
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <button type="submit" class="btn btn-primary btn-icon-split">
+                                <span class="text">Simpan</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" placeholder="https://facebook.com/username" />
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Instagram
-                    </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" placeholder="https://instagram.com/username" />
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-lg-6">
-                        Youtube
-                    </div>
-                    <div class="col-lg-6">
-                        <input class="form-control" type="text" placeholder="https://youtube.com/username" />
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
