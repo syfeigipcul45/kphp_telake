@@ -1,5 +1,8 @@
-
 @extends('homepage.layouts.app')
+
+@section('title')
+<title>Profil - {{ env('APP_NAME') }}</title>
+@endsection
 
 @section('content')
 <main id="main">

@@ -1,4 +1,9 @@
 @extends('homepage.layouts.app')
+
+@section('title')
+<title>Kontak - {{ env('APP_NAME') }}</title>
+@endsection
+
 @section('content')
 
 <main id="main">
