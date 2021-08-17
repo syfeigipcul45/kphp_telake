@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
 Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
+
+Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');

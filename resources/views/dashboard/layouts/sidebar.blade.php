@@ -11,7 +11,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{ route('dashboard.main.index') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -79,7 +79,7 @@
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
-    <a class="nav-link" href="tables.html">
+    <a class="nav-link" href="{{ route('dashboard.settings.index') }}">
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span></a>
 </li>
