@@ -46,7 +46,7 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Masukkan email" name="email">
+                                                placeholder="Masukkan email" name="email" value="{{ old('email') }}">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"

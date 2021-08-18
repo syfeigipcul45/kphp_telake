@@ -33,7 +33,7 @@ class AuthController extends Controller
             if (Auth::attempt(['email' => $email,'password' => $password])) {
                 return redirect()->route('dashboard.main.index');
             } else {
-                return redirect()->back()->with('error', 'Email atau password salah!');
+                return redirect()->back()->withInput()->with('error', 'Email atau password salah!');
             }
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
