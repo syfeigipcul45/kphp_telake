@@ -16,4 +16,29 @@ class HomeController extends Controller
     {
         return view('homepage.news');
     }
+    
+    public function kaltim()
+    {
+        return view('homepage.profile.kaltim-forest');
+    }
+
+    public function vision()
+    {
+        return view('homepage.profile.vision-mission');
+    }
+
+    public function structure()
+    {
+        return view('homepage.profile.organization-structure');
+    }
+
+    public function forestryData()
+    {
+        return view('homepage.forestry-data');
+    }
+    
+    public function contact()
+    {
+        return view('homepage.contact');
+    }
 }

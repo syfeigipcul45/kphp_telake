@@ -1,5 +1,9 @@
 @extends('homepage.layouts.app')
 
+@section('title')
+<title>Berita - {{ env('APP_NAME') }}</title>
+@endsection
+
 @section('content')
 <main id="main">
 
