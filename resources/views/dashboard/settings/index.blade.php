@@ -29,8 +29,8 @@
                 <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
             </div>
             <div class="card-body">
-                <form action="#" method="POST">
-
+                <form action="{{ route('dashboard.settings.store') }}" method="POST">
+                    @csrf
                     <div class="row mb-4">
                         <div class="col-lg-6">
                             Logo Utama
@@ -46,8 +46,13 @@
                                     <label for="main-logo" class="btn btn-primary btn-file">
                                         <span>Upload</span>
                                         <!-- The file is stored here. -->
-                                        <input id="main-logo" type="file" onchange="previewMain(this);" name="main_logo" hidden />
+                                        <input id="main-logo" type="file" onchange="previewMain(this);" name="logo" hidden />
                                     </label>
+                                    @error('logo')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -67,8 +72,13 @@
                                     <label for="favicon-logo" class="btn btn-primary btn-file">
                                         <span>Upload</span>
                                         <!-- The file is stored here. -->
-                                        <input id="favicon-logo" type="file" onchange="previewFavicon(this);" name="favicon_logo" hidden />
+                                        <input id="favicon-logo" type="file" onchange="previewFavicon(this);" name="favicon" hidden />
                                     </label>
+                                    @error('favicon')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -78,7 +88,12 @@
                             Nomor Handphone
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" />
+                            <input class="form-control" type="text" name="phone" value="{{ old('phone', $option->phone) }}" />
+                            @error('phone')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -86,7 +101,12 @@
                             Email
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" />
+                            <input class="form-control" type="text" name="email" value="{{ old('email', $option->email) }}" />
+                            @error('email')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -94,7 +114,12 @@
                             Alamat
                         </div>
                         <div class="col-lg-6">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="address">{{ old('address', $option->address) }}</textarea>
+                            @error('address')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -102,7 +127,12 @@
                             Twitter
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://twitter.com/username" />
+                            <input class="form-control" type="text" placeholder="https://twitter.com/username" name="twitter" value="{{ old('twitter', $option->twitter) }}" />
+                            @error('twitter')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -110,7 +140,12 @@
                             Facebook
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://facebook.com/username" />
+                            <input class="form-control" type="text" placeholder="https://facebook.com/username" name="facebook" value="{{ old('facebook', $option->facebook) }}" />
+                            @error('facebook')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -118,7 +153,12 @@
                             Instagram
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://instagram.com/username" />
+                            <input class="form-control" type="text" placeholder="https://instagram.com/username" name="instagram" value="{{ old('instagram', $option->instagram) }}" />
+                            @error('instagram')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -126,7 +166,12 @@
                             Youtube
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://youtube.com/username" />
+                            <input class="form-control" type="text" placeholder="https://youtube.com/username" name="youtube" value="{{ old('youtube', $option->youtube) }}" />
+                            @error('youtube')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -136,6 +181,11 @@
                             </button>
                         </div>
                     </div>
+                    @if (\Session::has('error'))
+                        <div class="invalid-feedback text-center mt-3 d-block">
+                            {!! \Session::get('error') !!}
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>

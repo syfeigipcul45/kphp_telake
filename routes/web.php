@@ -47,4 +47,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
     
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
+    Route::post('/settings', [SettingController::class, 'store'])->name('dashboard.settings.store');
 });
