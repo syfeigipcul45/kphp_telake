@@ -24,6 +24,7 @@ use App\Http\Controllers\Dashboard\SettingController;
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'doLogin'])->name('do.login');
 Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
+Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 
 // homepage section
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');

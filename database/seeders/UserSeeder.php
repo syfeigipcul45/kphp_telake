@@ -20,9 +20,10 @@ class UserSeeder extends Seeder
         $admin = Role::create(['name' => 'admin']);
 
         $userDeveloper = User::create([
+            'display_name' => 'Developer',
             'username' => 'developer',
             'email' => 'developer@'. env('APP_DOMAIN', 'test.com'),
-            'password' => '@developer'
+            'password' => bcrypt('@developer')
         ]);
         $userDeveloper->syncRoles([$developer]);
     }

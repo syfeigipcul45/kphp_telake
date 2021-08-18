@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -20,34 +22,30 @@ class AuthController extends Controller
                 'email.required' => 'Email harus diisi!',
                 'password.required' => 'Kata sandi harus diisi!'
             ]);
+
             if($validator->fails()) {
                 return sendApiResponse(false, $validator->errors()->first());
             }
+
             $email = strtolower($request->email);
             $password = $request->password;
 
             if (Auth::attempt(['email' => $email,'password' => $password])) {
-                $currentUser = Auth::user();
-                if (!$currentUser->hasVerifiedEmail()) {
-                    return sendApiResponse(false, 'Anda harus memverifikasi email lebih dahulu.');
-                }
-                if($currentUser->hasRole(['customer', 'partner'])) {
-                    $token = $currentUser->createToken('customer')->accessToken;
-                    $currentUser->update(['token' => $token]);
-                    $profile = $currentUser->profile();
-                    return sendApiResponse(true, 'Proses login berhasil', $profile);
-                } else {
-                    return sendApiResponse(false, 'Maaf, anda tidak memiliki akses!');
-                }
+                return redirect()->route('dashboard.main.index');
             } else {
-                return sendApiResponse(false, 'email atau password salah!');
+                return redirect()->back()->with('error', 'Email atau password salah!');
             }
         } catch (\Exception $exception) {
-            return sendApiResponse(false, $exception->getMessage(), null, 400);
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
 
     public function forgotPassword() {
         return view('auth.forgot');
+    }
+
+    public function doLogout() {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

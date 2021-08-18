@@ -56,6 +56,11 @@
                                             Masuk
                                         </button>
                                     </form>
+                                    @if (\Session::has('error'))
+                                        <div class="invalid-feedback text-center mt-3 d-block">
+                                            {!! \Session::get('error') !!}
+                                        </div>
+                                    @endif
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="{{ route('forgot.password') }}">Lupa kata sandi?</a>
