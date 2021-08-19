@@ -54,11 +54,6 @@
     <section id="team" class="team">
       <div class="container" data-aos="fade-up">
 
-        <!-- <div class="section-title">
-          <h2>Galeri</h2>
-          <p>Galeri</p>
-        </div> -->
-
         <div class="row">
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
@@ -270,35 +265,20 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <!-- <h2>Galeri</h2> -->
           <p>Galeri</p>
         </div>
 
         <div class="row">
 
+          @foreach(getVideos() as $item)
           <div class="col-lg-4 col-md-6 align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="video">
-                <iframe src="https://www.youtube.com/embed/E5vG8vTldw8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                {!! convertYoutube($item->youtube_link) !!}
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="video">
-                <iframe src="https://www.youtube.com/embed/HGS9fAFjijY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="video">
-                <iframe src="https://www.youtube.com/embed/ClzUW3vs_o0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
+          @endforeach
 
         </div>
 
