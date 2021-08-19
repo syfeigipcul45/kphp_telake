@@ -21,18 +21,25 @@
     Main Menu
 </div>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{ Request::is('management-news*') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('dashboard.news.index') }}">
-            <i class="fas fa-fw fa-newspaper"></i>
-            <span>Berita</span></a>
-    </li>
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-news*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.news.index') }}">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>Berita</span></a>
+</li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.datas.index') }}">
-        <i class="fas fa-fw fa-file-alt"></i>
-        <span>Data Kehutanan</span></a>
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
+<a class="nav-link" href="{{ route('dashboard.datas.index') }}">
+    <i class="fas fa-fw fa-file-alt"></i>
+    <span>Data Kehutanan</span></a>
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-videos*') ? 'active' : '' }}">
+<a class="nav-link" href="{{ route('dashboard.videos.index') }}">
+    <i class="fas fa-fw fa-video"></i>
+    <span>Data Video</span></a>
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->

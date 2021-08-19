@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\SettingController;
 
@@ -44,6 +45,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
     Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
     
+    Route::get('/management-videos', [VideoController::class, 'index'])->name('dashboard.videos.index');
+    Route::post('/management-videos', [VideoController::class, 'store'])->name('dashboard.videos.store');
+
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
     
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
