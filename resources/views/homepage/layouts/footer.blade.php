@@ -5,16 +5,17 @@
                 <div class="footer-info">
                     <h3>Gp<span>.</span></h3>
                     <p>
-                        A108 Adam Street <br>
-                        NY 535022, USA<br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        {{ getOption()->address }}
                     </p>
+                    <div class="mt-2">
+                        <strong>Phone:</strong> {{ getOption()->phone }}<br>
+                        <strong>Email:</strong> {{ getOption()->email }}<br>
+                    </div>
                     <div class="social-links mt-3">
-                        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                        <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                        <a href="{{ getOption()->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="{{ getOption()->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="{{ getOption()->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="{{ getOption()->youtube }}" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -54,7 +55,7 @@
 
 <div class="container">
     <div class="copyright">
-        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Dinas Kehutanan Prov. Kalimantan Timur</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
         <!-- All the links in the footer should remain intact. -->
