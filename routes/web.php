@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\NewsController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\SettingController;
+use App\Http\Controllers\Dashboard\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/management-videos', [VideoController::class, 'store'])->name('dashboard.videos.store');
 
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
+  
+    Route::get('/profile-kaltim-forest', [PageController::class, 'create'])->name('dashboard.page.kaltimforest');
+    Route::get('/profile-vision-mission', [PageController::class, 'create'])->name('dashboard.page.visionmission');
+    Route::get('/profile-structure-organization', [PageController::class, 'create'])->name('dashboard.page.structure');
+
+    Route::get('/sector-secretary', [PageController::class, 'create'])->name('dashboard.page.secretary');
+    Route::get('/sector-plan', [PageController::class, 'create'])->name('dashboard.page.plan');
+    Route::get('/sector-protection', [PageController::class, 'create'])->name('dashboard.page.protection');
+    Route::get('/sector-management', [PageController::class, 'create'])->name('dashboard.page.management');
+    Route::get('/sector-counseling', [PageController::class, 'create'])->name('dashboard.page.counseling');
     
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('dashboard.settings.store');

@@ -52,16 +52,16 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Profil:</h6>
-            <a class="collapse-item" href="#">Hutan Kaltim</a>
-            <a class="collapse-item" href="#">Visi & Misi</a>
-            <a class="collapse-item" href="#">Struktur & Organisasi</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.kaltimforest') }}">Hutan Kaltim</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.visionmission') }}">Visi & Misi</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.structure') }}">Struktur & Organisasi</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Bidang:</h6>
-            <a class="collapse-item" href="#">Sekretariat</a>
-            <a class="collapse-item" href="#">Perencanaan</a>
-            <a class="collapse-item" href="#">Perlindungan</a>
-            <a class="collapse-item" href="#">Pengelolaan</a>
-            <a class="collapse-item" href="#">Penyuluhan</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.secretary') }}">Sekretariat</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.plan') }}">Perencanaan</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.protection') }}">Perlindungan</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.management') }}">Pengelolaan</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.counseling') }}">Penyuluhan</a>
         </div>
     </div>
 </li>
