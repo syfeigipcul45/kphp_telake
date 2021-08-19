@@ -29,7 +29,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('dashboard.settings.store') }}" method="POST">
+                <form action="{{ route('dashboard.settings.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-4">
                         <div class="col-lg-6">

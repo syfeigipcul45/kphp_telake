@@ -59,6 +59,16 @@ class SettingController extends Controller
                     'instagram' => $request->instagram,
                     'youtube' => $request->youtube
                 ];
+
+                if($request->hasFile('logo')) {
+                    $filenameWithExt = $request->file('logo')->getClientOriginalName();
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    $extension = $request->file('logo')->getClientOriginalExtension();
+                    $filenameSave = $filename.'_'.time().'.'.$extension;
+                    $path = $request->file('logo')->storeAs('public/logo', $filenameSave);
+                    $data['logo'] = $path;
+                }
+
                 $saveData = Option::create($data);
                 return redirect()->route('dashboard.settings.index');
             } else {
@@ -72,13 +82,23 @@ class SettingController extends Controller
                     'instagram' => $request->instagram,
                     'youtube' => $request->youtube
                 ];
+
+                if($request->hasFile('logo')) {
+                    $filenameWithExt = $request->file('logo')->getClientOriginalName();
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    $extension = $request->file('logo')->getClientOriginalExtension();
+                    $filenameSave = $filename.'_'.time().'.'.$extension;
+                    $path = $request->file('logo')->storeAs('public/logo', $filenameSave);
+                    $data['logo'] = url($path);
+                }
+
                 $updateData = Option::where('id', $option->first()->id)->first();
                 $updateData->update($data);
                 return redirect()->route('dashboard.settings.index');
             }
            
         } catch (\Exception $exception) {
-            return redirect()->back()->with('error', $exception);
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
 }
