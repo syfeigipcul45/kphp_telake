@@ -13,11 +13,6 @@
     <section id="team" class="team">
       <div class="container" data-aos="fade-up">
 
-        <!-- <div class="section-title">
-          <h2>Galeri</h2>
-          <p>Galeri</p>
-        </div> -->
-
         <div class="row">
 
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
