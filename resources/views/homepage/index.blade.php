@@ -270,6 +270,7 @@
 
         <div class="row">
 
+          @if(count(getVideos()) > 0)
           @foreach(getVideos() as $item)
           <div class="col-lg-4 col-md-6 align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
@@ -279,6 +280,7 @@
             </div>
           </div>
           @endforeach
+          @endif
 
         </div>
 
