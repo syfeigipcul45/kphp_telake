@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Option;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -61,12 +62,15 @@ class SettingController extends Controller
                 ];
 
                 if($request->hasFile('logo')) {
-                    $filenameWithExt = $request->file('logo')->getClientOriginalName();
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('logo')->getClientOriginalExtension();
-                    $filenameSave = $filename.'_'.time().'.'.$extension;
-                    $path = $request->file('logo')->storeAs('public/logo', $filenameSave);
-                    $data['logo'] = $path;
+                    $file = $request->file('logo');
+                    $path = Storage::disk('public')->put('logo', $file);
+                    $data['logo'] = url('/') . '/storage/' . $path;
+                }
+
+                if($request->hasFile('favicon')) {
+                    $file = $request->file('favicon');
+                    $path = Storage::disk('public')->put('favicon', $file);
+                    $data['favicon'] = url('/') . '/storage/' . $path;
                 }
 
                 $saveData = Option::create($data);
@@ -84,12 +88,15 @@ class SettingController extends Controller
                 ];
 
                 if($request->hasFile('logo')) {
-                    $filenameWithExt = $request->file('logo')->getClientOriginalName();
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('logo')->getClientOriginalExtension();
-                    $filenameSave = $filename.'_'.time().'.'.$extension;
-                    $path = $request->file('logo')->storeAs('public/logo', $filenameSave);
-                    $data['logo'] = url($path);
+                    $file = $request->file('logo');
+                    $path = Storage::disk('public')->put('logo', $file);
+                    $data['logo'] = url('/') . '/storage/' . $path;
+                }
+
+                if($request->hasFile('favicon')) {
+                    $file = $request->file('favicon');
+                    $path = Storage::disk('public')->put('favicon', $file);
+                    $data['favicon'] = url('/') . '/storage/' . $path;
                 }
 
                 $updateData = Option::where('id', $option->first()->id)->first();

@@ -38,7 +38,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <img id="preview-main" class="img-preview mb-2" alt="main logo" hidden />
+                                    <img id="preview-main" class="img-preview mb-2" src="{{ $option->logo }}" alt="main logo" />
                                 </div>
                             </div>
                             <div class="row">
@@ -64,7 +64,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <img id="preview-favicon" class="img-favicon mb-2" alt="favicon logo" hidden />
+                                    <img id="preview-favicon" class="img-favicon mb-2" src="{{ $option->favicon }}" alt="favicon logo" />
                                 </div>
                             </div>
                             <div class="row">
