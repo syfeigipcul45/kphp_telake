@@ -38,7 +38,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <img id="preview-main" class="img-preview mb-2" alt="main logo" hidden />
+                                    <img id="preview-main" class="img-preview mb-2" src="{{ $option->logo ?? asset('img/placeholder.png') }}" alt="main logo" />
                                 </div>
                             </div>
                             <div class="row">
@@ -64,7 +64,7 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <img id="preview-favicon" class="img-favicon mb-2" alt="favicon logo" hidden />
+                                    <img id="preview-favicon" class="img-favicon mb-2" src="{{ $option->favicon ?? asset('img/placeholder.png') }}" alt="favicon logo" />
                                 </div>
                             </div>
                             <div class="row">
@@ -88,7 +88,7 @@
                             Nomor Handphone
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" name="phone" value="{{ old('phone', $option->phone) }}" />
+                            <input class="form-control" type="text" name="phone" value="{{ old('phone', $option->phone ?? '') }}" />
                             @error('phone')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -101,7 +101,7 @@
                             Email
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" name="email" value="{{ old('email', $option->email) }}" />
+                            <input class="form-control" type="text" name="email" value="{{ old('email', $option->email ?? '') }}" />
                             @error('email')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -114,7 +114,7 @@
                             Alamat
                         </div>
                         <div class="col-lg-6">
-                            <textarea class="form-control" rows="3" name="address">{{ old('address', $option->address) }}</textarea>
+                            <textarea class="form-control" rows="3" name="address">{{ old('address', $option->address ?? '') }}</textarea>
                             @error('address')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -127,7 +127,7 @@
                             Twitter
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://twitter.com/username" name="twitter" value="{{ old('twitter', $option->twitter) }}" />
+                            <input class="form-control" type="text" placeholder="https://twitter.com/username" name="twitter" value="{{ old('twitter', $option->twitter ?? '') }}" />
                             @error('twitter')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -140,7 +140,7 @@
                             Facebook
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://facebook.com/username" name="facebook" value="{{ old('facebook', $option->facebook) }}" />
+                            <input class="form-control" type="text" placeholder="https://facebook.com/username" name="facebook" value="{{ old('facebook', $option->facebook ?? '') }}" />
                             @error('facebook')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -153,7 +153,7 @@
                             Instagram
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://instagram.com/username" name="instagram" value="{{ old('instagram', $option->instagram) }}" />
+                            <input class="form-control" type="text" placeholder="https://instagram.com/username" name="instagram" value="{{ old('instagram', $option->instagram ?? '') }}" />
                             @error('instagram')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
@@ -166,7 +166,7 @@
                             Youtube
                         </div>
                         <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="https://youtube.com/username" name="youtube" value="{{ old('youtube', $option->youtube) }}" />
+                            <input class="form-control" type="text" placeholder="https://youtube.com/username" name="youtube" value="{{ old('youtube', $option->youtube ?? '') }}" />
                             @error('youtube')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
