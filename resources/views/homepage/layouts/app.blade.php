@@ -29,6 +29,9 @@
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
+  <!-- Additional CSS -->
+  @yield('extraCss')
+
   <!-- =======================================================
   * Template Name: Gp - v4.3.0
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -65,6 +68,9 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('js/main.js') }}"></script>
+
+  <!-- Additional JS -->
+  @yield('extraJs')
 
 </body>
 

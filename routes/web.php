@@ -37,6 +37,10 @@ Route::group(['prefix'=>'profile'], function() {
     Route::get('vision-mission', [HomeController::class, 'vision'])->name('homepage.vision');
     Route::get('organization-structure', [HomeController::class, 'structure'])->name('homepage.structure');
 });
+Route::group(['prefix'=>'media'], function() {
+    Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
+    Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');
+});
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
 Route::get('/seed-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');

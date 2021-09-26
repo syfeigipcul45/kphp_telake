@@ -33,6 +33,16 @@ class HomeController extends Controller
         return view('homepage.profile.organization-structure');
     }
 
+    public function mediaPhoto()
+    {
+        return view('homepage.media.photo');
+    }
+
+    public function mediaVideo()
+    {
+        return view('homepage.media.video');
+    }
+
     public function forestryData()
     {
         return view('homepage.forestry-data');
