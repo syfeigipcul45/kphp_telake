@@ -18,6 +18,7 @@ class CreateSeedsTable extends Migration
             $table->string('seed_thumbnail')->nullable();
             $table->string('seed_name')->nullable();
             $table->string('seller_name')->nullable();
+            $table->string('seller_whatsapp')->nullable();
             $table->string('seed_price')->nullable();
             $table->string('seed_stock')->nullable();
             $table->string('seed_age')->nullable();

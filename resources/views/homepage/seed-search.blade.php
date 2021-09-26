@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div>
-                  <a href="https://wa.me/{{ convertWhatsappNumber('081333666917') }}" target="_blank" class="d-block ml-auto btn btn-brand mt-3">Pesan</a>
+                  <a href="https://wa.me/{{ convertWhatsappNumber($item->seller_whatsapp) }}" target="_blank" class="d-block ml-auto btn btn-brand mt-3">Pesan</a>
                 </div>
               </div>
             </div>

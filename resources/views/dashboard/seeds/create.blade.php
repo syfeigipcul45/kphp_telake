@@ -53,6 +53,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>Nama Penjual</label>
+                                <input type="text" class="form-control" name="seller_name" />
+                                @error('seller_name')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nomor Penjual</label>
+                                <input type="text" class="form-control" name="seller_whatsapp" placeholder="08..." />
+                                @error('seller_whatsapp')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>Harga Bibit</label>
                                 <input type="number" class="form-control" name="seed_price" min="0" />
                                 @error('seed_price')

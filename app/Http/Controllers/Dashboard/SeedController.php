@@ -26,6 +26,7 @@ class SeedController extends Controller
                 'seed_thumbnail' => 'required',
                 'seed_name' => 'required',
                 'seller_name' => 'required',
+                'seller_whatsapp' => 'required',
                 'seed_price' => 'required',
                 'seed_stock' => 'required',
                 'seed_age' => 'required',
@@ -34,6 +35,7 @@ class SeedController extends Controller
                 'seed_thumbnail.required' => 'Gambar bibit tidak boleh kosong!',
                 'seed_name.required' => 'Nama bibit tidak boleh kosong!',
                 'seller_name.required' => 'Nama penjual bibit tidak boleh kosong!',
+                'seller_whatsapp.required' => 'Nomor penjual bibit tidak boleh kosong!',
                 'seed_price.required' => 'Nama penjual bibit tidak boleh kosong!',
                 'seed_stock.required' => 'Stok bibit tidak boleh kosong!',
                 'seed_age.required' => 'Umur bibit tidak boleh kosong!',
@@ -47,6 +49,7 @@ class SeedController extends Controller
             $data = [
                 'seed_name' => $request->seed_name,
                 'seller_name' => $request->seller_name,
+                'seller_whatsapp' => $request->seller_whatsapp,
                 'seed_price' => $request->seed_price,
                 'seed_stock' => $request->seed_stock,
                 'seed_age' => $request->seed_age,

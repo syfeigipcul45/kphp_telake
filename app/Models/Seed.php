@@ -13,6 +13,7 @@ class Seed extends Model
         'seed_thumbnail',
         'seed_name',
         'seller_name',
+        'seller_whatsapp',
         'seed_price',
         'seed_stock',
         'seed_age',
