@@ -49,7 +49,7 @@
                         </td>
                         <td>{{ $item->seed_name }}</td>
                         <td>{{ convertToRupiah($item->seed_price) }}</td>
-                        <td>{{ convertToAge($item->seed_age) }}</td>
+                        <td>{{ convertToMonth($item->seed_age) }}</td>
                         <td class="text-center">
                             <a href="#" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>

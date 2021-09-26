@@ -22,33 +22,34 @@
 
         <div class="row">
 
+          @foreach($seeds as $key => $item)
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
-                <img src="https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//94/MTA-4349406/bibit_tanaman_tanaman_pohon_bibit_kemukus_full02_sc9ikps2.jpg" class="img-fluid h-60 w-100" alt="">
+                <img src="{{ $item->seed_thumbnail }}" class="img-fluid h-60 w-100" alt="">
               </div>
               <div class="member-info">
-                <h4>Bibit Kemukus</h4>
+                <h4>{{ $item->seed_name }}</h4>
                 <div class="d-flex align-items-center justify-content-between my-3">
                   <div class="d-flex align-items-center">
                     <i class="bx bx-user"></i>
-                    <span class="ml-1">Admin</span>
+                    <span class="ml-1">{{ $item->seller_name }}</span>
                   </div>
                   <div class="d-flex align-items-center">
                     <i class="bx bx-coin"></i>
-                    <span class="ml-1">{{ convertToRupiah(100000) }}</span>
+                    <span class="ml-1">{{ convertToRupiah($item->seed_price) }}</span>
                   </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-12">
-                        <strong>Stok :</strong>&nbsp;5000
+                        <strong>Stok :</strong>&nbsp;{{ $item->seed_stock }}
                     </div>
                     <div class="col-md-12">
-                        <strong>Umur :</strong>&nbsp;4 bulan
+                        <strong>Umur :</strong>&nbsp;{{ convertToMonth($item->seed_age) }}
                     </div>
                     <div class="col-md-12">
-                        <strong>Tinggi :</strong>&nbsp;50 cm
+                        <strong>Tinggi :</strong>&nbsp;{{ convertToCm($item->seed_height) }}
                     </div>
                 </div>
                 <div>
@@ -57,6 +58,7 @@
               </div>
             </div>
           </div>
+          @endforeach
 
         </div>
 

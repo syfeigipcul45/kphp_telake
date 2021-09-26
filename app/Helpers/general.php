@@ -24,8 +24,14 @@ if (! function_exists('convertToRupiah')) {
     }
 }
 
-if (! function_exists('convertToAge')) {
-    function convertToAge($value) {
+if (! function_exists('convertToMonth')) {
+    function convertToMonth($value) {
+        return $value . ' bulan';
+    }
+}
+
+if (! function_exists('convertToCm')) {
+    function convertToCm($value) {
         return $value . ' cm';
     }
 }
