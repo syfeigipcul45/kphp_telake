@@ -48,9 +48,27 @@ class HomeController extends Controller
         return view('homepage.forestry-data');
     }
 
-    public function seedSearch()
+    public function seedSearch(Request $request)
     {
-        $data['seeds'] = Seed::all();
+        $data['seeds'] = [];
+        if(!empty($request->keyword)) {
+            $data['seeds'] = Seed::where(function ($query) use ($request) {
+                $query->where('seed_name', "LIKE", "%" . $request->keyword . "%");
+                $query->orWhere('seed_price', "LIKE", "%" . $request->keyword . "%");
+                $query->orWhere('seed_stock', "LIKE", "%" . $request->keyword . "%");
+            })->get();
+        } else {
+            $data['seeds'] = Seed::all();
+        }
+        return view('homepage.seed-search', $data);
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $data['seeds'] = Seed::where(function ($query) use ($request) {
+            $query->where('name', "LIKE", "%" . $request->search . "%");
+            $query->orWhere('mobile', "LIKE", "%" . $request->search . "%");
+        })->get();
         return view('homepage.seed-search', $data);
     }
     

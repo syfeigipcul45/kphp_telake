@@ -13,12 +13,14 @@
     <section id="team" class="team">
       <div class="container" data-aos="fade-up">
 
-        <div class="row mb-4">
-            <div class="d-flex col-md-5">
-                <input type="text" name="cari" placeholder="Cari berdasarkan nama, harga, jumlah produk ..." class="form-control shadow-none no-focus">
-                <input type="submit" value="Cari Produk" class="btn btn-md btn-brand ml-1">
-            </div>
-        </div>
+        <form action="{{ route('homepage.seed.search') }}" method="GET">
+          <div class="row mb-4">
+              <div class="d-flex col-md-5">
+                  <input type="text" name="keyword" placeholder="Cari berdasarkan nama, harga, jumlah produk ..." class="form-control shadow-none no-focus" />
+                  <input type="submit" value="Cari Produk" class="btn btn-md btn-brand ml-1" />
+              </div>
+          </div>
+        </form>
 
         <div class="row">
 
@@ -36,13 +38,13 @@
                       <strong>Harga</strong>
                     </div>
                     <div class="col-md-8">
-                      :&nbsp;{{ $item->seed_stock }}
+                      :&nbsp;{{ convertToRupiah($item->seed_price) }}
                     </div>
                     <div class="col-md-4">
                       <strong>Jumlah</strong>
                     </div>
                     <div class="col-md-8">
-                      :&nbsp;{{ convertToMonth($item->seed_age) }}
+                      :&nbsp;{{ $item->seed_stock }}
                     </div>
                 </div>
                 <div>
