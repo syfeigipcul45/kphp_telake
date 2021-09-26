@@ -9,7 +9,11 @@ class Media extends Model
 {
     use HasFactory;
 
+    protected $table = 'media_galleries';
+    
     protected $fillable = [
-        ''
+        'link_media',
+        'caption',
+        'type'
     ];
 }

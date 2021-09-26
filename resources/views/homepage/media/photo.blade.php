@@ -19,11 +19,13 @@
 
         <div class="row no-gutters">
 
-            <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
-                <a data-fancybox="gallery" data-src="https://lipsum.app/id/3/1024x768" data-caption="This is the caption">
-                    <img src="https://lipsum.app/id/3/200x150" class="w-100 h-auto rounded" />
-                </a>
-            </div>
+          @foreach($photos as $key => $item)
+          <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
+              <a data-fancybox="gallery" data-src="{{ $item->link_media }}" data-caption="{{ $item->caption }}">
+                  <img src="{{ $item->link_media }}" class="w-100 h-auto rounded" />
+              </a>
+          </div>
+          @endforeach
             
         </div>
 

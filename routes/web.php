@@ -63,6 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('/media/management-photos', [PhotoController::class, 'index'])->name('dashboard.photos.index');
     Route::get('/media/management-photos/create', [PhotoController::class, 'create'])->name('dashboard.photos.create');
+    Route::post('/media/management-photos/store', [PhotoController::class, 'store'])->name('dashboard.photos.store');
     
     Route::get('/media/management-videos', [VideoController::class, 'index'])->name('dashboard.videos.index');
 
