@@ -6,6 +6,10 @@
     margin-left: auto;
 }
 
+.h-60 {
+    height: 15rem !important;
+}
+
 .my-2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -13,6 +17,10 @@
 
 .font-normal {
     font-style: normal !important;
+}
+
+.form-control:focus {
+    border: 1px solid #ced4da;
 }
 
 .btn.btn-brand {

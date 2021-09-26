@@ -36,6 +36,11 @@ class HomeController extends Controller
     {
         return view('homepage.forestry-data');
     }
+
+    public function seedSearch()
+    {
+        return view('homepage.seed-search');
+    }
     
     public function contact()
     {
