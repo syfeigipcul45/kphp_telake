@@ -42,7 +42,8 @@ class HomeController extends Controller
 
     public function mediaVideo()
     {
-        return view('homepage.media.video');
+        $data['videos'] = Media::where('type', 'video')->get();
+        return view('homepage.media.video', $data);
     }
 
     public function forestryData()

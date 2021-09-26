@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/media/management-photos/store', [PhotoController::class, 'store'])->name('dashboard.photos.store');
     
     Route::get('/media/management-videos', [VideoController::class, 'index'])->name('dashboard.videos.index');
+    Route::get('/media/management-videos/create', [VideoController::class, 'create'])->name('dashboard.videos.create');
+    Route::post('/media/management-videos/store', [VideoController::class, 'store'])->name('dashboard.videos.store');
 
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
   
