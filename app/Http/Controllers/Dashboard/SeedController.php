@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Seed;
+use App\Models\Option;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,8 @@ class SeedController extends Controller
     }
 
     public function create() {
-        return view('dashboard.seeds.create');
+        $data['option'] = Option::first();
+        return view('dashboard.seeds.create', $data);
     }
 
     public function store(Request $request) {
@@ -25,21 +27,13 @@ class SeedController extends Controller
             $validator = Validator::make($request->all(), [
                 'seed_thumbnail' => 'required',
                 'seed_name' => 'required',
-                'seller_name' => 'required',
-                'seller_whatsapp' => 'required',
                 'seed_price' => 'required',
-                'seed_stock' => 'required',
-                'seed_age' => 'required',
-                'seed_height' => 'required'
+                'seed_stock' => 'required'
             ], [
                 'seed_thumbnail.required' => 'Gambar bibit tidak boleh kosong!',
                 'seed_name.required' => 'Nama bibit tidak boleh kosong!',
-                'seller_name.required' => 'Nama penjual bibit tidak boleh kosong!',
-                'seller_whatsapp.required' => 'Nomor penjual bibit tidak boleh kosong!',
                 'seed_price.required' => 'Nama penjual bibit tidak boleh kosong!',
-                'seed_stock.required' => 'Stok bibit tidak boleh kosong!',
-                'seed_age.required' => 'Umur bibit tidak boleh kosong!',
-                'seed_height.required' => 'Tinggi bibit tidak boleh kosong!',
+                'seed_stock.required' => 'Stok bibit tidak boleh kosong!'
             ]);
 
             if($validator->fails()) {
@@ -48,12 +42,9 @@ class SeedController extends Controller
             
             $data = [
                 'seed_name' => $request->seed_name,
-                'seller_name' => $request->seller_name,
                 'seller_whatsapp' => $request->seller_whatsapp,
                 'seed_price' => $request->seed_price,
-                'seed_stock' => $request->seed_stock,
-                'seed_age' => $request->seed_age,
-                'seed_height' => $request->seed_height
+                'seed_stock' => $request->seed_stock
             ];
 
             if($request->hasFile('seed_thumbnail')) {

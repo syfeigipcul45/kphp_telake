@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Nama Bibit</label>
+                                <label>Nama Produk</label>
                                 <input type="text" class="form-control" name="seed_name" />
                                 @error('seed_name')
                                 <small class="form-text error-input">{{ $message }}</small>
@@ -53,17 +53,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Nama Penjual</label>
-                                <input type="text" class="form-control" name="seller_name" />
-                                @error('seller_name')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nomor Penjual</label>
-                                <input type="text" class="form-control" name="seller_whatsapp" placeholder="08..." />
+                                <!-- <label>Nomor Penjual</label> -->
+                                <input type="hidden" class="form-control" name="seller_whatsapp" placeholder="08..." value="{{ $option->phone ?? '' }}" />
                                 @error('seller_whatsapp')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
@@ -73,7 +64,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Harga Bibit</label>
+                                <label>Harga Produk</label>
                                 <input type="number" class="form-control" name="seed_price" min="0" />
                                 @error('seed_price')
                                 <small class="form-text error-input">{{ $message }}</small>
@@ -82,29 +73,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <labesl>Stok</label>
+                                <label>Jumlah Produk</label>
                                 <input type="number" class="form-control" name="seed_stock" />
                                 @error('seed_stock')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Umur</label>
-                                <input type="number" class="form-control" name="seed_age" />
-                                @error('seed_age')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Tinggi</label>
-                                <input type="number" class="form-control" name="seed_height" />
-                                @error('seed_height')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>
