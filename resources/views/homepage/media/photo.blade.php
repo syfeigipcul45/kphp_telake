@@ -20,8 +20,8 @@
         <div class="row no-gutters">
 
             <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
-                <a data-fancybox="gallery" data-src="https://lipsum.app/id/3/1024x768">
-                    <img src="https://lipsum.app/id/3/200x150" class="w-100 h-auto" />
+                <a data-fancybox="gallery" data-src="https://lipsum.app/id/3/1024x768" data-caption="This is the caption">
+                    <img src="https://lipsum.app/id/3/200x150" class="w-100 h-auto rounded" />
                 </a>
             </div>
             
