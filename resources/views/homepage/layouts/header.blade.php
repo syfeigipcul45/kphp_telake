@@ -41,7 +41,7 @@
                 </ul>
             </li>
             <li><a class="nav-link text-uppercase {{ Request::is('forestry-data*') ? 'active' : '' }}" href="{{ route('homepage.forestry') }}">Data Kehutanan</a></li>
-            <li><a class="nav-link text-uppercase {{ Request::is('seed-search*') ? 'active' : '' }}" href="{{ route('homepage.seed.search') }}">Cari Bibit</a></li>
+            <li><a class="nav-link text-uppercase {{ Request::is('seed-search*') ? 'active' : '' }}" href="{{ route('homepage.seed.search') }}">Cari Produk</a></li>
             <li><a class="nav-link text-uppercase {{ Request::is('contact*') ? 'active' : '' }}" href="{{ route('homepage.contact') }}">Kontak</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
