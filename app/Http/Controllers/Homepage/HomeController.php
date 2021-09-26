@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Homepage;
 
+use App\Models\Seed;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,12 @@ class HomeController extends Controller
     public function forestryData()
     {
         return view('homepage.forestry-data');
+    }
+
+    public function seedSearch()
+    {
+        $data['seeds'] = Seed::all();
+        return view('homepage.seed-search', $data);
     }
     
     public function contact()
