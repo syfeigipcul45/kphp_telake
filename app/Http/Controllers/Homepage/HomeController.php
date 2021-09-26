@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Homepage;
 
 use App\Models\Seed;
+use App\Models\Media;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,12 +36,14 @@ class HomeController extends Controller
 
     public function mediaPhoto()
     {
-        return view('homepage.media.photo');
+        $data['photos'] = Media::where('type', 'photo')->get();
+        return view('homepage.media.photo', $data);
     }
 
     public function mediaVideo()
     {
-        return view('homepage.media.video');
+        $data['videos'] = Media::where('type', 'video')->get();
+        return view('homepage.media.video', $data);
     }
 
     public function forestryData()
@@ -60,15 +63,6 @@ class HomeController extends Controller
         } else {
             $data['seeds'] = Seed::all();
         }
-        return view('homepage.seed-search', $data);
-    }
-
-    public function searchProduct(Request $request)
-    {
-        $data['seeds'] = Seed::where(function ($query) use ($request) {
-            $query->where('name', "LIKE", "%" . $request->search . "%");
-            $query->orWhere('mobile', "LIKE", "%" . $request->search . "%");
-        })->get();
         return view('homepage.seed-search', $data);
     }
     

@@ -12,7 +12,7 @@
 </style>
 @endsection
 
-<form action="{{ route('dashboard.photos.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.videos.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
@@ -22,27 +22,24 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Foto</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tambah Video</h6>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <strong>Upload Foto</strong>
-                            <div class="card my-2">
-                                <label for="imageUpload" class="mb-0 cursor-pointer">
-                                    <img class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
-                                </label>
-                                <input type='file' id="imageUpload" name="link_media" accept=".png, .jpg, .jpeg" hidden />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Link Video Youtube</label>
+                                <input type="text" class="form-control" name="link_media" />
+                                @error('link_media')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
                             </div>
-                            @error('link_media')
-                            <small class="form-text error-input">{{ $message }}</small>
-                            @enderror
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Caption Foto</label>
+                                <label>Caption Video</label>
                                 <input type="text" class="form-control" name="caption" />
                                 @error('caption')
                                 <small class="form-text error-input">{{ $message }}</small>
