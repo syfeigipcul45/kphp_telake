@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
     public function index() {
-        return view('dashboard.videos.index');
+        return view('dashboard.media.video.index');
     }
 
     public function store(Request $request) {

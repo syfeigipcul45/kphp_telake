@@ -51,6 +51,21 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia"
+        aria-expanded="true" aria-controls="collapseMedia">
+        <i class="fas fa-fw fa-video"></i>
+        <span>Media</span>
+    </a>
+    <div id="collapseMedia" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.photos.index') }}">Foto</a>
+            <a class="collapse-item" href="{{ route('dashboard.videos.index') }}">Video</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
         aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-file"></i>
