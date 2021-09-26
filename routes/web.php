@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\SeedController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\SettingController;
@@ -47,6 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
     Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
     Route::post('/management-news', [NewsController::class, 'store'])->name('dashboard.news.store');
+
+    Route::get('/management-seeds', [SeedController::class, 'index'])->name('dashboard.seeds.index');
+    Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');
+    Route::post('/management-seeds', [SeedController::class, 'store'])->name('dashboard.seeds.store');
     
     Route::get('/management-videos', [VideoController::class, 'index'])->name('dashboard.videos.index');
     Route::post('/management-videos', [VideoController::class, 'store'])->name('dashboard.videos.store');

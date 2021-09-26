@@ -29,6 +29,13 @@
 </li>
 
 <!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-seeds*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.seeds.index') }}">
+        <i class="fas fa-fw fa-seedling"></i>
+        <span>Bibit</span></a>
+</li>
+
+<!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
 <a class="nav-link" href="{{ route('dashboard.datas.index') }}">
     <i class="fas fa-fw fa-file-alt"></i>

@@ -24,6 +24,12 @@ if (! function_exists('convertToRupiah')) {
     }
 }
 
+if (! function_exists('convertToAge')) {
+    function convertToAge($value) {
+        return $value . ' cm';
+    }
+}
+
 if (! function_exists('convertWhatsappNumber')) {
     function convertWhatsappNumber($whatsapp) {
         $whatsappNumber = null;
