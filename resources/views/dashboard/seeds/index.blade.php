@@ -9,12 +9,12 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Bibit</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Produk</h6>
         <a href="{{ route('dashboard.seeds.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
-                <i class="fas fa-seedling"></i>
+                <i class="fas fa-archive"></i>
             </span>
-            <span class="text">Tambah Bibit</span>
+            <span class="text">Tambah Produk</span>
         </a>
     </div>
     <div class="card-body">
