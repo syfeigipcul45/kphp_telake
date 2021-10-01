@@ -390,15 +390,14 @@ body {
   /*--------------------------------------------------------------
   # Hero Section
   --------------------------------------------------------------*/
-  #hero {
+  .hero {
     width: 100%;
     height: 100vh;
-    background: url("../img/hero-bg.jpg") top center;
-    background-size: cover;
+    background-size: cover !important;
     position: relative;
   }
   
-  #hero:before {
+  .hero:before {
     content: "";
     background: rgba(0, 0, 0, 0.6);
     position: absolute;
@@ -408,13 +407,13 @@ body {
     right: 0;
   }
   
-  #hero .container {
+  .hero .container {
     position: relative;
     padding-top: 74px;
     text-align: center;
   }
   
-  #hero h1 {
+  .hero h1 {
     margin: 0;
     font-size: 56px;
     font-weight: 700;
@@ -423,17 +422,17 @@ body {
     font-family: "Poppins", sans-serif;
   }
   
-  #hero h1 span {
+  .hero h1 span {
     color: #ffc451;
   }
   
-  #hero h2 {
+  .hero h2 {
     color: rgba(255, 255, 255, 0.9);
     margin: 10px 0 0 0;
     font-size: 24px;
   }
   
-  #hero .icon-box {
+  .hero .icon-box {
     padding: 30px 20px;
     transition: ease-in-out 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -441,13 +440,13 @@ body {
     text-align: center;
   }
   
-  #hero .icon-box i {
+  .hero .icon-box i {
     font-size: 32px;
     line-height: 1;
     color: #ffc451;
   }
   
-  #hero .icon-box h3 {
+  .hero .icon-box h3 {
     font-weight: 700;
     margin: 10px 0 0 0;
     padding: 0;
@@ -456,34 +455,34 @@ body {
     line-height: 26px;
   }
   
-  #hero .icon-box h3 a {
+  .hero .icon-box h3 a {
     color: #fff;
     transition: ease-in-out 0.3s;
   }
   
-  #hero .icon-box h3 a:hover {
+  .hero .icon-box h3 a:hover {
     color: #ffc451;
   }
   
-  #hero .icon-box:hover {
+  .hero .icon-box:hover {
     border-color: #ffc451;
   }
   
   @media (min-width: 1024px) {
-    #hero {
+    .hero {
       background-attachment: fixed;
     }
   }
   
   @media (max-width: 768px) {
-    #hero {
+    .hero {
       height: auto;
     }
-    #hero h1 {
+    .hero h1 {
       font-size: 28px;
       line-height: 36px;
     }
-    #hero h2 {
+    .hero h2 {
       font-size: 20px;
       line-height: 24px;
     }
