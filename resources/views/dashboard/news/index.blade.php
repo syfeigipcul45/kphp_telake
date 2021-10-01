@@ -54,7 +54,7 @@
                             <a href="#" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-news" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.news.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -67,6 +67,9 @@
 </div>
 @endsection
 
+<!-- Delete Modal-->
+@include('dashboard.news.includes.modal-delete')
+
 @section('extra-js')
 <!-- Page level plugins -->
 <script src="{{ asset('_dashboard/vendor/datatables/jquery.dataTables.min.js') }}"></script>
@@ -74,4 +77,12 @@
 
 <!-- Page level custom scripts -->
 <script src="{{ asset('_dashboard/js/demo/datatables-demo.js') }}"></script>
+
+<!-- Custom scripts -->
+<script>
+    $('.remove-news').click(function() {
+        const hrefRemove = $(this).data('href');
+        $('#remove-news').attr('action', hrefRemove);
+    });
+</script>
 @endsection

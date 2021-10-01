@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
     Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
     Route::post('/management-news', [NewsController::class, 'store'])->name('dashboard.news.store');
+    Route::post('/management-news/{id}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
 
     Route::get('/management-seeds', [SeedController::class, 'index'])->name('dashboard.seeds.index');
     Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');

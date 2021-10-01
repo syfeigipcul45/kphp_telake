@@ -58,4 +58,11 @@ class NewsController extends Controller
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
+
+    public function destroy($id) {
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->back();
+    }
 }
