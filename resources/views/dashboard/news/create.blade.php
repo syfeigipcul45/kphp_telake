@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="title" />
+                        <input type="text" class="form-control" name="title" value="{{ old('title') }}" />
                         @error('title')
                         <small class="form-text error-input">{{ $message }}</small>
                         @enderror
@@ -40,7 +40,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Konten Berita</h6>
                 </div>
                 <div class="card-body">
-                    <textarea id="content-news" name="content"></textarea>
+                    <textarea id="content-news" name="content">{{ old('content') }}</textarea>
                     @error('content')
                     <small class="form-text error-input">{{ $message }}</small>
                     @enderror

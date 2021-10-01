@@ -41,12 +41,15 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                    @foreach($news as $key => $item)
                     <tr>
-                        <td>1</td>
-                        <td>Gambar</td>
-                        <td>Judul Berita</td>
-                        <td>5 Desember 2021</td>
-                        <td>Aktif</td>
+                        <td>{{ ++$key }}</td>
+                        <td>
+                            <img src="{{ $item->featured_image }}" alt="" class="img-fluid h-40" />
+                        </td>
+                        <td>{{ $item->title }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->is_published ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="text-center">
                             <a href="#" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
@@ -56,6 +59,7 @@
                             </a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

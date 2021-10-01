@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
     public function index() {
-        return view('dashboard.news.index');
+        $data['news'] = Post::all();
+        return view('dashboard.news.index', $data);
     }
 
     public function create() {
@@ -46,6 +49,8 @@ class NewsController extends Controller
                 $path = Storage::disk('public')->put('posts/thumbnail', $file);
                 $data['featured_image'] = url('/') . '/storage/' . $path;;
             }
+
+            Post::create($data);
 
             return redirect()->route('dashboard.news.index');
             
