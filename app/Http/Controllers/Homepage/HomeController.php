@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Homepage;
 
+use App\Models\Post;
 use App\Models\Seed;
 use App\Models\Media;
 use App\Http\Controllers\Controller;
@@ -11,7 +12,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('homepage.index');
+        $data['news'] = Post::all();
+        return view('homepage.index', $data);
     }
 
     public function news()

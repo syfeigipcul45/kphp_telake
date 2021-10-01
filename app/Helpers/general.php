@@ -2,6 +2,7 @@
 
 use App\Models\Option;
 use App\Models\Video;
+use Illuminate\Support\Str;
 
 if (! function_exists('getOption')) {
     function getOption() {
@@ -60,6 +61,10 @@ function convertToSlug($string){
     return $string;
 }
 
+function convertDate($date){
+    return date('d M Y', strtotime($date));
+}
+
 if (! function_exists('convertYoutube')) {
     /**
      * @param string $text
@@ -70,5 +75,11 @@ if (! function_exists('convertYoutube')) {
             "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
             $link
         );
+    }
+}
+
+if (! function_exists('shrinkText')) {
+    function shrinkText($text) {
+        return Str::limit($text, 225, '...');
     }
 }
