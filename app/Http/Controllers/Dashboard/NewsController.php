@@ -59,6 +59,33 @@ class NewsController extends Controller
         }
     }
 
+    public function edit($id) {
+        $data['news'] = Post::find($id);
+        return view('dashboard.news.edit', $data);
+    }
+
+    public function update(Request $request, $id) {
+        $news = Post::find($id);
+
+        $updateData = [
+            'title' => $request->title,
+            'content' => $request->content,
+            'is_published' => $request->is_published
+        ];
+
+        if($request->hasFile('featured_image')) {
+            $file = $request->file('featured_image');
+            $path = Storage::disk('public')->put('posts/thumbnail', $file);
+            $updateData['featured_image'] = url('/') . '/storage/' . $path;;
+        } else {
+            $updateData['featured_image'] = $request->featured_image;
+        }
+
+        $news->update($updateData);
+
+        return redirect()->route('dashboard.news.index');
+    }
+
     public function destroy($id) {
         $post = Post::find($id);
         $post->delete();

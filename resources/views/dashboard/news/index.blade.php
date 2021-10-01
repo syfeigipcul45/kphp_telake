@@ -51,7 +51,7 @@
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->is_published ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-warning btn-circle btn-sm">
+                            <a href="{{ route('dashboard.news.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm remove-news" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.news.destroy', $item->id) }}">
