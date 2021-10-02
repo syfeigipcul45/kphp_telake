@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\SeedController;
 use App\Http\Controllers\Dashboard\PhotoController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
+use App\Http\Controllers\Dashboard\HeroController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\PageController;
 
@@ -81,6 +82,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sector-management', [PageController::class, 'create'])->name('dashboard.page.management');
     Route::get('/sector-counseling', [PageController::class, 'create'])->name('dashboard.page.counseling');
     
+    Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
+    Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
+    Route::post('/hero-images', [HeroController::class, 'store'])->name('dashboard.hero.images.store');
+    Route::post('/hero-images/{id}', [HeroController::class, 'destroy'])->name('dashboard.hero.images.destroy');
+
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('dashboard.settings.store');
 });

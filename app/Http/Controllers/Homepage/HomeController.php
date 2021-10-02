@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Homepage;
 use App\Models\Post;
 use App\Models\Seed;
 use App\Models\Media;
+use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['news'] = Post::all();
+        $data['heroes'] = HeroImage::all();
         return view('homepage.index', $data);
     }
 

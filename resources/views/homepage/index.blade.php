@@ -45,34 +45,22 @@
 <!-- ======= Hero Section ======= -->
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
+    @foreach($heroes as $item)
     <div class="swiper-slide">
-      <section class="hero d-flex align-items-center justify-content-center" style="background: url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80) top center;">
+      <section class="hero d-flex align-items-center justify-content-center" style="background: url(<?= $item->url_hero ?>) top center;">
         <div class="container" data-aos="fade-up">
 
           <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
             <div class="col-xl-6 col-lg-8">
-              <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
-              <h2>We are team of talented digital marketers</h2>
+              <h1>{{ $item->title }}</h1>
+              <h2>{{ $item->description }}</h2>
             </div>
           </div>
 
         </div>
       </section>
     </div>
-    <div class="swiper-slide">
-      <section class="hero d-flex align-items-center justify-content-center" style="background: url(https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1674&q=80) top center;">
-        <div class="container" data-aos="fade-up">
-
-          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-            <div class="col-xl-6 col-lg-8">
-              <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
-              <h2>We are team of talented digital marketers</h2>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </div>
+    @endforeach
   </div>
 </div>
 <!-- End Hero -->

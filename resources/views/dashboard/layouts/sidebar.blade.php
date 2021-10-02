@@ -42,13 +42,6 @@
     <span>Data Kehutanan</span></a>
 </li>
 
-<!-- Nav Item - Charts -->
-<li class="nav-item {{ Request::is('management-videos*') ? 'active' : '' }}">
-<a class="nav-link" href="{{ route('dashboard.videos.index') }}">
-    <i class="fas fa-fw fa-video"></i>
-    <span>Data Video</span></a>
-</li>
-
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia"
@@ -95,6 +88,14 @@
 <div class="sidebar-heading">
     Pengaturan
 </div>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item {{ Request::is('hero-images*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.hero.images.index') }}">
+        <i class="fas fa-fw fa-images"></i>
+        <span>Gambar Utama</span>
+    </a>
+</li>
 
 <!-- Nav Item - Tables -->
 <li class="nav-item {{ Request::is('settings*') ? 'active' : '' }}">

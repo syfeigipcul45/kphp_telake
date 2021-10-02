@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         $this->call(OptionSeeder::class);
         $this->call(VideoSeeder::class);
+        $this->call(DummySeeder::class);
     }
 }
