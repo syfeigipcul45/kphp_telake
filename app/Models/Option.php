@@ -19,6 +19,9 @@ class Option extends Model
         'twitter',
         'facebook',
         'instagram',
-        'youtube'
+        'youtube',
+        'profile_url',
+        'profile_title',
+        'profile_description'
     ];
 }

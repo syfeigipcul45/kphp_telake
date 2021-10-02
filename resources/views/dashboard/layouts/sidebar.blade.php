@@ -98,6 +98,14 @@
 </li>
 
 <!-- Nav Item - Tables -->
+<li class="nav-item {{ Request::is('profile*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.settings.profile') }}">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Profil</span>
+    </a>
+</li>
+
+<!-- Nav Item - Tables -->
 <li class="nav-item {{ Request::is('settings*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.settings.index') }}">
         <i class="fas fa-fw fa-cog"></i>

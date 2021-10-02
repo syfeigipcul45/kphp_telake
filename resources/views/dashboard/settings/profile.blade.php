@@ -12,7 +12,7 @@
 </style>
 @endsection
 
-<form action="{{ route('dashboard.hero.images.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.settings.profile.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
@@ -22,29 +22,26 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Gambar</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <strong>Upload Thumbnail</strong>
-                            <div class="card my-2">
-                                <label for="imageUpload" class="mb-0 cursor-pointer">
-                                    <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
-                                </label>
-                                <input type='file' id="imageUpload" name="thumbnail" accept=".png, .jpg, .jpeg" hidden />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Link Youtube</label>
+                                <input type="text" class="form-control" name="profile_url" value="{{ old('profile_url', $option->profile_url) }}" />
+                                @error('profile_url')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
                             </div>
-                            @error('thumbnail')
-                            <small class="form-text error-input">{{ $message }}</small>
-                            @enderror
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Judul</label>
-                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" />
-                                @error('title')
+                                <input type="text" class="form-control" name="profile_title" value="{{ old('profile_title', $option->profile_title) }}" />
+                                @error('profile_title')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -53,24 +50,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Deskripsi</label>
-                                <textarea class="form-control" name="description">{{ old('description') }}</textarea>
-                                @error('description')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Status</label>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" id="status" class="custom-control-input" checked />
-                                    <input type="hidden" id="status-value" name="is_active" value="1" />
-                                    <label class="custom-control-label" for="status"></label>
-                                </div>
-                                @error('is_active')
+                                <textarea id="content-profile" class="form-control" name="profile_description">{{ old('profile_description', $option->profile_description) }}</textarea>
+                                @error('profile_description')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -92,7 +73,7 @@
 @section('extra-js')
 <script>
     tinymce.init({
-        selector: 'textarea#content-news',
+        selector: 'textarea#content-profile',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         height : "480"

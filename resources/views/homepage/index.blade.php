@@ -73,23 +73,11 @@
 
       <div class="row">
         <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/UN3f628tJ4U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="{{ getYoutubeEmbedUrl(getOption()->profile_url) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-          <h3>Profil KPHP Kendilo</h3>
-          <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
-          <ul>
-            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-          </ul>
-          <p>
-            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-          </p>
+          <h3>{{ getOption()->profile_title }}</h3>
+          {!! getOption()->profile_description !!}
         </div>
       </div>
 
@@ -125,7 +113,7 @@
                 {{ shrinkText($item->content) }}
               </p>
               <div>
-                <button class="d-block ml-auto btn btn-brand float-right">Read More</button>
+                <a href="{{ route('homepage.news.detail', $item->id) }}" class="d-block ml-auto btn btn-brand float-right">Read More</a>
               </div>
             </div>
           </div>

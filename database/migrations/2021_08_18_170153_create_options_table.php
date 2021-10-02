@@ -26,6 +26,9 @@ class CreateOptionsTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('profile_url')->nullable();
+            $table->string('profile_title')->nullable();
+            $table->text('profile_description')->nullable();
             $table->timestamps();
         });
     }

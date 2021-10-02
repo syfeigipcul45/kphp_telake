@@ -34,6 +34,7 @@ Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 // homepage section
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
+Route::get('/news/{id}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
 Route::group(['prefix'=>'profile'], function() {
     Route::get('kaltim-forest', [HomeController::class, 'kaltim'])->name('homepage.kaltim');
     Route::get('vision-mission', [HomeController::class, 'vision'])->name('homepage.vision');
@@ -86,7 +87,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
     Route::post('/hero-images', [HeroController::class, 'store'])->name('dashboard.hero.images.store');
     Route::post('/hero-images/{id}', [HeroController::class, 'destroy'])->name('dashboard.hero.images.destroy');
-
+    
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('dashboard.settings.store');
+    
+    Route::get('/profile-section', [SettingController::class, 'profile'])->name('dashboard.settings.profile');
+    Route::post('/profile-section', [SettingController::class, 'updateProfile'])->name('dashboard.settings.profile.update');
 });

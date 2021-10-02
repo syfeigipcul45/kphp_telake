@@ -22,6 +22,13 @@ class HomeController extends Controller
     {
         return view('homepage.news');
     }
+
+    public function newsDetail($id)
+    {
+        $data['news'] = Post::find($id);
+        $data['other_news'] = Post::where('id', '!=', $id)->limit(5)->get();
+        return view('homepage.news.detail', $data);
+    }
     
     public function kaltim()
     {

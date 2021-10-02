@@ -108,4 +108,44 @@ class SettingController extends Controller
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
+
+    public function profile() {
+        $data['option'] = Option::first();
+        return view('dashboard.settings.profile', $data);
+    }
+
+    public function updateProfile(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                'profile_url' => 'required',
+                'profile_title' => 'required',
+                'profile_description' => 'required'
+            ], [
+                'profile_url.required' => 'Link url youtube harus diisi!',
+                'profile_title.required' => 'Judul harus diisi!',
+                'profile_description.required' => 'Deskripisi harus diisi!'
+            ]);
+
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator);
+            }
+            
+            $option = Option::first();
+
+            if(empty($option)) {
+                return redirect()->back();
+            }
+
+            $dataUpdate = [
+                'profile_url' => $request->profile_url,
+                'profile_title' => $request->profile_title,
+                'profile_description' => $request->profile_description
+            ];
+            $option->update($dataUpdate);
+
+            return redirect()->route('dashboard.settings.profile');
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
+        }
+    }
 }
