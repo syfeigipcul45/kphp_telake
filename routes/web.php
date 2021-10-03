@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-seeds', [SeedController::class, 'index'])->name('dashboard.seeds.index');
     Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');
     Route::post('/management-seeds', [SeedController::class, 'store'])->name('dashboard.seeds.store');
+    Route::get('/management-seeds/{id}/edit', [SeedController::class, 'edit'])->name('dashboard.seeds.edit');
+    Route::post('/management-seeds/{id}/update', [SeedController::class, 'update'])->name('dashboard.seeds.update');
+    Route::post('/management-seeds/{id}', [SeedController::class, 'destroy'])->name('dashboard.seeds.destroy');
     
     Route::get('/media/management-photos', [PhotoController::class, 'index'])->name('dashboard.photos.index');
     Route::get('/media/management-photos/create', [PhotoController::class, 'create'])->name('dashboard.photos.create');

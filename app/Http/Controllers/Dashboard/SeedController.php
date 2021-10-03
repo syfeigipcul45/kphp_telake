@@ -61,4 +61,38 @@ class SeedController extends Controller
             return redirect()->back()->with('error', $exception);
         }
     }
+
+    public function edit($id) {
+        $data['seed'] = Seed::find($id);
+        return view('dashboard.seeds.edit', $data);
+    }
+
+    public function update(Request $request, $id) {
+        $seed = Seed::find($id);
+
+        $updateData = [
+            'seed_name' => $request->seed_name,
+            'seed_price' => $request->seed_price,
+            'seed_stock' => $request->seed_stock
+        ];
+
+        if($request->hasFile('seed_thumbnail')) {
+            $file = $request->file('seed_thumbnail');
+            $path = Storage::disk('public')->put('products/thumbnail', $file);
+            $updateData['seed_thumbnail'] = url('/') . '/storage/' . $path;;
+        } else {
+            $updateData['seed_thumbnail'] = $request->seed_thumbnail;
+        }
+
+        $seed->update($updateData);
+
+        return redirect()->route('dashboard.seeds.index');
+    }
+
+    public function destroy($id) {
+        $seed = Seed::find($id);
+        $seed->delete();
+
+        return redirect()->back();
+    }
 }
