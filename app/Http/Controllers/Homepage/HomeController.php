@@ -13,7 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['news'] = Post::all();
+        $data['news'] = Post::limit(4)->get();
+        $data['videos'] = Media::limit(3)->get();
         $data['heroes'] = HeroImage::all();
         return view('homepage.index', $data);
     }

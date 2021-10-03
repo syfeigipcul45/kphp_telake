@@ -119,6 +119,11 @@
           </div>
         </div>
         @endforeach
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <a href="{{ route('homepage.news') }}" class="ml-auto btn btn-brand float-right">Lihat Berita Lainnya</a>
+          </div>
+        </div>
 
       </div>
 
@@ -135,9 +140,10 @@
       </div> -->
 
       <div class="row">
+
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+            <div class="icon"><i class="bx bx-world"></i></div>
             <h4><a href="">Pemerintah Prov. Kalimantan Timur</a></h4>
             <p>Website resmi Pemerintah Provinsi Kalimantan Timur "Berani untuk Kaltim Berdaulat"</p>
           </div>
@@ -145,7 +151,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
-            <div class="icon"><i class="bx bx-tree"></i></div>
+            <div class="icon"><i class="bx bxs-tree"></i></div>
             <h4><a href="">Kementerian Lingkungan Hidup dan Kehutanan</a></h4>
             <p>Website resmi Kementerian Lingkungan Hidup dan Kehutanan Republik Indonesia</p>
           </div>
@@ -153,7 +159,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
+            <div class="icon"><i class="bx bx-expand"></i></div>
             <h4><a href="">KPH Indonesia</a></h4>
             <p>Sinpasdok KPH+ Tersebar Di Tingkat Tapak Terkendali di Pusat</p>
           </div>
@@ -161,7 +167,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
-            <div class="icon"><i class="bx bx-world"></i></div>
+            <div class="icon"><i class="bx bx-file"></i></div>
             <h4><a href="">Form Permohonan Data</a></h4>
             <p>Formulir Permohonan Data dan Informasi Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
@@ -169,7 +175,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
-            <div class="icon"><i class="bx bx-slideshow"></i></div>
+            <div class="icon"><i class="bx bx-box"></i></div>
             <h4><a href="">SI-PESAN ANTAR</a></h4>
             <p>Sistem Informasi, Pelaporan, dan Surat Keputusan Pengada dan atau Pengedar Benih dan atau Bibit Terdaftar Online</p>
           </div>
@@ -177,7 +183,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
-            <div class="icon"><i class="bx bx-tree"></i></div>
+            <div class="icon"><i class="bx bx-highlight"></i></div>
             <h4><a href="">Form Pengaduan Masyarakat</a></h4>
             <p>Formulir Pengaduan Masyarakat Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
@@ -198,18 +204,24 @@
 
       <div class="row">
 
-        @if(count(getVideos()) > 0)
-        @foreach(getVideos() as $item)
+        @if(count($videos) > 0)
+        @foreach($videos as $item)
         <div class="col-lg-4 col-md-6 align-items-stretch">
           <div class="member" data-aos="fade-up" data-aos-delay="100">
             <div class="video">
-              {!! convertYoutube($item->youtube_link) !!}
+              {!! convertYoutube($item->link_media) !!}
             </div>
           </div>
         </div>
         @endforeach
         @endif
 
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <a href="{{ route('homepage.media.video') }}" class="ml-auto btn btn-brand float-right">Lihat Video Lainnya</a>
+        </div>
       </div>
 
     </div>

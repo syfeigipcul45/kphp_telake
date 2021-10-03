@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Video;
+use App\Models\Media;
 use Illuminate\Database\Seeder;
 
 class VideoSeeder extends Seeder
@@ -14,19 +14,20 @@ class VideoSeeder extends Seeder
      */
     public function run()
     {
-        Video::create([
-            'author_id' => 1,
-            'youtube_link' => 'https://www.youtube.com/watch?v=C4sXBbMLUsQ'
-        ]);
+        for($i = 0; $i < 5; $i++) {
+            Media::create([
+                'link_media' => 'https://www.youtube.com/watch?v=C4sXBbMLUsQ',
+                'caption' => 'Example of video',
+                'type' => 'video'
+            ]);
+        }
 
-        Video::create([
-            'author_id' => 1,
-            'youtube_link' => 'https://www.youtube.com/watch?v=C4sXBbMLUsQ'
-        ]);
-
-        Video::create([
-            'author_id' => 1,
-            'youtube_link' => 'https://www.youtube.com/watch?v=C4sXBbMLUsQ'
-        ]);
+        for($i = 0; $i < 5; $i++) {
+            Media::create([
+                'link_media' => 'https://images.unsplash.com/photo-1593642532871-8b12e02d091c?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1712&q=80',
+                'caption' => 'Example of video',
+                'type' => 'photo'
+            ]);
+        }
     }
 }

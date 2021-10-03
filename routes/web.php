@@ -35,6 +35,9 @@ Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
 Route::get('/news/{id}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
+Route::group(['prefix'=>'dept'], function() {
+    Route::get('sekretariat', [HomeController::class, 'deptSekretariat'])->name('homepage.dept.sekretariat');
+});
 Route::group(['prefix'=>'profile'], function() {
     Route::get('kaltim-forest', [HomeController::class, 'kaltim'])->name('homepage.kaltim');
     Route::get('vision-mission', [HomeController::class, 'vision'])->name('homepage.vision');

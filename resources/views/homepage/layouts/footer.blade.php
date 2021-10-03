@@ -20,7 +20,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6 footer-links">
+            <div class="col-lg-9 col-md-6">
+                <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.6109269133854!2d116.18802801483687!3d-1.9059915371538598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df047a2390dca51%3A0x35c23fa9e6683461!2sKantor%20Kehutanan%20Resort%20I%20Paser!5e0!3m2!1sen!2sid!4v1629168201933!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- <div class="col-lg-2 col-md-6 footer-links">
                 <h4>Useful Links</h4>
                 <ul>
                     <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -48,7 +52,7 @@
                 <form action="" method="post">
                     <input type="email" name="email"><input type="submit" value="Subscribe">
                 </form>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
