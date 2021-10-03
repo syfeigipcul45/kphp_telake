@@ -26,20 +26,10 @@
                         <th>Thumbnail</th>
                         <th>Nama Produk</th>
                         <th>Harga</th>
-                        <th>Umur</th>
+                        <th>Jumlah</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Thumbnail</th>
-                        <th>Nama Produk</th>
-                        <th>Harga</th>
-                        <th>Umur</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
                 <tbody>
                     @foreach($seeds as $key => $item)
                     <tr>
@@ -61,6 +51,16 @@
                     </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Thumbnail</th>
+                        <th>Nama Produk</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
