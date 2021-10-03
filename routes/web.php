@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/media/management-videos/store', [VideoController::class, 'store'])->name('dashboard.videos.store');
 
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
+    Route::get('/management-datas/create', [DataController::class, 'create'])->name('dashboard.datas.create');
+    Route::post('/management-datas/store', [DataController::class, 'store'])->name('dashboard.datas.store');
+    Route::get('/management-datas/{id}/edit', [DataController::class, 'edit'])->name('dashboard.datas.edit');
+    Route::post('/management-datas/{id}/update', [DataController::class, 'update'])->name('dashboard.datas.update');
+    Route::post('/management-datas/{id}', [DataController::class, 'destroy'])->name('dashboard.datas.destroy');
   
     Route::get('pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
     Route::get('pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');

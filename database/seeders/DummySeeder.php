@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\HeroImage;
 use App\Models\SubMenu;
+use App\Models\DocumentCategory;
+use App\Models\Document;
 use Illuminate\Database\Seeder;
 
 class DummySeeder extends Seeder
@@ -85,6 +87,22 @@ class DummySeeder extends Seeder
                 'name' => $submenuEvent[$i],
                 'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
                 'parent_menu' => 'event'
+            ]);
+        }
+
+        $docCategory = ['Informasi Berkala', 'Informasi Publik', 'Informasi Serta Merta', 'Setiap Saat'];
+
+        for($i = 0; $i < count($docCategory); $i++) {
+            $docCat = DocumentCategory::create([
+                'name' => $docCategory[$i]
+            ]);
+        }
+
+        for($i = 0; $i < 4; $i++) {
+            Document::create([
+                'category_id' => $docCat->id,
+                'name' => 'Document Example ' . $i,
+                'file_url' => 'https://www.clickdimensions.com/links/TestPDFfile.pdf'
             ]);
         }
     }
