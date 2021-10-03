@@ -76,15 +76,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/management-datas', [DataController::class, 'index'])->name('dashboard.datas.index');
   
-    Route::get('/profile-kaltim-forest', [PageController::class, 'create'])->name('dashboard.page.kaltimforest');
-    Route::get('/profile-vision-mission', [PageController::class, 'create'])->name('dashboard.page.visionmission');
-    Route::get('/profile-structure-organization', [PageController::class, 'create'])->name('dashboard.page.structure');
+    Route::get('pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
+    Route::get('pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');
+    Route::post('pages/profiles', [PageController::class, 'profileStore'])->name('dashboard.page.profiles.store');
 
-    Route::get('/sector-secretary', [PageController::class, 'create'])->name('dashboard.page.secretary');
-    Route::get('/sector-plan', [PageController::class, 'create'])->name('dashboard.page.plan');
-    Route::get('/sector-protection', [PageController::class, 'create'])->name('dashboard.page.protection');
-    Route::get('/sector-management', [PageController::class, 'create'])->name('dashboard.page.management');
-    Route::get('/sector-counseling', [PageController::class, 'create'])->name('dashboard.page.counseling');
+    Route::get('pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
+    Route::get('pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');
+    Route::post('pages/depts', [PageController::class, 'deptStore'])->name('dashboard.page.depts.store');
+
+    Route::get('pages/areas', [PageController::class, 'areaIndex'])->name('dashboard.page.areas.index');
+    Route::get('pages/areas/create', [PageController::class, 'areaCreate'])->name('dashboard.page.areas.create');
+    Route::post('pages/areas', [PageController::class, 'areaStore'])->name('dashboard.page.areas.store');
+
+    Route::get('pages/events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
+    Route::get('pages/events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');
+    Route::post('pages/events', [PageController::class, 'eventStore'])->name('dashboard.page.events.store');
     
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
@@ -94,6 +100,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('dashboard.settings.store');
     
-    Route::get('/profile-section', [SettingController::class, 'profile'])->name('dashboard.settings.profile');
-    Route::post('/profile-section', [SettingController::class, 'updateProfile'])->name('dashboard.settings.profile.update');
+    Route::get('/section-profile', [SettingController::class, 'profile'])->name('dashboard.settings.profile');
+    Route::post('/section-profile', [SettingController::class, 'updateProfile'])->name('dashboard.settings.profile.update');
 });

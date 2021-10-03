@@ -58,25 +58,18 @@
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
+<li class="nav-item {{ Request::is('pages*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
         aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-file"></i>
         <span>Halaman</span>
     </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapsePages" class="collapse {{ Request::is('pages*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Profil:</h6>
-            <a class="collapse-item" href="{{ route('dashboard.page.kaltimforest') }}">Hutan Kaltim</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.visionmission') }}">Visi & Misi</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.structure') }}">Struktur & Organisasi</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Bidang:</h6>
-            <a class="collapse-item" href="{{ route('dashboard.page.secretary') }}">Sekretariat</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.plan') }}">Perencanaan</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.protection') }}">Perlindungan</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.management') }}">Pengelolaan</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.counseling') }}">Penyuluhan</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.profiles.index') }}">Profil</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.depts.index') }}">Bidang</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.areas.index') }}">Wilayah</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Kegiatan</a>
         </div>
     </div>
 </li>
@@ -98,7 +91,7 @@
 </li>
 
 <!-- Nav Item - Tables -->
-<li class="nav-item {{ Request::is('profile*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('section-profile*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.settings.profile') }}">
         <i class="fas fa-fw fa-user"></i>
         <span>Profil</span>

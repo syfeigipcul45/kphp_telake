@@ -7,6 +7,13 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
             <li><a class="nav-link text-uppercase {{ Request::is('/') ? 'active' : '' }}" href="{{ route('homepage.index') }}">Beranda</a></li>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="{{ route('homepage.kaltim') }}">Hutan Kaltim</a></li>
+                    <li><a href="{{ route('homepage.vision') }}">Visi dan Misi</a></li>
+                    <li><a href="{{ route('homepage.structure') }}">Struktur Organisasi</a></li>
+                </ul>
+            </li>
             <li class="dropdown"><a href="#" class="text-uppercase"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="#">Sekretariat</a></li>
@@ -14,13 +21,6 @@
                     <li><a href="#">Perlindungan dan Konservasi Sumber Daya Alam Ekosistem</a></li>
                     <li><a href="#">Pengelolaan Daerah Aliran Sungai dan Rehabilitasi Hutan Lahan</a></li>
                     <li><a href="#">Penyuluhan dan Pemberdayaan Masyarakat Hutan</a></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                    <li><a href="{{ route('homepage.kaltim') }}">Hutan Kaltim</a></li>
-                    <li><a href="{{ route('homepage.vision') }}">Visi dan Misi</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Struktur Organisasi</a></li>
                 </ul>
             </li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Wilayah</span> <i class="bi bi-chevron-down"></i></a>

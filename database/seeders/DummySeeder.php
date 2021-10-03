@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\HeroImage;
+use App\Models\SubMenu;
 use Illuminate\Database\Seeder;
 
 class DummySeeder extends Seeder
@@ -24,6 +25,66 @@ class DummySeeder extends Seeder
                 'url_hero' => $urls[$i],
                 'title' => 'What is Lorem Ipsum?',
                 'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
+            ]);
+        }
+
+        $submenuProfile = [
+            'Hutan Kaltim',
+            'Visi dan Misi',
+            'Struktur Organisasi'
+        ];
+
+        for($i = 0; $i < count($submenuProfile); $i++) {
+            SubMenu::create([
+                'name' => $submenuProfile[$i],
+                'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
+                'parent_menu' => 'profile'
+            ]);
+        }
+
+        $submenuDept = [
+            'Sekretariat',
+            'Perencanaan dan Pemanfaatan Kawasan Hutan',
+            'Perlindungan dan Konservasi Sumber Daya Alam Ekosistem',
+            'Pengelolaan Daerah Aliran Sungai dan Rehabilitasi Hutan Lahan',
+            'Penyuluhan dan Pemberdayaan Masyarakat Hutan'
+        ];
+
+        for($i = 0; $i < count($submenuDept); $i++) {
+            SubMenu::create([
+                'name' => $submenuDept[$i],
+                'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
+                'parent_menu' => 'dept'
+            ]);
+        }
+
+        $submenuArea = [
+            'Potensi',
+            'Risalah'
+        ];
+
+        for($i = 0; $i < count($submenuArea); $i++) {
+            SubMenu::create([
+                'name' => $submenuArea[$i],
+                'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
+                'parent_menu' => 'area'
+            ]);
+        }
+
+        $submenuEvent = [
+            'Tata Usaha',
+            'Tata Hutan dan Perencanaan',
+            'Perhutanan Sosial',
+            'Penanggulangan Kebakaran Hutan dan Lahan',
+            'Perlindungan dan Pengamanan Hutan',
+            'Rehabilitasi Hutan dan Lahan'
+        ];
+
+        for($i = 0; $i < count($submenuEvent); $i++) {
+            SubMenu::create([
+                'name' => $submenuEvent[$i],
+                'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
+                'parent_menu' => 'event'
             ]);
         }
     }
