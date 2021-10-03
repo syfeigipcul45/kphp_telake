@@ -24,7 +24,7 @@
                     <tr>
                         <th>No</th>
                         <th>Thumbnail</th>
-                        <th>Nama Bibit</th>
+                        <th>Nama Produk</th>
                         <th>Harga</th>
                         <th>Umur</th>
                         <th>Aksi</th>
@@ -34,7 +34,7 @@
                     <tr>
                         <th>No</th>
                         <th>Thumbnail</th>
-                        <th>Nama Bibit</th>
+                        <th>Nama Produk</th>
                         <th>Harga</th>
                         <th>Umur</th>
                         <th>Aksi</th>
