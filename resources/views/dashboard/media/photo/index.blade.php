@@ -45,10 +45,10 @@
                         </td>
                         <td>{{ $item->caption }}</td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-warning btn-circle btn-sm">
+                            <a href="{{ route('dashboard.photos.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-photos" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.photos.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -61,6 +61,9 @@
 </div>
 @endsection
 
+<!-- Delete Modal-->
+@include('dashboard.media.photo.includes.modal-delete')
+
 @section('extra-js')
 <!-- Page level plugins -->
 <script src="{{ asset('_dashboard/vendor/datatables/jquery.dataTables.min.js') }}"></script>
@@ -68,4 +71,12 @@
 
 <!-- Page level custom scripts -->
 <script src="{{ asset('_dashboard/js/demo/datatables-demo.js') }}"></script>
+
+<!-- Custom scripts -->
+<script>
+    $('.remove-photos').click(function() {
+        const hrefRemove = $(this).data('href');
+        $('#remove-photos').attr('action', hrefRemove);
+    });
+</script>
 @endsection
