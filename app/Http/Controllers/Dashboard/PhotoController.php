@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class PhotoController extends Controller
 {
     public function index() {
-        $data['photos'] = Media::where('type', 'photo')->get();
+        $data['photos'] = Media::where('type', 'photo')->orderBy('id', 'desc')->get();
         return view('dashboard.media.photo.index', $data);
     }
 

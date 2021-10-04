@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class VideoController extends Controller
 {
     public function index() {
-        $data['videos'] = Media::where('type', 'video')->get();
+        $data['videos'] = Media::where('type', 'video')->orderBy('id', 'desc')->get();
         return view('dashboard.media.video.index', $data);
     }
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class NewsController extends Controller
 {
     public function index() {
-        $data['news'] = Post::all();
+        $data['news'] = Post::orderBy('created_at', 'desc')->get();
         return view('dashboard.news.index', $data);
     }
 
