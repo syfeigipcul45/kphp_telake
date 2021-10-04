@@ -1,7 +1,7 @@
 @extends('homepage.layouts.app')
 
 @section('title')
-<title>Data Kehutanan - {{ env('APP_NAME') }}</title>
+<title>Video - {{ env('APP_NAME') }}</title>
 @endsection
 
 @section('extraCss')

@@ -1,7 +1,7 @@
 @extends('homepage.layouts.app')
 
 @section('title')
-<title>Cari Bibit - {{ env('APP_NAME') }}</title>
+<title>Cari Produk - {{ env('APP_NAME') }}</title>
 @endsection
 
 @section('content')

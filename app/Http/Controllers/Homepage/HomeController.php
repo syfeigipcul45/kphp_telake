@@ -7,6 +7,8 @@ use App\Models\Seed;
 use App\Models\Media;
 use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
+use App\Models\Document;
+use App\Models\DocumentCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,13 +23,14 @@ class HomeController extends Controller
 
     public function news()
     {
-        return view('homepage.news');
+        $data['news'] = Post::orderBy('created_at', 'desc')->paginate(8);
+        return view('homepage.news', $data);
     }
 
-    public function newsDetail($id)
+    public function newsDetail($slug)
     {
-        $data['news'] = Post::find($id);
-        $data['other_news'] = Post::where('id', '!=', $id)->limit(5)->get();
+        $data['news'] = Post::where('slug', $slug)->first();
+        $data['other_news'] = Post::where('slug', '!=', $slug)->limit(5)->get();
         return view('homepage.news.detail', $data);
     }
     
@@ -48,19 +51,28 @@ class HomeController extends Controller
 
     public function mediaPhoto()
     {
-        $data['photos'] = Media::where('type', 'photo')->get();
+        $data['photos'] = Media::where('type', 'photo')->orderBy('id', 'desc')->get();
         return view('homepage.media.photo', $data);
     }
 
     public function mediaVideo()
     {
-        $data['videos'] = Media::where('type', 'video')->get();
+        $data['videos'] = Media::where('type', 'video')->orderBy('id', 'desc')->get();
         return view('homepage.media.video', $data);
     }
 
     public function forestryData()
     {
-        return view('homepage.forestry-data');
+        $data['documents'] = Document::orderBy('name', 'desc')->get();
+        $data['categories'] = DocumentCategory::orderBy('name', 'desc')->get();
+        return view('homepage.forestry-data', $data);
+    }
+
+    public function searchByCategory(Request $request)
+    {
+        $category_id = $request->category_id;
+        $data['result'] = Document::where('category_id','like', '%'.$category_id.'%')->get();
+        return json_encode($data);
     }
 
     public function seedSearch(Request $request)

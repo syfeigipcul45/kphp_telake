@@ -40,7 +40,7 @@
                     <li><a href="{{ route('homepage.structure') }}">Rehabilitasi Hutan dan Lahan</a></li>
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('media*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="{{ route('homepage.media.photo') }}">Galeri</a></li>
                     <li><a href="{{ route('homepage.media.video') }}">Video</a></li>

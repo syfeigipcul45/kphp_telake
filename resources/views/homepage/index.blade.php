@@ -105,15 +105,15 @@
                 </div>
                 <div class="d-flex align-items-center">
                   <i class="bx bx-time"></i>
-                  <span class="ml-1">{{ convertDate($item->created_at) }}</span>
+                  <span class="ml-1">{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</span>
                 </div>
               </div>
               <hr>
               <p class="font-normal">
-                {{ shrinkText($item->content) }}
+                <?php echo shrinkText($item->content) ?>
               </p>
               <div>
-                <a href="{{ route('homepage.news.detail', $item->id) }}" class="d-block ml-auto btn btn-brand float-right">Read More</a>
+                <a href="{{ route('homepage.news.detail', $item->slug) }}" class="d-block ml-auto btn btn-brand float-right">Read More</a>
               </div>
             </div>
           </div>

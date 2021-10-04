@@ -26,7 +26,7 @@
                         Dibuat oleh Admin
                     </div>
                     <div class="vcard">
-                        <span>Tanggal: {{ convertDate($news->created_at) }}</span>
+                        <span>Tanggal: {{ \Carbon\Carbon::parse($news->created_at)->isoFormat('D MMMM Y') }}</span>
                     </div>
                 </div>
                 {!! $news->content !!}
@@ -38,11 +38,11 @@
                 @foreach($other_news as $item)
                 <div class="blog-entry ftco-animate fadeInUp ftco-animated mb-4">
                     <div class="text text-2 pl-md-4">
-                        <h5 class="mb-2"><a href="{{ route('homepage.news.detail', $item->id) }}">{{ $item->title }}</a></h5>
+                        <h5 class="mb-2"><a href="{{ route('homepage.news.detail', $item->slug) }}">{{ $item->title }}</a></h5>
                         <div class="meta-wrap">
                             <div class="meta d-flex justify-content-between">
                                 <div><i class="icon-calendar"></i>Dibuat oleh Admin</div>
-                                <div><i class="icon-comment2"></i>{{ convertDate($item->created_at) }}</div>
+                                <div><i class="icon-comment2"></i>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</div>
                             </div>
                         </div>
                     </div>

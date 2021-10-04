@@ -34,7 +34,7 @@ Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 // homepage section
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
-Route::get('/news/{id}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
+Route::get('/news/{slug}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
 Route::group(['prefix'=>'dept'], function() {
     Route::get('sekretariat', [HomeController::class, 'deptSekretariat'])->name('homepage.dept.sekretariat');
 });
@@ -48,6 +48,7 @@ Route::group(['prefix'=>'media'], function() {
     Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');
 });
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
+Route::get('/forestry-data/pencarian', [HomeController::class, 'searchByCategory'])->name('homepage.forestry.search');
 Route::get('/seed-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
 
