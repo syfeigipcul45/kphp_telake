@@ -40,7 +40,8 @@ class DummySeeder extends Seeder
             SubMenu::create([
                 'name' => $submenuProfile[$i],
                 'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-                'parent_menu' => 'profile'
+                'parent_menu' => 'profile',
+                'slug' => convertToSlug($submenuProfile[$i])
             ]);
         }
 
@@ -56,7 +57,8 @@ class DummySeeder extends Seeder
             SubMenu::create([
                 'name' => $submenuDept[$i],
                 'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-                'parent_menu' => 'dept'
+                'parent_menu' => 'dept',
+                'slug' => convertToSlug($submenuDept[$i])
             ]);
         }
 
@@ -69,7 +71,8 @@ class DummySeeder extends Seeder
             SubMenu::create([
                 'name' => $submenuArea[$i],
                 'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-                'parent_menu' => 'area'
+                'parent_menu' => 'area',
+                'slug' => convertToSlug($submenuArea[$i])
             ]);
         }
 
@@ -86,7 +89,8 @@ class DummySeeder extends Seeder
             SubMenu::create([
                 'name' => $submenuEvent[$i],
                 'content' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,',
-                'parent_menu' => 'event'
+                'parent_menu' => 'event',
+                'slug' => convertToSlug($submenuEvent[$i])
             ]);
         }
 

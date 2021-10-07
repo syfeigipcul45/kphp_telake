@@ -24,6 +24,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Submenu</th>
+                        <th>Slug</th>
                         <th>Konten</th>
                         <th>Aksi</th>
                     </tr>
@@ -33,6 +34,7 @@
                     <tr>
                         <td style="width: 5%;">{{ ++$key }}</td>
                         <td style="width: 20%;">{{ $item->name }}</td>
+                        <td style="width: 20%;">{{ convertToSlug($item->name) }}</td>
                         <td>{!! $item->content !!}</td>
                         <td class="text-center" style="width: 15%;">
                             <a href="#" class="btn btn-warning btn-circle btn-sm">
@@ -49,6 +51,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Submenu</th>
+                        <th>Slug</th>
                         <th>Konten</th>
                         <th>Aksi</th>
                     </tr>

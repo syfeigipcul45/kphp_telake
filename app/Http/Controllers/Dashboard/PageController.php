@@ -35,7 +35,8 @@ class PageController extends Controller
             $data = [
                 "name" => $request->name,
                 "content" => $request->content,
-                "parent_menu" => 'profile'
+                "parent_menu" => 'profile',
+                "slug" => convertToSlug($request->name)
             ];
 
             SubMenu::create($data);
@@ -73,7 +74,8 @@ class PageController extends Controller
             $data = [
                 "name" => $request->name,
                 "content" => $request->content,
-                "parent_menu" => 'dept'
+                "parent_menu" => 'dept',
+                "slug" => convertToSlug($request->name)
             ];
 
             SubMenu::create($data);
@@ -111,7 +113,8 @@ class PageController extends Controller
             $data = [
                 "name" => $request->name,
                 "content" => $request->content,
-                "parent_menu" => 'area'
+                "parent_menu" => 'area',
+                "slug" => convertToSlug($request->name)
             ];
 
             SubMenu::create($data);
@@ -149,7 +152,8 @@ class PageController extends Controller
             $data = [
                 "name" => $request->name,
                 "content" => $request->content,
-                "parent_menu" => 'event'
+                "parent_menu" => 'event',
+                "slug" => convertToSlug($request->name)
             ];
 
             SubMenu::create($data);
