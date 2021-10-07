@@ -232,6 +232,11 @@
 @section('extraJs')
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script>
-  var swiper = new Swiper(".mySwiper", {});
+  var swiper = new Swiper(".mySwiper", {
+    autoplay: {
+      delay: 5000
+    },
+    speed:1000
+  });
 </script>
 @endsection
