@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="footer-info">
-                    <h3>Gp<span>.</span></h3>
+                    @if(!empty(getOption()->logo))
+                    <img src="{{ getOption()->logo }}" alt="" class="mw-100" style="height: 7rem;" />
+                    @else
+                    <h3>KPHP Kendilo<span>.</span></h3>
+                    @endif
                     <p>
                         {{ getOption()->address }}
                     </p>

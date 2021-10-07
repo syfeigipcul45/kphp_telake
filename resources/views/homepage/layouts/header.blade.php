@@ -1,7 +1,7 @@
 <div class="container d-flex align-items-center justify-content-lg-between">
 
     @if(!empty(getOption()->logo))
-    <a href="index.html" class="logo me-auto me-lg-0"><img src="{{ getOption()->logo }}" alt="" class="img-fluid"></a>
+    <a href="{{ route('homepage.index') }}" class="logo me-auto me-lg-0"><img src="{{ getOption()->logo }}" alt="" class="img-fluid"></a>
     @else
     <h1 class="logo me-auto me-lg-0"><a href="{{ route('homepage.index') }}">KPHP Kendilo<span>.</span></a></h1>
     @endif
