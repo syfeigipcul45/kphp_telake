@@ -11,27 +11,21 @@
             <li><a class="nav-link text-uppercase {{ Request::is('profile') ? 'active' : '' }}" href="{{ route('homepage.index') }}">Beranda</a></li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profil*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    @inject('profile', 'App\Models\SubMenu')
-                    @php $submenu = $profile::where('parent_menu','profile')->get(); @endphp
-                    @foreach($submenu as $item)
+                    @foreach(getMenuProfile() as $key => $item)
                     <li><a href="{{ route('homepage.profile', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
             </li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('dept*') ? 'active' : '' }}"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    @inject('dept', 'App\Models\SubMenu')
-                    @php $submenu = $dept::where('parent_menu','dept')->get(); @endphp
-                    @foreach($submenu as $item)
+                    @foreach(getMenuDept() as $key => $item)
                     <li><a href="{{ route('homepage.dept', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
             </li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('area*') ? 'active' : '' }}"><span>Wilayah</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    @inject('area', 'App\Models\SubMenu')
-                    @php $submenu = $area::where('parent_menu','area')->get(); @endphp
-                    @foreach($submenu as $item)
+                    @foreach(getMenuArea() as $key => $item)
                     <li><a href="{{ route('homepage.area', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
@@ -39,9 +33,7 @@
             <li><a class="nav-link text-uppercase {{ Request::is('news*') ? 'active' : '' }}" href="{{ route('homepage.news') }}">Berita</a></li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('event*') ? 'active' : '' }}"><span>Kegiatan</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    @inject('event', 'App\Models\SubMenu')
-                    @php $submenu = $event::where('parent_menu','event')->get(); @endphp
-                    @foreach($submenu as $item)
+                    @foreach(getMenuEvent() as $key => $item)
                     <li><a href="{{ route('homepage.event', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>

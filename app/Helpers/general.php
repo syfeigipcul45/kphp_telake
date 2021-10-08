@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Option;
+use App\Models\SubMenu;
 use App\Models\Video;
 use Illuminate\Support\Str;
 
@@ -14,6 +15,34 @@ if (! function_exists('getOption')) {
 if (! function_exists('getVideos')) {
     function getVideos() {
         $result = Video::limit(3)->get();
+        return $result;
+    }
+}
+
+if (! function_exists('getMenuProfile')) {
+    function getMenuProfile() {
+        $result = SubMenu::where('parent_menu', 'profile')->get();
+        return $result;
+    }
+}
+
+if (! function_exists('getMenuDept')) {
+    function getMenuDept() {
+        $result = SubMenu::where('parent_menu', 'dept')->get();
+        return $result;
+    }
+}
+
+if (! function_exists('getMenuArea')) {
+    function getMenuArea() {
+        $result = SubMenu::where('parent_menu', 'area')->get();
+        return $result;
+    }
+}
+
+if (! function_exists('getMenuEvent')) {
+    function getMenuEvent() {
+        $result = SubMenu::where('parent_menu', 'event')->get();
         return $result;
     }
 }
