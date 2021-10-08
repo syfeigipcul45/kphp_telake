@@ -9,6 +9,7 @@ use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\SubMenu;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,20 +34,29 @@ class HomeController extends Controller
         $data['other_news'] = Post::where('slug', '!=', $slug)->limit(5)->get();
         return view('homepage.news.detail', $data);
     }
-    
-    public function kaltim()
+
+    public function profile($slug)
     {
-        return view('homepage.profile.kaltim-forest');
+        $data['data'] = SubMenu::where('slug', $slug)->first();
+        return view('homepage.submenu', $data);
     }
 
-    public function vision()
+    public function dept($slug)
     {
-        return view('homepage.profile.vision-mission');
+        $data['data'] = SubMenu::where('slug', $slug)->first();
+        return view('homepage.submenu', $data);
     }
 
-    public function structure()
+    public function area($slug)
     {
-        return view('homepage.profile.organization-structure');
+        $data['data'] = SubMenu::where('slug', $slug)->first();
+        return view('homepage.submenu', $data);
+    }
+
+    public function event($slug)
+    {
+        $data['data'] = SubMenu::where('slug', $slug)->first();
+        return view('homepage.submenu', $data);
     }
 
     public function mediaPhoto()

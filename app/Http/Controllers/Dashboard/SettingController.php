@@ -19,8 +19,8 @@ class SettingController extends Controller
     public function store(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
-                'logo' => 'required|max:2048',
-                'favicon' => 'required|max:1024',
+                // 'logo' => 'required|max:2048',
+                // 'favicon' => 'required|max:1024',
                 'phone' => 'required',
                 'email' => 'required|email',
                 'address' => 'required',

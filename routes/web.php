@@ -35,14 +35,10 @@ Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 Route::get('/', [HomeController::class, 'index'])->name('homepage.index');
 Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
 Route::get('/news/{slug}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
-Route::group(['prefix'=>'dept'], function() {
-    Route::get('sekretariat', [HomeController::class, 'deptSekretariat'])->name('homepage.dept.sekretariat');
-});
-Route::group(['prefix'=>'profile'], function() {
-    Route::get('kaltim-forest', [HomeController::class, 'kaltim'])->name('homepage.kaltim');
-    Route::get('vision-mission', [HomeController::class, 'vision'])->name('homepage.vision');
-    Route::get('organization-structure', [HomeController::class, 'structure'])->name('homepage.structure');
-});
+Route::get('/profile/{slug}', [HomeController::class, 'profile'])->name('homepage.profile');
+Route::get('/dept/{slug}', [HomeController::class, 'dept'])->name('homepage.dept');
+Route::get('/area/{slug}', [HomeController::class, 'area'])->name('homepage.area');
+Route::get('/event/{slug}', [HomeController::class, 'event'])->name('homepage.event');
 Route::group(['prefix'=>'media'], function() {
     Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
     Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');

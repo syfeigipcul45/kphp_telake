@@ -8,38 +8,42 @@
 
     <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-            <li><a class="nav-link text-uppercase {{ Request::is('/') ? 'active' : '' }}" href="{{ route('homepage.index') }}">Beranda</a></li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
+            <li><a class="nav-link text-uppercase {{ Request::is('profile') ? 'active' : '' }}" href="{{ route('homepage.index') }}">Beranda</a></li>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profil*') ? 'active' : '' }}"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('homepage.kaltim') }}">Hutan Kaltim</a></li>
-                    <li><a href="{{ route('homepage.vision') }}">Visi dan Misi</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Struktur Organisasi</a></li>
+                    @inject('profile', 'App\Models\SubMenu')
+                    @php $submenu = $profile::where('parent_menu','profile')->get(); @endphp
+                    @foreach($submenu as $item)
+                    <li><a href="{{ route('homepage.profile', $item->slug) }}">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('dept*') ? 'active' : '' }}"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="#">Sekretariat</a></li>
-                    <li><a href="#">Perencanaan dan Pemanfaatan Kawasan Hutan</a></li>
-                    <li><a href="#">Perlindungan dan Konservasi Sumber Daya Alam Ekosistem</a></li>
-                    <li><a href="#">Pengelolaan Daerah Aliran Sungai dan Rehabilitasi Hutan Lahan</a></li>
-                    <li><a href="#">Penyuluhan dan Pemberdayaan Masyarakat Hutan</a></li>
+                    @inject('dept', 'App\Models\SubMenu')
+                    @php $submenu = $dept::where('parent_menu','dept')->get(); @endphp
+                    @foreach($submenu as $item)
+                    <li><a href="{{ route('homepage.dept', $item->slug) }}">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Wilayah</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('area*') ? 'active' : '' }}"><span>Wilayah</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('homepage.kaltim') }}">Potensi</a></li>
-                    <li><a href="{{ route('homepage.vision') }}">Risalah</a></li>
+                    @inject('area', 'App\Models\SubMenu')
+                    @php $submenu = $area::where('parent_menu','area')->get(); @endphp
+                    @foreach($submenu as $item)
+                    <li><a href="{{ route('homepage.area', $item->slug) }}">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li><a class="nav-link text-uppercase {{ Request::is('news*') ? 'active' : '' }}" href="{{ route('homepage.news') }}">Berita</a></li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('profile*') ? 'active' : '' }}"><span>Kegiatan</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('event*') ? 'active' : '' }}"><span>Kegiatan</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('homepage.kaltim') }}">Tata Usaha</a></li>
-                    <li><a href="{{ route('homepage.vision') }}">Tata Hutan dan Perencanaan</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Perhutanan Sosial</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Penanggulangan Kebakaran Hutan dan Lahan</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Perlindungan dan Pengamanan Hutan</a></li>
-                    <li><a href="{{ route('homepage.structure') }}">Rehabilitasi Hutan dan Lahan</a></li>
+                    @inject('event', 'App\Models\SubMenu')
+                    @php $submenu = $event::where('parent_menu','event')->get(); @endphp
+                    @foreach($submenu as $item)
+                    <li><a href="{{ route('homepage.event', $item->slug) }}">{{$item->name}}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('media*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
