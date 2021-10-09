@@ -114,6 +114,33 @@ class PageController extends Controller
         }
     }
 
+    public function deptEdit($id) {
+        $data['dept'] = SubMenu::find($id);
+        return view('dashboard.pages.dept.edit', $data);
+    }
+
+    public function deptUpdate(Request $request, $id) {
+        $dept = SubMenu::find($id);
+
+        $updateData = [
+            'name' => $request->name,
+            'content' => $request->content,
+            'parent_menu' => 'dept',
+            'slug' => convertToSlug($request->name)
+        ];
+
+        $dept->update($updateData);
+
+        return redirect()->route('dashboard.page.depts.index');
+    }
+
+    public function deptDestroy($id) {
+        $photo = SubMenu::find($id);
+        $photo->delete();
+
+        return redirect()->back();
+    }
+
     public function areaIndex() {
         $data['submenus'] = SubMenu::where('parent_menu', 'area')->get();
         return view('dashboard.pages.area.index', $data);

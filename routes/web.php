@@ -97,6 +97,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
     Route::get('pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');
     Route::post('pages/depts', [PageController::class, 'deptStore'])->name('dashboard.page.depts.store');
+    Route::get('pages/depts/{id}/edit', [PageController::class, 'deptEdit'])->name('dashboard.page.depts.edit');
+    Route::post('pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
+    Route::post('pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
 
     Route::get('pages/areas', [PageController::class, 'areaIndex'])->name('dashboard.page.areas.index');
     Route::get('pages/areas/create', [PageController::class, 'areaCreate'])->name('dashboard.page.areas.create');
