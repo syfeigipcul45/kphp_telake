@@ -104,6 +104,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pages/areas', [PageController::class, 'areaIndex'])->name('dashboard.page.areas.index');
     Route::get('pages/areas/create', [PageController::class, 'areaCreate'])->name('dashboard.page.areas.create');
     Route::post('pages/areas', [PageController::class, 'areaStore'])->name('dashboard.page.areas.store');
+    Route::get('pages/areas/{id}/edit', [PageController::class, 'areaEdit'])->name('dashboard.page.areas.edit');
+    Route::post('pages/areas/{id}/update', [PageController::class, 'areaUpdate'])->name('dashboard.page.areas.update');
+    Route::post('pages/areas/{id}', [PageController::class, 'areaDestroy'])->name('dashboard.page.areas.destroy');
 
     Route::get('pages/events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
     Route::get('pages/events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');

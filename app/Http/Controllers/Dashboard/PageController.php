@@ -180,6 +180,33 @@ class PageController extends Controller
         }
     }
 
+    public function areaEdit($id) {
+        $data['area'] = SubMenu::find($id);
+        return view('dashboard.pages.area.edit', $data);
+    }
+
+    public function areaUpdate(Request $request, $id) {
+        $area = SubMenu::find($id);
+
+        $updateData = [
+            'name' => $request->name,
+            'content' => $request->content,
+            'parent_menu' => 'area',
+            'slug' => convertToSlug($request->name)
+        ];
+
+        $area->update($updateData);
+
+        return redirect()->route('dashboard.page.areas.index');
+    }
+
+    public function areaDestroy($id) {
+        $area = SubMenu::find($id);
+        $area->delete();
+
+        return redirect()->back();
+    }
+
     public function eventIndex() {
         $data['submenus'] = SubMenu::where('parent_menu', 'event')->get();
         return view('dashboard.pages.event.index', $data);
