@@ -245,4 +245,31 @@ class PageController extends Controller
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
+
+    public function eventEdit($id) {
+        $data['event'] = SubMenu::find($id);
+        return view('dashboard.pages.event.edit', $data);
+    }
+
+    public function eventUpdate(Request $request, $id) {
+        $event = SubMenu::find($id);
+
+        $updateData = [
+            'name' => $request->name,
+            'content' => $request->content,
+            'parent_menu' => 'event',
+            'slug' => convertToSlug($request->name)
+        ];
+
+        $event->update($updateData);
+
+        return redirect()->route('dashboard.page.events.index');
+    }
+
+    public function eventDestroy($id) {
+        $event = SubMenu::find($id);
+        $event->delete();
+
+        return redirect()->back();
+    }
 }

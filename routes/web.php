@@ -111,6 +111,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pages/events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
     Route::get('pages/events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');
     Route::post('pages/events', [PageController::class, 'eventStore'])->name('dashboard.page.events.store');
+    Route::get('pages/events/{id}/edit', [PageController::class, 'eventEdit'])->name('dashboard.page.events.edit');
+    Route::post('pages/events/{id}/update', [PageController::class, 'eventUpdate'])->name('dashboard.page.events.update');
+    Route::post('pages/events/{id}', [PageController::class, 'eventDestroy'])->name('dashboard.page.events.destroy');
     
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
