@@ -90,6 +90,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
     Route::get('pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');
     Route::post('pages/profiles', [PageController::class, 'profileStore'])->name('dashboard.page.profiles.store');
+    Route::get('pages/profiles/{id}/edit', [PageController::class, 'profileEdit'])->name('dashboard.page.profiles.edit');
+    Route::post('pages/profiles/{id}/update', [PageController::class, 'profileUpdate'])->name('dashboard.page.profiles.update');
+    Route::post('pages/profiles/{id}', [PageController::class, 'profileDestroy'])->name('dashboard.page.profiles.destroy');
 
     Route::get('pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
     Route::get('pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');

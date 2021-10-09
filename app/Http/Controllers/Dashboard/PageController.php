@@ -48,6 +48,33 @@ class PageController extends Controller
         }
     }
 
+    public function profileEdit($id) {
+        $data['profile'] = SubMenu::find($id);
+        return view('dashboard.pages.profile.edit', $data);
+    }
+
+    public function profileUpdate(Request $request, $id) {
+        $profile = SubMenu::find($id);
+
+        $updateData = [
+            'name' => $request->name,
+            'content' => $request->content,
+            'parent_menu' => 'profile',
+            'slug' => convertToSlug($request->name)
+        ];
+
+        $profile->update($updateData);
+
+        return redirect()->route('dashboard.page.profiles.index');
+    }
+
+    public function profileDestroy($id) {
+        $photo = SubMenu::find($id);
+        $photo->delete();
+
+        return redirect()->back();
+    }
+
     public function deptIndex() {
         $data['submenus'] = SubMenu::where('parent_menu', 'dept')->get();
         return view('dashboard.pages.dept.index', $data);
