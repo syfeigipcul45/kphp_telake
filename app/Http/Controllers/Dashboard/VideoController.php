@@ -54,4 +54,32 @@ class VideoController extends Controller
             return redirect()->back()->with('error', $exception);
         }
     }
+
+    public function edit($id) {
+        $data['video'] = Media::where([
+            ['type', 'video'],
+            ['id', $id],
+        ])->first();
+        return view('dashboard.media.video.edit', $data);
+    }
+
+    public function update(Request $request, $id) {
+        $video = Media::find($id);
+
+        $updateData = [
+            'link_media' => $request->link_media,
+            'caption' => $request->caption
+        ];
+
+        $video->update($updateData);
+
+        return redirect()->route('dashboard.videos.index');
+    }
+
+    public function destroy($id) {
+        $video = Media::find($id);
+        $video->delete();
+
+        return redirect()->back();
+    }
 }
