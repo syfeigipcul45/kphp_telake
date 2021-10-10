@@ -44,6 +44,9 @@
           </div>
         </div>
         @endforeach
+        <div class="d-flex justify-content-center">
+          {{ $news->links('pagination::bootstrap-4') }}
+        </div>
 
       </div>
 

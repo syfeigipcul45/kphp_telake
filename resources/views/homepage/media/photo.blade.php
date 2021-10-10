@@ -11,26 +11,30 @@
 @section('content')
 <main id="main">
 
-    <div class="block"></div>
+  <div class="block"></div>
 
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
+  <!-- ======= Counts Section ======= -->
+  <section id="counts" class="counts">
+    <div class="container" data-aos="fade-up">
 
-        <div class="row no-gutters">
+      <div class="row no-gutters">
 
-          @foreach($photos as $key => $item)
-          <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
-              <a data-fancybox="gallery" data-src="{{ $item->link_media }}" data-caption="{{ $item->caption }}">
-                  <img src="{{ $item->link_media }}" class="w-100 h-auto rounded" />
-              </a>
-          </div>
-          @endforeach
-            
+        @foreach($photos as $key => $item)
+        <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
+          <a data-fancybox="gallery" data-src="{{ $item->link_media }}" data-caption="{{ $item->caption }}">
+            <img src="{{ $item->link_media }}" class="w-100 h-auto rounded" />
+          </a>
+        </div>
+        @endforeach
+
+        <div class="d-flex justify-content-center">
+          {{ $photos->links('pagination::bootstrap-4') }}
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+
+    </div>
+  </section><!-- End Counts Section -->
 
 </main><!-- End #main -->
 @endsection

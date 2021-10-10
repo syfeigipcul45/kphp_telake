@@ -22,6 +22,13 @@
 </div>
 
 <!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('contacts*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.contacts.index') }}">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>Pengaduan</span></a>
+</li>
+
+<!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-news*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.news.index') }}">
         <i class="fas fa-fw fa-newspaper"></i>
@@ -37,19 +44,18 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
-<a class="nav-link" href="{{ route('dashboard.datas.index') }}">
-    <i class="fas fa-fw fa-file-alt"></i>
-    <span>Data Kehutanan</span></a>
+    <a class="nav-link" href="{{ route('dashboard.datas.index') }}">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Data Kehutanan</span></a>
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia"
-        aria-expanded="true" aria-controls="collapseMedia">
+<li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
         <i class="fas fa-fw fa-video"></i>
         <span>Media</span>
     </a>
-    <div id="collapseMedia" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapseMedia" class="collapse {{ Request::is('media*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.photos.index') }}">Foto</a>
             <a class="collapse-item" href="{{ route('dashboard.videos.index') }}">Video</a>
@@ -59,8 +65,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item {{ Request::is('pages*') ? 'active' : '' }}">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-        aria-expanded="true" aria-controls="collapsePages">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-file"></i>
         <span>Halaman</span>
     </a>

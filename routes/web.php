@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NewsController;
@@ -47,10 +48,14 @@ Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('hom
 Route::get('/forestry-data/pencarian', [HomeController::class, 'searchByCategory'])->name('homepage.forestry.search');
 Route::get('/seed-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
+Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('homepage.contact.store');
 
 // dashboard section
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
+
+    Route::get('/contact',[ContactController::class, 'index'])->name('dashboard.contacts.index');
+    Route::get('/contact/{id}/show',[ContactController::class, 'show'])->name('dashboard.contacts.show');
     
     Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
     Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');

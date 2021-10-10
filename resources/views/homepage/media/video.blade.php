@@ -15,24 +15,27 @@
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
 
-        <div class="row no-gutters">
+            <div class="row no-gutters">
 
-            @foreach($videos as $key => $item)
-            <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
-                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video">
-                        {!! convertYoutube($item->link_media) !!}
+                @foreach($videos as $key => $item)
+                <div class="col-xl-3 mb-3" data-aos="fade-left" data-aos-delay="100">
+                    <div class="member" data-aos="fade-up" data-aos-delay="100">
+                        <div class="video">
+                            {!! convertYoutube($item->link_media) !!}
+                        </div>
+                        <p>{{ $item->caption }}</p>
                     </div>
-                    <p>{{ $item->caption }}</p>
                 </div>
-            </div>
-            @endforeach
-            
-        </div>
+                @endforeach
+                <div class="d-flex justify-content-center">
+                    {{ $videos->links('pagination::bootstrap-4') }}
+                </div>
 
-      </div>
+            </div>
+
+        </div>
     </section><!-- End Counts Section -->
 
 </main><!-- End #main -->
