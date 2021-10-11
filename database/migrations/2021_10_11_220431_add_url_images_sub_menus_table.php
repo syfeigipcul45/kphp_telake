@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugToSubMenusTable extends Migration
+class AddUrlImagesSubMenusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddSlugToSubMenusTable extends Migration
     public function up()
     {
         Schema::table('sub_menus', function (Blueprint $table) {
-            $table->text('slug')->after('name')->nullable();
+            $table->text('url_images')->after('slug')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddSlugToSubMenusTable extends Migration
     public function down()
     {
         Schema::table('sub_menus', function (Blueprint $table) {
-            $table->dropColumn('slug');
+            $table->dropColumn('url_images');
         });
     }
 }
