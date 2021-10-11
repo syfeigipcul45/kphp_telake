@@ -54,8 +54,8 @@ Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('ho
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
 
-    Route::get('/contact',[ContactController::class, 'index'])->name('dashboard.contacts.index');
-    Route::get('/contact/{id}/show',[ContactController::class, 'show'])->name('dashboard.contacts.show');
+    Route::get('/management-contact',[ContactController::class, 'index'])->name('dashboard.contacts.index');
+    Route::get('/management-contact/{id}/show',[ContactController::class, 'show'])->name('dashboard.contacts.show');
     
     Route::get('/management-news', [NewsController::class, 'index'])->name('dashboard.news.index');
     Route::get('/management-news/create', [NewsController::class, 'create'])->name('dashboard.news.create');
