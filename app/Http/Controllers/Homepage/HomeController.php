@@ -18,8 +18,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['news'] = Post::limit(4)->get();
-        $data['videos'] = Media::limit(3)->get();
+        $data['news'] = Post::orderBy('created_at', 'desc')->limit(4)->get();
+        $data['videos'] = Media::orderBy('created_at', 'desc')->limit(3)->get();
         $data['heroes'] = HeroImage::all();
         return view('homepage.index', $data);
     }

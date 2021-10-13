@@ -12,7 +12,7 @@
 </style>
 @endsection
 
-<form action="{{ route('dashboard.page.depts.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.page.events.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->

@@ -30,10 +30,10 @@ class SeedController extends Controller
                 'seed_price' => 'required',
                 'seed_stock' => 'required'
             ], [
-                'seed_thumbnail.required' => 'Gambar bibit tidak boleh kosong!',
-                'seed_name.required' => 'Nama bibit tidak boleh kosong!',
-                'seed_price.required' => 'Nama penjual bibit tidak boleh kosong!',
-                'seed_stock.required' => 'Stok bibit tidak boleh kosong!'
+                'seed_thumbnail.required' => 'Gambar produk tidak boleh kosong!',
+                'seed_name.required' => 'Nama produk tidak boleh kosong!',
+                'seed_price.required' => 'Nama penjual produk tidak boleh kosong!',
+                'seed_stock.required' => 'Stok produk tidak boleh kosong!'
             ]);
 
             if($validator->fails()) {
