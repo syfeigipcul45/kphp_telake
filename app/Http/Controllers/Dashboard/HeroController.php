@@ -56,6 +56,33 @@ class HeroController extends Controller
         }
     }
 
+    public function edit($id) {
+        $data['hero_image'] = HeroImage::find($id);
+        return view('dashboard.hero-images.edit', $data);
+    }
+
+    public function update(Request $request, $id) {
+        $hero_image = HeroImage::find($id);
+
+        $updateData = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'is_active' => $request->is_active
+        ];
+
+        if($request->hasFile('url_hero')) {
+            $file = $request->file('url_hero');
+            $path = Storage::disk('public')->put('posts/thumbnail', $file);
+            $updateData['url_hero'] = url('/') . '/storage/' . $path;;
+        } else {
+            $updateData['url_hero'] = $request->url_hero;
+        }
+
+        $hero_image->update($updateData);
+
+        return redirect()->route('dashboard.hero.images.index');
+    }
+
     public function destroy($id) {
         $post = HeroImage::find($id);
         $post->delete();

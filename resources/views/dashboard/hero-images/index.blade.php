@@ -51,7 +51,7 @@
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->is_active ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="text-center" style="width: 10%;">
-                            <a href="#" class="btn btn-warning btn-circle btn-sm">
+                            <a href="{{ route('dashboard.hero.images.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm remove-heroes" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.hero.images.destroy', $item->id) }}">

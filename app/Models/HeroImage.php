@@ -10,6 +10,6 @@ class HeroImage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'url_hero', 'title', 'description'
+        'url_hero', 'title', 'description', 'is_active'
     ];
 }

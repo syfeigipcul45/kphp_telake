@@ -123,6 +123,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
     Route::post('/hero-images', [HeroController::class, 'store'])->name('dashboard.hero.images.store');
+    Route::get('/hero-images/{id}/edit', [HeroController::class, 'edit'])->name('dashboard.hero.images.edit');
+    Route::post('/hero-images/{id}/update', [HeroController::class, 'update'])->name('dashboard.hero.images.update');
     Route::post('/hero-images/{id}', [HeroController::class, 'destroy'])->name('dashboard.hero.images.destroy');
     
     Route::get('/settings', [SettingController::class, 'index'])->name('dashboard.settings.index');
