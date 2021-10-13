@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\SubMenu;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
@@ -19,6 +20,7 @@ class PageController extends Controller
     }
 
     public function profileStore(Request $request) {
+        $images = [];
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -38,6 +40,16 @@ class PageController extends Controller
                 "parent_menu" => 'profile',
                 "slug" => convertToSlug($request->name)
             ];
+
+            if($request->hasFile('images')) {
+                for($i = 0; $i < count($request->images); $i++) {
+                    $file = $request->file('images')[$i];
+                    $path = Storage::disk('public')->put('pages/images', $file);
+                    $image = url('/') . '/storage/' . $path;
+                    array_push($images, $image);
+                }
+            }
+            $data['url_images'] = json_encode($images);
 
             SubMenu::create($data);
 

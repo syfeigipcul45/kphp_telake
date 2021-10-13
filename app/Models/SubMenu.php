@@ -13,6 +13,7 @@ class SubMenu extends Model
         'name',
         'content',
         'parent_menu',
-        'slug'
+        'slug',
+        'url_images'
     ];
 }

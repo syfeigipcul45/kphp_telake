@@ -18,11 +18,20 @@
                 <div class="col-lg-12 col-md-6 d-flex align-items-stretch">
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-info">
-                            @if($data->featured_image != '')
-                            <p class="mb-5">
-                                <img src="{{ $data->featured_image }}" alt="" class="img-fluid" />
-                            </p>
-                            @else
+                            @if(!empty(!empty(json_decode($data->url_images))))
+                            <div class="row mb-5">
+                                @foreach(json_decode($data->url_images) as $key => $item)
+                                @if(count(json_decode($data->url_images)) == 1)
+                                <div class="col-md-12">
+                                    <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
+                                </div>
+                                @else
+                                <div class="col-md-4">
+                                    <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
                             @endif
                             <h4>{{ $data->name }}</h4>
                             <hr>
