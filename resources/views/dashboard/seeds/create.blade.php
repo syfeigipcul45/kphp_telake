@@ -51,6 +51,17 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                                @error('description')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- <label>Nomor Penjual</label> -->

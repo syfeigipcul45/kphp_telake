@@ -12,6 +12,7 @@ class Seed extends Model
     protected $fillable = [
         'seed_thumbnail',
         'seed_name',
+        'description',
         'seller_whatsapp',
         'seed_price',
         'seed_stock'

@@ -22,16 +22,17 @@ class SeedController extends Controller
     }
 
     public function store(Request $request) {
-
         try {
             $validator = Validator::make($request->all(), [
                 'seed_thumbnail' => 'required',
                 'seed_name' => 'required',
+                'description' => 'required',
                 'seed_price' => 'required',
                 'seed_stock' => 'required'
             ], [
                 'seed_thumbnail.required' => 'Gambar produk tidak boleh kosong!',
                 'seed_name.required' => 'Nama produk tidak boleh kosong!',
+                'description.required' => 'Deskripsi produk tidak boleh kosong!',
                 'seed_price.required' => 'Nama penjual produk tidak boleh kosong!',
                 'seed_stock.required' => 'Stok produk tidak boleh kosong!'
             ]);
@@ -42,6 +43,7 @@ class SeedController extends Controller
             
             $data = [
                 'seed_name' => $request->seed_name,
+                'description' => $request->description,
                 'seller_whatsapp' => $request->seller_whatsapp,
                 'seed_price' => $request->seed_price,
                 'seed_stock' => $request->seed_stock
@@ -72,6 +74,7 @@ class SeedController extends Controller
 
         $updateData = [
             'seed_name' => $request->seed_name,
+            'description' => $request->description,
             'seed_price' => $request->seed_price,
             'seed_stock' => $request->seed_stock
         ];
