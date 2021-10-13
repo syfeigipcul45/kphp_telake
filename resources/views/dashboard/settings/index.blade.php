@@ -98,6 +98,19 @@
                     </div>
                     <div class="row mb-4">
                         <div class="col-lg-6">
+                            Nomor Whats App
+                        </div>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" name="whatsapp" value="{{ old('whatsapp', $option->whatsapp ?? '') }}" />
+                            @error('whatsapp')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
                             Email
                         </div>
                         <div class="col-lg-6">

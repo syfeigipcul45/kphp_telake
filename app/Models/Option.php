@@ -16,6 +16,7 @@ class Option extends Model
         'phone',
         'email',
         'address',
+        'whatsapp',
         'twitter',
         'facebook',
         'instagram',
