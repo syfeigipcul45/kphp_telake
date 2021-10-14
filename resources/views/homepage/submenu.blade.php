@@ -4,6 +4,43 @@
 <title>{{$data->name}} - {{ env('APP_NAME') }}</title>
 @endsection
 
+@section('extraCss')
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+@endsection
+
 @section('content')
 <main id="main">
 
@@ -20,17 +57,17 @@
                         <div class="member-info">
                             @if(!empty(!empty(json_decode($data->url_images))))
                             <div class="row mb-5">
-                                @foreach(json_decode($data->url_images) as $key => $item)
-                                @if(count(json_decode($data->url_images)) == 1)
-                                <div class="col-md-12">
-                                    <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        @foreach(json_decode($data->url_images) as $key => $item)
+                                        <div class="swiper-slide">
+                                            <div class="col-md-12">
+                                                <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                @else
-                                <div class="col-md-4">
-                                    <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
-                                </div>
-                                @endif
-                                @endforeach
                             </div>
                             @endif
                             <h4>{{ $data->name }}</h4>
@@ -47,4 +84,11 @@
     </section><!-- End Team Section -->
 
 </main><!-- End #main -->
+@endsection
+
+@section('extraJs')
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {});
+</script>
 @endsection
