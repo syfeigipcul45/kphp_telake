@@ -61,8 +61,8 @@
                                     <div class="swiper-wrapper">
                                         @foreach(json_decode($data->url_images) as $key => $item)
                                         <div class="swiper-slide">
-                                            <div class="col-md-12">
-                                                <img src="{{ $item }}" alt="" class="img-fluid w-100" style="height: 180px;" />
+                                            <div class="col-md-6">
+                                                <img src="{{ $item }}" alt="" class="img-fluid" />
                                             </div>
                                         </div>
                                         @endforeach
