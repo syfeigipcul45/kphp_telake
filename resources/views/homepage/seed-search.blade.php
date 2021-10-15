@@ -26,7 +26,7 @@
 
           @foreach($seeds as $key => $item)
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
+            <div onclick="location.href=`{{ route('homepage.products.detail', $item->id) }}`" class="member cursor-pointer" data-aos="fade-up" data-aos-delay="100">
               <div class="member-img">
                 <img src="{{ $item->seed_thumbnail }}" class="img-fluid h-60 w-100" alt="">
               </div>
@@ -46,9 +46,6 @@
                     <div class="col-md-8">
                       :&nbsp;{{ $item->seed_stock }}
                     </div>
-                </div>
-                <div>
-                  <a href="https://wa.me/{{ convertWhatsappNumber($item->seller_whatsapp) }}" target="_blank" class="d-block ml-auto btn btn-brand mt-3">Pesan</a>
                 </div>
               </div>
             </div>

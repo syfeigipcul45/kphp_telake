@@ -47,6 +47,7 @@ Route::group(['prefix'=>'media'], function() {
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
 Route::get('/forestry-data/pencarian', [HomeController::class, 'searchByCategory'])->name('homepage.forestry.search');
 Route::get('/seed-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
+Route::get('/seed-search/{id}', [HomeController::class, 'productDetail'])->name('homepage.products.detail');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
 Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('homepage.contact.store');
 

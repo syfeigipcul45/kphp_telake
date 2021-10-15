@@ -1530,3 +1530,6 @@ body {
     color: #fff;
   }
   
+  .cursor-pointer {
+    cursor: pointer;
+  }

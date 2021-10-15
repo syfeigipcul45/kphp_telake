@@ -102,6 +102,11 @@ class HomeController extends Controller
         return view('homepage.seed-search', $data);
     }
 
+    public function productDetail($id) {
+        $data['product'] = Seed::find($id);
+        return view('homepage.products.show', $data);
+    }
+
     public function contact()
     {
         return view('homepage.contact');
