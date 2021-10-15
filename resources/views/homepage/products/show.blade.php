@@ -36,7 +36,7 @@
                   :&nbsp;{{ $product->seed_stock }}
                 </div>
               </div>
-              <a href="https://wa.me/{{ convertWhatsappNumber($product->seller_whatsapp) }}" target="_blank" class="btn btn-brand mt-5 w-25">Pesan</a>
+              <a href="https://wa.me/{{ convertWhatsappNumber(getOption()->whatsapp) }}" target="_blank" class="btn btn-brand mt-5 w-25">Pesan</a>
             </div>
         </div>
 
