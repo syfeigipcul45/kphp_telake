@@ -265,6 +265,7 @@ class PageController extends Controller
 
     public function eventUpdate(Request $request, $id) {
         $event = SubMenu::find($id);
+        $images = [];
 
         $updateData = [
             'name' => $request->name,
@@ -272,6 +273,16 @@ class PageController extends Controller
             'parent_menu' => 'event',
             'slug' => convertToSlug($request->name)
         ];
+
+        if($request->hasFile('images')) {
+            for($i = 0; $i < count($request->images); $i++) {
+                $file = $request->file('images')[$i];
+                $path = Storage::disk('public')->put('pages/images', $file);
+                $image = url('/') . '/storage/' . $path;
+                array_push($images, $image);
+            }
+        }
+        $updateData['url_images'] = json_encode($images);
 
         $event->update($updateData);
 
