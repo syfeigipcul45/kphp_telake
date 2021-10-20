@@ -22,6 +22,13 @@
 </div>
 
 <!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-users*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.users.index') }}">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Pengguna</span></a>
+</li>
+
+<!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('contacts*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.contacts.index') }}">
         <i class="fas fa-fw fa-newspaper"></i>

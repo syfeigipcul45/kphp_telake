@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\HeroController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\PageController;
+use App\Http\Controllers\Dashboard\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,13 @@ Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('ho
 // dashboard section
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
+    
+    Route::get('/management-users', [UserController::class, 'index'])->name('dashboard.users.index');
+    Route::get('/management-users/create', [UserController::class, 'create'])->name('dashboard.users.create');
+    Route::post('/management-users', [UserController::class, 'store'])->name('dashboard.users.store');
+    Route::get('/management-users/{id}/edit', [UserController::class, 'edit'])->name('dashboard.users.edit');
+    Route::post('/management-users/{id}/update', [UserController::class, 'update'])->name('dashboard.users.update');
+    Route::post('/management-users/{id}', [UserController::class, 'destroy'])->name('dashboard.users.destroy');
 
     Route::get('/management-contact',[ContactController::class, 'index'])->name('dashboard.contacts.index');
     Route::get('/management-contact/{id}/show',[ContactController::class, 'show'])->name('dashboard.contacts.show');
