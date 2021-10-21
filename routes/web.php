@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\ProductCategoryController;
 use App\Http\Controllers\Dashboard\SeedController;
 use App\Http\Controllers\Dashboard\PhotoController;
 use App\Http\Controllers\Dashboard\VideoController;
@@ -72,6 +73,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-news/{id}/edit', [NewsController::class, 'edit'])->name('dashboard.news.edit');
     Route::post('/management-news/{id}/update', [NewsController::class, 'update'])->name('dashboard.news.update');
     Route::post('/management-news/{id}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
+
+    Route::get('/management-product-categories', [ProductCategoryController::class, 'index'])->name('dashboard.product.categories.index');
+    Route::get('/management-product-categories/create', [ProductCategoryController::class, 'create'])->name('dashboard.product.categories.create');
+    Route::post('/management-product-categories', [ProductCategoryController::class, 'store'])->name('dashboard.product.categories.store');
+    Route::get('/management-product-categories/{id}/edit', [ProductCategoryController::class, 'edit'])->name('dashboard.product.categories.edit');
+    Route::post('/management-product-categories/{id}/update', [ProductCategoryController::class, 'update'])->name('dashboard.product.categories.update');
+    Route::post('/management-product-categories/{id}', [ProductCategoryController::class, 'destroy'])->name('dashboard.product.categories.destroy');
 
     Route::get('/management-seeds', [SeedController::class, 'index'])->name('dashboard.seeds.index');
     Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');
