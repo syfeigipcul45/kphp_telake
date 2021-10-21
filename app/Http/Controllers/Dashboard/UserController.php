@@ -44,7 +44,7 @@ class UserController extends Controller
             $data = [
                 "display_name" => $request->display_name,
                 "username" => $request->username,
-                "password" => $request->password,
+                "password" => bcrypt($request->password),
                 "email" => $request->email,
                 "phone" => $request->phone
             ];
@@ -74,7 +74,7 @@ class UserController extends Controller
         ];
 
         if(!empty($request->password)) {
-            $updateData['password'] = $request->password;
+            $updateData['password'] = bcrypt($request->password);
         }
 
         $user->update($updateData);
