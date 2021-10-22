@@ -12,7 +12,7 @@
 </style>
 @endsection
 
-<form action="{{ route('dashboard.product.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.document.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->
@@ -22,15 +22,15 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Produk</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Kategori</h6>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Nama Kategori</label>
-                                <input type="text" class="form-control" name="product_category" value="{{ old('product_category', $category->name) }}" />
-                                @error('product_category')
+                                <input type="text" class="form-control" name="document_category" value="{{ old('document_category', $category->name) }}" />
+                                @error('document_category')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>

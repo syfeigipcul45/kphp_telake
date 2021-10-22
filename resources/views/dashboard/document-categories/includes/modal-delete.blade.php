@@ -1,7 +1,7 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form id="remove-product-categories" action="" method="POST">
+        <form id="remove-document-categories" action="" method="POST">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ProductCategoryController extends Controller
+class DocumentCategoryController extends Controller
 {
     public function index() {
         $data['document_categories'] = DocumentCategory::all();

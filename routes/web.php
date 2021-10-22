@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\SeedController;
 use App\Http\Controllers\Dashboard\PhotoController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
+use App\Http\Controllers\Dashboard\DocumentCategoryController;
 use App\Http\Controllers\Dashboard\HeroController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\PageController;
@@ -74,12 +75,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/management-news/{id}/update', [NewsController::class, 'update'])->name('dashboard.news.update');
     Route::post('/management-news/{id}', [NewsController::class, 'destroy'])->name('dashboard.news.destroy');
 
-    Route::get('/management-product-categories', [ProductCategoryController::class, 'index'])->name('dashboard.product.categories.index');
-    Route::get('/management-product-categories/create', [ProductCategoryController::class, 'create'])->name('dashboard.product.categories.create');
-    Route::post('/management-product-categories', [ProductCategoryController::class, 'store'])->name('dashboard.product.categories.store');
-    Route::get('/management-product-categories/{id}/edit', [ProductCategoryController::class, 'edit'])->name('dashboard.product.categories.edit');
-    Route::post('/management-product-categories/{id}/update', [ProductCategoryController::class, 'update'])->name('dashboard.product.categories.update');
-    Route::post('/management-product-categories/{id}', [ProductCategoryController::class, 'destroy'])->name('dashboard.product.categories.destroy');
+    Route::get('/management-document-categories', [DocumentCategoryController::class, 'index'])->name('dashboard.document.categories.index');
+    Route::get('/management-document-categories/create', [DocumentCategoryController::class, 'create'])->name('dashboard.document.categories.create');
+    Route::post('/management-document-categories', [DocumentCategoryController::class, 'store'])->name('dashboard.document.categories.store');
+    Route::get('/management-document-categories/{id}/edit', [DocumentCategoryController::class, 'edit'])->name('dashboard.document.categories.edit');
+    Route::post('/management-document-categories/{id}/update', [DocumentCategoryController::class, 'update'])->name('dashboard.document.categories.update');
+    Route::post('/management-document-categories/{id}', [DocumentCategoryController::class, 'destroy'])->name('dashboard.document.categories.destroy');
 
     Route::get('/management-seeds', [SeedController::class, 'index'])->name('dashboard.seeds.index');
     Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');

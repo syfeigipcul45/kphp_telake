@@ -43,10 +43,10 @@
 </li>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item {{ Request::is('management-product-categories*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.product.categories.index') }}">
+<li class="nav-item {{ Request::is('management-document-categories*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.document.categories.index') }}">
         <i class="fas fa-fw fa-boxes"></i>
-        <span>Kategori Produk</span></a>
+        <span>Kategori Dokumen</span></a>
 </li>
 
 <!-- Nav Item - Charts -->

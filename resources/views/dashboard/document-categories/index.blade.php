@@ -11,12 +11,12 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header d-flex align-items-center justify-content-between py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Daftar Kategori Produk</h6>
-                <a href="{{ route('dashboard.product.categories.create') }}" class="btn btn-primary btn-icon-split">
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Kategori Dokumen</h6>
+                <a href="{{ route('dashboard.document.categories.create') }}" class="btn btn-primary btn-icon-split">
                     <span class="icon text-white-50">
                         <i class="fas fa-archive"></i>
                     </span>
-                    <span class="text">Tambah Kaategori Produk</span>
+                    <span class="text">Tambah Kategori Dokumen</span>
                 </a>
             </div>
             <div class="card-body">
@@ -30,15 +30,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($product_categories as $key => $item)
+                            @foreach($document_categories as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('dashboard.product.categories.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
+                                    <a href="{{ route('dashboard.document.categories.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-circle btn-sm remove-product-categories" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.product.categories.destroy', $item->id) }}">
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm remove-document-categories" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.document.categories.destroy', $item->id) }}">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -61,7 +61,7 @@
 @endsection
 
 <!-- Delete Modal-->
-@include('dashboard.product-categories.includes.modal-delete')
+@include('dashboard.document-categories.includes.modal-delete')
 
 @section('extra-js')
 <!-- Page level plugins -->
@@ -73,9 +73,9 @@
 
 <!-- Custom scripts -->
 <script>
-    $('.remove-product-categories').click(function() {
+    $('.remove-document-categories').click(function() {
         const hrefRemove = $(this).data('href');
-        $('#remove-product-categories').attr('action', hrefRemove);
+        $('#remove-document-categories').attr('action', hrefRemove);
     });
 </script>
 @endsection
