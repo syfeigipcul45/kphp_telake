@@ -69,7 +69,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" />
+                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly/>
                                 @error('email')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
