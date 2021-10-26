@@ -43,13 +43,6 @@
 </li>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item {{ Request::is('management-document-categories*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.document.categories.index') }}">
-        <i class="fas fa-fw fa-boxes"></i>
-        <span>Kategori Dokumen</span></a>
-</li>
-
-<!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-seeds*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.seeds.index') }}">
         <i class="fas fa-fw fa-archive"></i>
@@ -100,6 +93,13 @@
 <div class="sidebar-heading">
     Pengaturan
 </div>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-document-categories*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.document.categories.index') }}">
+        <i class="fas fa-fw fa-boxes"></i>
+        <span>Kategori Dokumen</span></a>
+</li>
 
 <!-- Nav Item - Tables -->
 <li class="nav-item {{ Request::is('hero-images*') ? 'active' : '' }}">
