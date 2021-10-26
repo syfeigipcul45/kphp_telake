@@ -33,7 +33,7 @@
                     <tr>
                         <td style="width: 5%;">{{ ++$key }}</td>
                         <td style="width: 20%;">{{ $item->name }}</td>
-                        <td>{!! $item->content !!}</td>
+                        <td>{{ Str::limit(strip_tags($item->content,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
                         <td class="text-center" style="width: 15%;">
                             <a href="{{ route('dashboard.page.areas.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>

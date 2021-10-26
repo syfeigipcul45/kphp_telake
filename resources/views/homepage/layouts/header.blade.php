@@ -16,7 +16,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('dept*') ? 'active' : '' }}"><span>Bidang</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('dept*') ? 'active' : '' }}"><span>Seksi</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     @foreach(getMenuDept() as $key => $item)
                     <li><a href="{{ route('homepage.dept', $item->slug) }}">{{$item->name}}</a></li>
