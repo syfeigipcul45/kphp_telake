@@ -21,7 +21,7 @@ class DocumentCategoryController extends Controller
     public function store(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
-                'document' => 'required'
+                'document_category' => 'required'
             ], [
                 'document_category.required' => 'Gambar produk tidak boleh kosong!'
             ]);
