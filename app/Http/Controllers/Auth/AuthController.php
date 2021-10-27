@@ -24,7 +24,7 @@ class AuthController extends Controller
             ]);
 
             if($validator->fails()) {
-                return sendApiResponse(false, $validator->errors()->first());
+                return redirect()->back()->withInput()->withErrors($validator);
             }
 
             $email = strtolower($request->email);
@@ -42,6 +42,31 @@ class AuthController extends Controller
 
     public function forgotPassword() {
         return view('auth.forgot');
+    }
+
+    public function sendMail(Request $request) {
+        try {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email'
+            ], [
+                'email.required' => 'Email harus diisi!'
+            ]);
+
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator);
+            }
+
+            $email = strtolower($request->email);
+            $password = $request->password;
+
+            if (Auth::attempt(['email' => $email,'password' => $password])) {
+                return redirect()->route('dashboard.main.index');
+            } else {
+                return redirect()->back()->withInput()->with('error', 'Email atau password salah!');
+            }
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
+        }
     }
 
     public function doLogout() {
