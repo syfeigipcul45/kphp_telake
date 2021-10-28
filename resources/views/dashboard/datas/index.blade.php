@@ -59,7 +59,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Dokumen</th>
+                        <th>Nama Dokumen</th>
                         <th>File Dokumen</th>
+                        <th>Status Dokumen</th>
                         <th>Tanggal</th>
                         <th>Aksi</th>
                     </tr>
