@@ -18,7 +18,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -53,6 +53,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>Status Dokumen</label>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" id="status" class="custom-control-input" {{ $document->is_published == 1 ? 'checked' : '' }} />
+                                    <input type="hidden" id="status-value" name="is_published" value="{{ old('is_published', $document->is_published) }}" />
+                                    <label class="custom-control-label" for="status">Publish</label>
+                                </div>
+                                @error('is_published')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="exampleFormControlFile1">Ganti File</label>
                                 <input type="file" class="form-control-file" name="file_url" accept="application/pdf" />
                                 <input type="hidden" name="old_file_url" value="{{ $document->file_url }}" />
@@ -76,7 +91,7 @@
                     </button>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </form>
@@ -88,11 +103,11 @@
         selector: 'textarea#content-news',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
-        height : "480"
+        height: "480"
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);

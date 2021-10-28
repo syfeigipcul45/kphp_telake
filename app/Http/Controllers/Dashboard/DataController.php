@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 class DataController extends Controller
 {
     public function index() {
-        $data['documents'] = Document::all();
+        $data['documents'] = Document::latest()->get();
+        $data['documentCategories'] = DocumentCategory::all();
         return view('dashboard.datas.index', $data);
     }
 
@@ -36,10 +37,10 @@ class DataController extends Controller
             if($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator);
             }
-            
             $data = [
                 'category_id' => $request->category_id,
-                'name' => $request->name
+                'name' => $request->name,
+                'is_published' => $request->is_published
             ];
 
             if($request->hasFile('file_url')) {
@@ -66,9 +67,16 @@ class DataController extends Controller
     public function update(Request $request, $id) {
         $document = Document::find($id);
 
+            if($request->is_published == 1){
+                $is_published = 1;
+            } else {
+                $is_published = 0;
+            }
+
         $updateData = [
             'name' => $request->name,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'is_published' => $is_published
         ];
 
         if($request->hasFile('file_url')) {

@@ -75,7 +75,7 @@ class HomeController extends Controller
 
     public function forestryData()
     {
-        $data['documents'] = Document::orderBy('name', 'desc')->get();
+        $data['documents'] = Document::where('is_published','1')->orderBy('name', 'desc')->get();
         $data['categories'] = DocumentCategory::orderBy('name', 'desc')->get();
         return view('homepage.forestry-data', $data);
     }
@@ -83,7 +83,8 @@ class HomeController extends Controller
     public function searchByCategory(Request $request)
     {
         $category_id = $request->category_id;
-        $data['result'] = Document::where('category_id', 'like', '%' . $category_id . '%')->get();
+        $data['result'] = Document::where('category_id', 'like', '%' . $category_id . '%')
+        ->where('is_published','1')->get();
         return json_encode($data);
     }
 

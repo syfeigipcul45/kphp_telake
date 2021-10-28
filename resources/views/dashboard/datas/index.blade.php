@@ -24,7 +24,9 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Dokumen</th>
+                        <th>Nama Dokumen</th>
                         <th>File Dokumen</th>
+                        <th>Status Dokumen</th>
                         <th>Tanggal</th>
                         <th>Aksi</th>
                     </tr>
@@ -34,12 +36,14 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->documentCategory->name }}</td>
                         <td>
                             <a href="{{ $item->file_url }}" target="_blank" class="btn btn-primary btn-icon-split">
                                 <span class="text">Lihat Data</span>
                             </a>
                         </td>
-                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->is_published == '1' ? 'Publik' : 'Private' }}</td>
+                        <td>{{ $item->created_at->format('d M Y H:i:s') }}</td>
                         <td class="text-center">
                             <a href="{{ route('dashboard.datas.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
