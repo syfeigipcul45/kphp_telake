@@ -49,7 +49,7 @@ if (! function_exists('getMenuEvent')) {
 
 if (! function_exists('convertToRupiah')) {
     function convertToRupiah($value) {
-        $rupiah_result = "Rp " . number_format($value, 2, ',', '.');
+        $rupiah_result = "Rp " . number_format($value);
         return $rupiah_result;
     }
 }

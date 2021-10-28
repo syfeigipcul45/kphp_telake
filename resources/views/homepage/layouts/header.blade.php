@@ -40,7 +40,7 @@
             </li>
             <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('media*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('homepage.media.photo') }}">Galeri</a></li>
+                    <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li>
                     <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
                 </ul>
             </li>
