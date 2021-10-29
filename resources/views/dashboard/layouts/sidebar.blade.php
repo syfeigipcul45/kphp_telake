@@ -80,7 +80,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.page.profiles.index') }}">Profil</a>
             <a class="collapse-item" href="{{ route('dashboard.page.depts.index') }}">Seksi</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.areas.index') }}">Wilayah</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.areas.index') }}">RPH</a>
             <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Kegiatan</a>
         </div>
     </div>
