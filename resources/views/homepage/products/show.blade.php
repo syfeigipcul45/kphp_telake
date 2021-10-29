@@ -38,7 +38,7 @@
           </div>
           <a href="https://wa.me/{{ convertWhatsappNumber(getOption()->whatsapp) }}" target="_blank" class="btn btn-brand mt-5 w-25">Pesan</a>
           <hr>
-          <div class="row">
+          <!-- <div class="row">
             <h2>Tulis Komentar</h2>
             <hr>
             <form method="post" role="form" class="php-email-form">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
