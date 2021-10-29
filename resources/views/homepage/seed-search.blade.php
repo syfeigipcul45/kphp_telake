@@ -16,7 +16,7 @@
         <form action="{{ route('homepage.seed.search') }}" method="GET">
           <div class="row mb-4">
               <div class="d-flex col-md-5">
-                  <input type="text" name="keyword" placeholder="Cari berdasarkan nama, harga, jumlah produk ..." class="form-control shadow-none no-focus" />
+                  <input type="text" name="keyword" placeholder="Cari berdasarkan nama, harga ..." class="form-control shadow-none no-focus" />
                   <input type="submit" value="Cari Produk" class="btn btn-md btn-brand ml-1" />
               </div>
           </div>

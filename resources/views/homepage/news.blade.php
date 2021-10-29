@@ -38,7 +38,7 @@
                 <?php echo shrinkText($item->content) ?>
               </p>
               <div>
-                <a href="{{ route('homepage.news.detail', $item->slug) }}" class="d-block ml-auto btn btn-brand float-right">Read More</a>
+                <a href="{{ route('homepage.news.detail', $item->slug) }}" class="d-block ml-auto btn btn-brand float-right">Selengkapnya</a>
               </div>
             </div>
           </div>

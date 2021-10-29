@@ -12,8 +12,8 @@
                         {{ getOption()->address }}
                     </p>
                     <div class="mt-2">
-                        <strong>Phone:</strong> {{ getOption()->phone }}<br>
-                        <strong>Email:</strong> {{ getOption()->email }}<br>
+                        <strong>Telepon :</strong> {{ getOption()->phone }}<br>
+                        <strong>Email :</strong> {{ getOption()->email }}<br>
                     </div>
                     <div class="social-links mt-3">
                         <a href="{{ getOption()->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -63,7 +63,7 @@
 
 <div class="container">
     <div class="copyright">
-        &copy; Copyright <strong><span>Dinas Kehutanan Prov. Kalimantan Timur</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>UPTD KPHP Kendilo Dinas Kehutanan Prov. Kalimantan Timur</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
         <!-- All the links in the footer should remain intact. -->

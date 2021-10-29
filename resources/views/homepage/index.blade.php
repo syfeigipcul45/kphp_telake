@@ -113,7 +113,7 @@
                 <?php echo shrinkText($item->content) ?>
               </p>
               <div>
-                <a href="{{ route('homepage.news.detail', $item->slug) }}" class="d-block ml-auto btn btn-brand float-right">Read More</a>
+                <a href="{{ route('homepage.news.detail', $item->slug) }}" class="d-block ml-auto btn btn-brand float-right">Selengkapnya</a>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-world"></i></div>
-            <h4><a href="">Pemerintah Prov. Kalimantan Timur</a></h4>
+            <h4><a href="">Pemerintah Provinsi Kalimantan Timur</a></h4>
             <p>Website resmi Pemerintah Provinsi Kalimantan Timur "Berani untuk Kaltim Berdaulat"</p>
           </div>
         </div>
@@ -169,15 +169,15 @@
           <div class="icon-box">
             <div class="icon"><i class="bx bx-file"></i></div>
             <h4><a href="">Form Permohonan Data</a></h4>
-            <p>Formulir Permohonan Data dan Informasi Dinas Kehutanan Provinsi Kalimantan Timur</p>
+            <p>Formulir Permohonan Data dan Informasi UPTD KPHP Kendilo Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-box"></i></div>
-            <h4><a href="">SI-PESAN ANTAR</a></h4>
-            <p>Sistem Informasi, Pelaporan, dan Surat Keputusan Pengada dan atau Pengedar Benih dan atau Bibit Terdaftar Online</p>
+            <h4><a href="">Dinas Kehutanan Provinsi Kalimantan Timur</a></h4>
+            <p>Website resmi Dinas Kehutanan Pemerintah Provinsi Kalimantan Timur</p>
           </div>
         </div>
 
@@ -185,7 +185,7 @@
           <div class="icon-box">
             <div class="icon"><i class="bx bx-highlight"></i></div>
             <h4><a href="">Form Pengaduan Masyarakat</a></h4>
-            <p>Formulir Pengaduan Masyarakat Dinas Kehutanan Provinsi Kalimantan Timur</p>
+            <p>Formulir Pengaduan Masyarakat UPTD KPHP Kendilo Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
         </div>
 
