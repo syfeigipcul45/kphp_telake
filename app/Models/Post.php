@@ -17,4 +17,9 @@ class Post extends Model
         'content',
         'is_published'
     ];
+
+    public function userId()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }
