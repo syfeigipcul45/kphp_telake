@@ -30,7 +30,7 @@
                             <strong>Upload Foto</strong>
                             <div class="card my-2">
                                 <label for="imageUpload" class="mb-0 cursor-pointer">
-                                    <img class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
+                                    <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
                                 </label>
                                 <input type='file' id="imageUpload" name="link_media" accept=".png, .jpg, .jpeg" hidden />
                             </div>
@@ -61,4 +61,24 @@
         </div>
     </div>
 </form>
+@endsection
+@section('extra-js')
+<script>
+
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image-preview').attr('src', e.target.result);
+                $('#image-preview').hide();
+                $('#image-preview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection
