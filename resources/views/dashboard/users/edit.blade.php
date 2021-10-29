@@ -38,7 +38,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" readonly />
+                                <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" />
                                 @error('username')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
