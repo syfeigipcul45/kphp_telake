@@ -23,7 +23,7 @@
                 </h1>
                 <div class="post-meta d-flex justify-content-between mb-5">
                     <div class="bio-pic mr-3">
-                        Dibuat oleh Admin
+                        Dibuat oleh {{$news->userId->username}}
                     </div>
                     <div class="vcard">
                         <span>Tanggal: {{ \Carbon\Carbon::parse($news->created_at)->isoFormat('D MMMM Y') }}</span>
@@ -41,7 +41,7 @@
                         <h5 class="mb-2"><a href="{{ route('homepage.news.detail', $item->slug) }}">{{ $item->title }}</a></h5>
                         <div class="meta-wrap">
                             <div class="meta d-flex justify-content-between">
-                                <div><i class="icon-calendar"></i>Dibuat oleh Admin</div>
+                                <div><i class="icon-calendar"></i>Dibuat oleh {{$item->userId->username}}</div>
                                 <div><i class="icon-comment2"></i>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</div>
                             </div>
                         </div>

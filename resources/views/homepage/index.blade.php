@@ -101,7 +101,7 @@
               <div class="d-flex align-items-center justify-content-between my-3">
                 <div class="d-flex align-items-center">
                   <i class="bx bx-user"></i>
-                  <span class="ml-1">Admin</span>
+                  <span class="ml-1">{{$item->userId->username}}</span>
                 </div>
                 <div class="d-flex align-items-center">
                   <i class="bx bx-time"></i>
