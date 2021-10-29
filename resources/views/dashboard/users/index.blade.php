@@ -26,7 +26,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Nomor Telp.</th>
-                        <th>Aksi</th>
+                        <!-- <th>Aksi</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -36,14 +36,14 @@
                         <td>{{ $item->display_name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->phone ?? '-' }}</td>
-                        <td class="text-center">
+                        <!-- <td class="text-center">
                             <a href="{{ route('dashboard.users.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm remove-users" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.users.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
-                        </td>
+                        </td> -->
                     </tr>
                     @endforeach
                 </tbody>
@@ -53,7 +53,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Nomor Telp.</th>
-                        <th>Aksi</th>
+                        <!-- <th>Aksi</th> -->
                     </tr>
                 </tfoot>
             </table>
