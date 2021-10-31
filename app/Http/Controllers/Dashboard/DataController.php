@@ -6,6 +6,7 @@ use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,6 +51,7 @@ class DataController extends Controller
             }
 
             Document::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.datas.index');
             
@@ -88,6 +90,7 @@ class DataController extends Controller
         }
 
         $document->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.datas.index');
     }
@@ -95,6 +98,7 @@ class DataController extends Controller
     public function destroy($id) {
         $document = Document::find($id);
         $document->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

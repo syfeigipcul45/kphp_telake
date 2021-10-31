@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SettingController extends Controller
 {
@@ -103,6 +104,7 @@ class SettingController extends Controller
 
                 $updateData = Option::where('id', $option->first()->id)->first();
                 $updateData->update($data);
+                Session::flash('success', 'Data Berhasil Dihapus');
                 return redirect()->route('dashboard.settings.index');
             }
            
@@ -144,6 +146,7 @@ class SettingController extends Controller
                 'profile_description' => $request->profile_description
             ];
             $option->update($dataUpdate);
+            Session::flash('success', 'Data Berhasil Diubah');
 
             return redirect()->route('dashboard.settings.profile');
         } catch (\Exception $exception) {

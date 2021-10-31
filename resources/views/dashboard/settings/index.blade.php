@@ -7,6 +7,7 @@
         height: 100px;
         object-fit: cover;
     }
+
     .img-favicon {
         width: 100px;
         height: 100px;
@@ -15,9 +16,6 @@
 @endsection
 
 @section('content')
-
-<!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Pengaturan</h1>
 
 <div class="row">
 
@@ -29,6 +27,11 @@
                 <h6 class="m-0 font-weight-bold text-primary">Pengaturan Umum</h6>
             </div>
             <div class="card-body">
+                @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <form action="{{ route('dashboard.settings.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-4">
@@ -195,9 +198,9 @@
                         </div>
                     </div>
                     @if (\Session::has('error'))
-                        <div class="invalid-feedback text-center mt-3 d-block">
-                            {!! \Session::get('error') !!}
-                        </div>
+                    <div class="invalid-feedback text-center mt-3 d-block">
+                        {!! \Session::get('error') !!}
+                    </div>
                     @endif
                 </form>
             </div>
@@ -215,7 +218,7 @@
             var reader = new FileReader();
             $('#preview-main').attr('hidden', false);
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#preview-main').attr('src', e.target.result);
             };
 
@@ -228,7 +231,7 @@
             var reader = new FileReader();
             $('#preview-favicon').attr('hidden', false);
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#preview-favicon').attr('src', e.target.result);
             };
 

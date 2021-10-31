@@ -49,7 +49,7 @@ class HomeController extends Controller
         return view('homepage.submenu', $data);
     }
 
-    public function area($slug)
+    public function rph($slug)
     {
         $data['data'] = SubMenu::where('slug', $slug)->first();
         return view('homepage.submenu', $data);

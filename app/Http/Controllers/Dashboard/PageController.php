@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\SubMenu;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Flash;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
     public function profileIndex() {
-        $data['submenus'] = SubMenu::where('parent_menu', 'profile')->get();
+        $data['submenus'] = SubMenu::where('parent_menu', 'profile')->orderBy('order', 'asc')->get();
         return view('dashboard.pages.profile.index', $data);
     }
 
@@ -41,6 +44,7 @@ class PageController extends Controller
             ];
 
             SubMenu::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.page.profiles.index');
             
@@ -65,6 +69,7 @@ class PageController extends Controller
         ];
 
         $profile->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.page.profiles.index');
     }
@@ -72,12 +77,13 @@ class PageController extends Controller
     public function profileDestroy($id) {
         $photo = SubMenu::find($id);
         $photo->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }
 
     public function deptIndex() {
-        $data['submenus'] = SubMenu::where('parent_menu', 'dept')->get();
+        $data['submenus'] = SubMenu::where('parent_menu', 'dept')->orderBy('order', 'asc')->get();
         return view('dashboard.pages.dept.index', $data);
     }
 
@@ -107,6 +113,7 @@ class PageController extends Controller
             ];
 
             SubMenu::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.page.depts.index');
             
@@ -131,6 +138,7 @@ class PageController extends Controller
         ];
 
         $dept->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.page.depts.index');
     }
@@ -138,20 +146,21 @@ class PageController extends Controller
     public function deptDestroy($id) {
         $photo = SubMenu::find($id);
         $photo->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }
 
-    public function areaIndex() {
-        $data['submenus'] = SubMenu::where('parent_menu', 'area')->get();
-        return view('dashboard.pages.area.index', $data);
+    public function rphIndex() {
+        $data['submenus'] = SubMenu::where('parent_menu', 'rph')->orderBy('order', 'asc')->get();
+        return view('dashboard.pages.rph.index', $data);
     }
 
-    public function areaCreate() {
-        return view('dashboard.pages.area.create');
+    public function rphCreate() {
+        return view('dashboard.pages.rph.create');
     }
 
-    public function areaStore(Request $request) {
+    public function rphStore(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
@@ -168,48 +177,51 @@ class PageController extends Controller
             $data = [
                 "name" => $request->name,
                 "content" => $request->content,
-                "parent_menu" => 'area',
+                "parent_menu" => 'rph',
                 "slug" => convertToSlug($request->name)
             ];
 
             SubMenu::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
-            return redirect()->route('dashboard.page.areas.index');
+            return redirect()->route('dashboard.page.rph.index');
             
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
     }
 
-    public function areaEdit($id) {
-        $data['area'] = SubMenu::find($id);
-        return view('dashboard.pages.area.edit', $data);
+    public function rphEdit($id) {
+        $data['rph'] = SubMenu::find($id);
+        return view('dashboard.pages.rph.edit', $data);
     }
 
-    public function areaUpdate(Request $request, $id) {
-        $area = SubMenu::find($id);
+    public function rphUpdate(Request $request, $id) {
+        $rph = SubMenu::find($id);
 
         $updateData = [
             'name' => $request->name,
             'content' => $request->content,
-            'parent_menu' => 'area',
+            'parent_menu' => 'rph',
             'slug' => convertToSlug($request->name)
         ];
 
-        $area->update($updateData);
+        $rph->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
-        return redirect()->route('dashboard.page.areas.index');
+        return redirect()->route('dashboard.page.rph.index');
     }
 
-    public function areaDestroy($id) {
-        $area = SubMenu::find($id);
-        $area->delete();
+    public function rphDestroy($id) {
+        $rph = SubMenu::find($id);
+        $rph->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }
 
     public function eventIndex() {
-        $data['submenus'] = SubMenu::where('parent_menu', 'event')->get();
+        $data['submenus'] = SubMenu::where('parent_menu', 'event')->orderBy('order', 'asc')->get();
         return view('dashboard.pages.event.index', $data);
     }
 
@@ -250,6 +262,7 @@ class PageController extends Controller
             $data['url_images'] = json_encode($images);
 
             SubMenu::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.page.events.index');
             
@@ -285,6 +298,7 @@ class PageController extends Controller
         $updateData['url_images'] = json_encode($images);
 
         $event->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.page.events.index');
     }
@@ -292,7 +306,53 @@ class PageController extends Controller
     public function eventDestroy($id) {
         $event = SubMenu::find($id);
         $event->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
+    }
+
+    public function increase($id)
+    {
+        $subMenu = SubMenu::find($id);
+
+        $parent_menu = $subMenu->parent_menu;
+        if($subMenu->order>1){
+            $subMenu->order=$subMenu->order-1;
+            $subMenu->save();
+            Session::flash('success', 'Urutan Berhasil Naik');
+        }else{
+            Session::flash('error', 'Urutan Mencapai Batas Naik');
+        }
+
+        if($parent_menu == 'profile') {
+            return redirect(route('dashboard.page.profiles.index'));
+        } elseif($parent_menu == 'dept') {
+            return redirect(route('dashboard.page.depts.index'));
+        } elseif ($parent_menu == 'rph') {
+            return redirect(route('dashboard.page.rph.index'));
+        } elseif ($parent_menu == 'event') {
+            return redirect(route('dashboard.page.events.index'));
+        }
+        
+        
+    }
+
+    public function decrease($id)
+    {
+        $subMenu = SubMenu::find($id);       
+        $parent_menu = $subMenu->parent_menu;
+        $subMenu->order=$subMenu->order+1;
+        $subMenu->save();
+        Session::flash('success', 'Urutan Berhasil Turun');
+
+        if($parent_menu == 'profile') {
+            return redirect(route('dashboard.page.profiles.index'));
+        } elseif($parent_menu == 'dept') {
+            return redirect(route('dashboard.page.depts.index'));
+        } elseif ($parent_menu == 'rph') {
+            return redirect(route('dashboard.page.rph.index'));
+        } elseif ($parent_menu == 'event') {
+            return redirect(route('dashboard.page.events.index'));
+        }
     }
 }

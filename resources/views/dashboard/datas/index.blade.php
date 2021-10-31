@@ -18,13 +18,18 @@
         </a>
     </div>
     <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Dokumen</th>
-                        <th>Nama Dokumen</th>
+                        <th>Kategori Dokumen</th>
                         <th>File Dokumen</th>
                         <th>Status Dokumen</th>
                         <th>Tanggal</th>
@@ -59,7 +64,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Dokumen</th>
-                        <th>Nama Dokumen</th>
+                        <th>Kategori Dokumen</th>
                         <th>File Dokumen</th>
                         <th>Status Dokumen</th>
                         <th>Tanggal</th>

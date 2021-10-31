@@ -18,6 +18,16 @@
         </a>
     </div>
     <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>        
+        @endif
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -26,6 +36,8 @@
                         <th>Nama Submenu</th>
                         <th>Slug</th>
                         <th>Konten</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,6 +48,19 @@
                         <td style="width: 20%;">{{ $item->name }}</td>
                         <td style="width: 20%;">{{ convertToSlug($item->name) }}</td>
                         <td>{{ Str::limit(strip_tags($item->content,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
+                        <td>{{$item->order}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="{{route('dashboard.order.increase', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-arrow-up"></i></button>
+                                </form>
+                                <form action="{{route('dashboard.order.decrease', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="text-center" style="width: 15%;">
                             <a href="{{ route('dashboard.page.profiles.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
@@ -53,6 +78,8 @@
                         <th>Nama Submenu</th>
                         <th>Slug</th>
                         <th>Konten</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>

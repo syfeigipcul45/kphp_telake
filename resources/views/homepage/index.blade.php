@@ -51,8 +51,10 @@
         <div class="container" data-aos="fade-up">
 
           <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-            <div class="col-xl-6 col-lg-8">
+          <div class="col-xl-12 col-lg-8">
               <h1>{{ $item->title }}</h1>
+            </div>
+            <div class="col-xl-6 col-lg-8">
               <h2>{{ $item->description }}</h2>
             </div>
           </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Media;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -46,6 +47,7 @@ class PhotoController extends Controller
             }
 
             Media::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.photos.index');
             
@@ -78,6 +80,7 @@ class PhotoController extends Controller
         }
 
         $photo->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.photos.index');
     }
@@ -85,6 +88,7 @@ class PhotoController extends Controller
     public function destroy($id) {
         $photo = Media::find($id);
         $photo->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

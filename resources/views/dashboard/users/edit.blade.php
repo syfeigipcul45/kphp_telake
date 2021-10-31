@@ -18,13 +18,18 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Ubah Pengguna</h6>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -69,7 +74,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly/>
+                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly />
                                 @error('email')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
@@ -92,7 +97,7 @@
                     </button>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </form>

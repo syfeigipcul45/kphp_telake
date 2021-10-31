@@ -18,6 +18,11 @@
         </a>
     </div>
     <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -26,7 +31,6 @@
                         <th>Thumbnail</th>
                         <th>Judul Berita</th>
                         <th>Tanggal</th>
-                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,7 +40,6 @@
                         <th>Thumbnail</th>
                         <th>Judul Berita</th>
                         <th>Tanggal</th>
-                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -49,7 +52,6 @@
                         </td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->is_published ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="text-center">
                             <a href="{{ route('dashboard.news.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>

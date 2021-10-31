@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\DocumentCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class DocumentCategoryController extends Controller
@@ -35,6 +36,7 @@ class DocumentCategoryController extends Controller
             ];
 
             DocumentCategory::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.document.categories.index');
             
@@ -56,6 +58,7 @@ class DocumentCategoryController extends Controller
         ];
 
         $document->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.document.categories.index');
     }
@@ -63,6 +66,7 @@ class DocumentCategoryController extends Controller
     public function destroy($id) {
         $document = DocumentCategory::find($id);
         $document->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

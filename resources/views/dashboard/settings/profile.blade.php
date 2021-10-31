@@ -18,13 +18,18 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -64,7 +69,7 @@
                     </button>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </form>
@@ -76,11 +81,11 @@
         selector: 'textarea#content-profile',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
-        height : "480"
+        height: "480"
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);

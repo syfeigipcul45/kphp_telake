@@ -6,6 +6,7 @@ use App\Models\Seed;
 use App\Models\Option;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -56,6 +57,7 @@ class SeedController extends Controller
             }
 
             Seed::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.seeds.index');
             
@@ -88,6 +90,7 @@ class SeedController extends Controller
         }
 
         $seed->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.seeds.index');
     }
@@ -95,6 +98,7 @@ class SeedController extends Controller
     public function destroy($id) {
         $seed = Seed::find($id);
         $seed->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

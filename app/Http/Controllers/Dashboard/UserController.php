@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -50,6 +51,7 @@ class UserController extends Controller
             ];
 
             User::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.users.index');
             
@@ -78,13 +80,14 @@ class UserController extends Controller
         }
 
         $user->update($updateData);
-
+        Session::flash('success', 'Data Berhasil Diubah');
         return redirect()->route('dashboard.users.index');
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

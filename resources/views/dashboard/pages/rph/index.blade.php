@@ -10,7 +10,7 @@
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
         <h6 class="m-0 font-weight-bold text-primary">Daftar Sub Menu Wilayah</h6>
-        <a href="{{ route('dashboard.page.areas.create') }}" class="btn btn-primary btn-icon-split">
+        <a href="{{ route('dashboard.page.rph.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-file"></i>
             </span>
@@ -18,13 +18,26 @@
         </a>
     </div>
     <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Submenu</th>
+                        <th>Slug</th>
                         <th>Konten</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -33,12 +46,26 @@
                     <tr>
                         <td style="width: 5%;">{{ ++$key }}</td>
                         <td style="width: 20%;">{{ $item->name }}</td>
+                        <td style="width: 20%;">{{ convertToSlug($item->name) }}</td>
                         <td>{{ Str::limit(strip_tags($item->content,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
+                        <td>{{$item->order}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <form action="{{route('dashboard.order.increase', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-arrow-up"></i></button>
+                                </form>
+                                <form action="{{route('dashboard.order.decrease', $item->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-arrow-down"></i></button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="text-center" style="width: 15%;">
-                            <a href="{{ route('dashboard.page.areas.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
+                            <a href="{{ route('dashboard.page.rph.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-areas" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.page.areas.destroy', $item->id) }}">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-rph" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.page.rph.destroy', $item->id) }}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -49,7 +76,10 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Submenu</th>
+                        <th>Slug</th>
                         <th>Konten</th>
+                        <th>Urutan</th>
+                        <th>Ubah Urutan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -60,7 +90,7 @@
 @endsection
 
 <!-- Delete Modal-->
-@include('dashboard.pages.area.includes.modal-delete')
+@include('dashboard.pages.rph.includes.modal-delete')
 
 @section('extra-js')
 <!-- Page level plugins -->
@@ -72,9 +102,9 @@
 
 <!-- Custom scripts -->
 <script>
-    $('.remove-areas').click(function() {
+    $('.remove-rph').click(function() {
         const hrefRemove = $(this).data('href');
-        $('#remove-areas').attr('action', hrefRemove);
+        $('#remove-rph').attr('action', hrefRemove);
     });
 </script>
 @endsection

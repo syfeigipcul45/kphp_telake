@@ -6,6 +6,7 @@ use App\Models\Video;
 use App\Models\Media;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,6 +48,7 @@ class VideoController extends Controller
             }
 
             Media::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.videos.index');
             
@@ -72,6 +74,7 @@ class VideoController extends Controller
         ];
 
         $video->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.videos.index');
     }
@@ -79,6 +82,7 @@ class VideoController extends Controller
     public function destroy($id) {
         $video = Media::find($id);
         $video->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

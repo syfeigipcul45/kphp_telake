@@ -18,6 +18,11 @@
         </a>
     </div>
     <div class="card-body">
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -26,7 +31,6 @@
                         <th>Thumbnail</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
-                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,7 +40,6 @@
                         <th>Thumbnail</th>
                         <th>Judul</th>
                         <th>Deskripsi</th>
-                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -49,7 +52,6 @@
                         </td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->description }}</td>
-                        <td>{{ $item->is_active ? 'Aktif' : 'Tidak Aktif' }}</td>
                         <td class="text-center" style="width: 10%;">
                             <a href="{{ route('dashboard.hero.images.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fas fa-pencil-alt"></i>

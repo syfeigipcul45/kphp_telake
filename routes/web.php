@@ -42,7 +42,7 @@ Route::get('/news', [HomeController::class, 'news'])->name('homepage.news');
 Route::get('/news/{slug}', [HomeController::class, 'newsDetail'])->name('homepage.news.detail');
 Route::get('/profile/{slug}', [HomeController::class, 'profile'])->name('homepage.profile');
 Route::get('/dept/{slug}', [HomeController::class, 'dept'])->name('homepage.dept');
-Route::get('/area/{slug}', [HomeController::class, 'area'])->name('homepage.area');
+Route::get('/rph/{slug}', [HomeController::class, 'rph'])->name('homepage.rph');
 Route::get('/event/{slug}', [HomeController::class, 'event'])->name('homepage.event');
 Route::group(['prefix'=>'media'], function() {
     Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
@@ -125,12 +125,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
     Route::post('pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
 
-    Route::get('pages/areas', [PageController::class, 'areaIndex'])->name('dashboard.page.areas.index');
-    Route::get('pages/areas/create', [PageController::class, 'areaCreate'])->name('dashboard.page.areas.create');
-    Route::post('pages/areas', [PageController::class, 'areaStore'])->name('dashboard.page.areas.store');
-    Route::get('pages/areas/{id}/edit', [PageController::class, 'areaEdit'])->name('dashboard.page.areas.edit');
-    Route::post('pages/areas/{id}/update', [PageController::class, 'areaUpdate'])->name('dashboard.page.areas.update');
-    Route::post('pages/areas/{id}', [PageController::class, 'areaDestroy'])->name('dashboard.page.areas.destroy');
+    Route::get('pages/rph', [PageController::class, 'rphIndex'])->name('dashboard.page.rph.index');
+    Route::get('pages/rph/create', [PageController::class, 'rphCreate'])->name('dashboard.page.rph.create');
+    Route::post('pages/rph', [PageController::class, 'rphStore'])->name('dashboard.page.rph.store');
+    Route::get('pages/rph/{id}/edit', [PageController::class, 'rphEdit'])->name('dashboard.page.rph.edit');
+    Route::post('pages/rph/{id}/update', [PageController::class, 'rphUpdate'])->name('dashboard.page.rph.update');
+    Route::post('pages/rph/{id}', [PageController::class, 'rphDestroy'])->name('dashboard.page.rph.destroy');
 
     Route::get('pages/events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
     Route::get('pages/events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');
@@ -151,4 +151,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('/section-profile', [SettingController::class, 'profile'])->name('dashboard.settings.profile');
     Route::post('/section-profile', [SettingController::class, 'updateProfile'])->name('dashboard.settings.profile.update');
+
+    Route::post('/sub-menus/{id}/increase', [PageController::class, 'increase'])->name('dashboard.order.increase');
+    Route::post('/sub-menus/{id}/decrease', [PageController::class, 'decrease'])->name('dashboard.order.decrease');
 });

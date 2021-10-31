@@ -18,9 +18,9 @@
                 <p class="mb-5">
                     <img src="{{ $news->featured_image }}" alt="" class="img-fluid" />
                 </p>
-                <h1 class="mb-4">
+                <h4 class="mb-4">
                     {{ $news->title }}
-                </h1>
+                </h4>
                 <div class="post-meta d-flex justify-content-between mb-5">
                     <div class="bio-pic mr-3">
                         Dibuat oleh {{$news->userId->username}}

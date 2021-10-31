@@ -23,10 +23,10 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('area*') ? 'active' : '' }}"><span>RPH</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#" class="text-uppercase {{ Request::is('rph*') ? 'active' : '' }}"><span>RPH</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    @foreach(getMenuArea() as $key => $item)
-                    <li><a href="{{ route('homepage.area', $item->slug) }}">{{$item->name}}</a></li>
+                    @foreach(getMenuRph() as $key => $item)
+                    <li><a href="{{ route('homepage.rph', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
             </li>

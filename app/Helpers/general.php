@@ -21,28 +21,28 @@ if (! function_exists('getVideos')) {
 
 if (! function_exists('getMenuProfile')) {
     function getMenuProfile() {
-        $result = SubMenu::where('parent_menu', 'profile')->get();
+        $result = SubMenu::where('parent_menu', 'profile')->orderBy('order','asc')->get();
         return $result;
     }
 }
 
 if (! function_exists('getMenuDept')) {
     function getMenuDept() {
-        $result = SubMenu::where('parent_menu', 'dept')->get();
+        $result = SubMenu::where('parent_menu', 'dept')->orderBy('order', 'asc')->get();
         return $result;
     }
 }
 
-if (! function_exists('getMenuArea')) {
-    function getMenuArea() {
-        $result = SubMenu::where('parent_menu', 'area')->get();
+if (! function_exists('getMenuRph')) {
+    function getMenuRph() {
+        $result = SubMenu::where('parent_menu', 'rph')->orderBy('order', 'asc')->get();
         return $result;
     }
 }
 
 if (! function_exists('getMenuEvent')) {
     function getMenuEvent() {
-        $result = SubMenu::where('parent_menu', 'event')->get();
+        $result = SubMenu::where('parent_menu', 'event')->orderBy('order', 'asc')->get();
         return $result;
     }
 }

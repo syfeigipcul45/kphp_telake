@@ -61,21 +61,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Status</label>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" id="status" class="custom-control-input" checked />
-                                    <input type="hidden" id="status-value" name="is_active" value="1" />
-                                    <label class="custom-control-label" for="status"></label>
-                                </div>
-                                @error('is_active')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-icon-split float-right">

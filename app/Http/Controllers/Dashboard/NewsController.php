@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -41,7 +42,7 @@ class NewsController extends Controller
                 "title" => $request->title,
                 "slug" => convertToSlug($request->title),
                 "content" => $request->content,
-                "is_published" => $request->is_published
+                "is_published" => 1
             ];
 
             if($request->hasFile('featured_image')) {
@@ -51,6 +52,7 @@ class NewsController extends Controller
             }
 
             Post::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.news.index');
             
@@ -70,7 +72,7 @@ class NewsController extends Controller
         $updateData = [
             'title' => $request->title,
             'content' => $request->content,
-            'is_published' => $request->is_published
+            'is_published' => 1
         ];
 
         if($request->hasFile('featured_image')) {
@@ -82,6 +84,7 @@ class NewsController extends Controller
         }
 
         $news->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.news.index');
     }
@@ -89,6 +92,7 @@ class NewsController extends Controller
     public function destroy($id) {
         $post = Post::find($id);
         $post->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }

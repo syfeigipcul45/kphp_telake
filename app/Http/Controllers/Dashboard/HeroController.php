@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +39,7 @@ class HeroController extends Controller
             $data = [
                 "title" => $request->title,
                 "description" => $request->description,
-                "is_active" => $request->is_active
+                "is_active" => 1
             ];
 
             if($request->hasFile('thumbnail')) {
@@ -48,6 +49,7 @@ class HeroController extends Controller
             }
 
             HeroImage::create($data);
+            Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.hero.images.index');
             
@@ -67,7 +69,7 @@ class HeroController extends Controller
         $updateData = [
             'title' => $request->title,
             'description' => $request->description,
-            'is_active' => $request->is_active
+            'is_active' => 1
         ];
 
         if($request->hasFile('url_hero')) {
@@ -79,6 +81,7 @@ class HeroController extends Controller
         }
 
         $hero_image->update($updateData);
+        Session::flash('success', 'Data Berhasil Diubah');
 
         return redirect()->route('dashboard.hero.images.index');
     }
@@ -86,6 +89,7 @@ class HeroController extends Controller
     public function destroy($id) {
         $post = HeroImage::find($id);
         $post->delete();
+        Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
     }
