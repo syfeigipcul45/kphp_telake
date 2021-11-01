@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     public function index() {
-        $data['contacts'] = Contact::all();
+        $data['contacts'] = Contact::latest()->get();
         return view('dashboard.contacts.index', $data);
     }
 

@@ -41,6 +41,17 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">No. Handphone</h6>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" value="{{ old('no_handphone', $contacts->no_handphone) }}" readonly />
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Subject</h6>
             </div>
             <div class="card-body">
@@ -72,7 +83,7 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <span>{{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}</span>
+                    <span>{{ $contacts->created_at }}</span>
                 </div>
             </div>
         </div>

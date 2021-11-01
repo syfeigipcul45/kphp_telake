@@ -123,6 +123,7 @@ class HomeController extends Controller
                 "name"      => $request->name,
                 "email"     => $request->email,
                 "subject"   => $request->subject,
+                "no_handphone" => $request->no_handphone,
                 "message"   => $request->message
             ];
 

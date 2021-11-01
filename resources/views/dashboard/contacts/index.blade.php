@@ -20,6 +20,7 @@
                         <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>No. Handphone</th>
                         <th>Subjek</th>
                         <th>Pesan Informasi</th>
                         <th>Aksi</th>
@@ -31,6 +32,7 @@
                         <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>No. Handphone</th>
                         <th>Subjek</th>
                         <th>Pesan Informasi</th>
                         <th>Aksi</th>
@@ -41,10 +43,11 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            {{ \Carbon\Carbon::now()->isoFormat('dddd, D MMMM Y') }}
+                            {{ $item->created_at }}
                         </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
+                        <td>{{ $item->no_handphone }}</td>
                         <td>{{ $item->subject }}</td>
                         <td>{{ $item->message }}</td>
                         <td class="text-center">
