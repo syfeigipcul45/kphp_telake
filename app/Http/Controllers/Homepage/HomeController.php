@@ -7,11 +7,13 @@ use App\Models\Seed;
 use App\Models\Media;
 use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
+use App\Models\CommentsProduct;
 use App\Models\Contact;
 use App\Models\Document;
 use App\Models\DocumentCategory;
 use App\Models\SubMenu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -105,6 +107,7 @@ class HomeController extends Controller
 
     public function productDetail($id) {
         $data['product'] = Seed::find($id);
+        $data['comments'] = CommentsProduct::where('product_id', $id)->where('is_published', 1)->get();
         return view('homepage.products.show', $data);
     }
 
@@ -129,5 +132,27 @@ class HomeController extends Controller
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
+    }
+
+    public function commentStore(Request $request)
+    {
+        $is_published = 0;
+        if(Auth::check()) {
+            $is_published = 1;
+        } else {
+            $is_published = 0;
+        }
+       
+            $data = [
+                "name"      => $request->name,
+                "comment"     => $request->comment,
+                "product_id"   => $request->product_id,
+                "is_published" => $is_published
+            ];
+
+            CommentsProduct::create($data);
+
+            return redirect()->back()->with('success', 'Komentar telah dikirim');
+        
     }
 }

@@ -9,13 +9,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Produk</h6>
-        <a href="{{ route('dashboard.seeds.create') }}" class="btn btn-primary btn-icon-split">
-            <span class="icon text-white-50">
-                <i class="fas fa-archive"></i>
-            </span>
-            <span class="text">Tambah Produk</span>
-        </a>
+        <h6 class="m-0 font-weight-bold text-primary">{{$seed->seed_name}}</h6>
     </div>
     <div class="card-body">
         @if (session('success'))
@@ -28,33 +22,36 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Thumbnail</th>
-                        <th>Nama Produk</th>
-                        <th>Harga</th>
-                        <th>Jumlah</th>
+                        <th>Nama Pengirim</th>
+                        <th>Isi Komentar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($seeds as $key => $item)
+                    @foreach($comments as $key => $comment)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>
-                            <img src="{{ $item->seed_thumbnail }}" alt="" class="img-fluid h-40" />
-                        </td>
-                        <td>{{ $item->seed_name }}</td>
-                        <td>{{ convertToRupiah($item->seed_price) }}</td>
-                        <td>{{ $item->seed_stock }}</td>
+                        <td>{{ $comment->name }}</td>
+                        <td>{{ $comment->comment }}</td>
                         <td class="text-center">
-                            <a href="{{ route('dashboard.seeds.show', $item->id) }}" class="btn btn-info btn-circle btn-sm" title="Lihat Komentar">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('dashboard.seeds.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-seeds" data-toggle="modal" data-target="#deleteModal" data-href="{{ route('dashboard.seeds.destroy', $item->id) }}">
+                            <div class="btn-group">
+                                @if($comment->is_published === 0)
+                                <form action="{{route('dashboard.comment.show', $comment->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-info">show</button>
+                                </form>
+                                @else
+                                <form action="{{route('dashboard.comment.hide', $comment->id)}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger">hide</button>
+                                </form>
+                                @endif
+                            </div>
+
+
+                            <!-- <a href="#" class="btn btn-danger btn-circle btn-sm remove-seeds" data-toggle="modal" data-target="#deleteModal" data-href="">
                                 <i class="fas fa-trash"></i>
-                            </a>
+                            </a> -->
                         </td>
                     </tr>
                     @endforeach
@@ -62,10 +59,8 @@
                 <tfoot>
                     <tr>
                         <th>No</th>
-                        <th>Thumbnail</th>
-                        <th>Nama Produk</th>
-                        <th>Harga</th>
-                        <th>Jumlah</th>
+                        <th>Nama Pengirim</th>
+                        <th>Isi Komentar</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>

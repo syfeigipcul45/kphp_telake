@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\CommentsProduct;
 use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Homepage\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -50,10 +51,11 @@ Route::group(['prefix'=>'media'], function() {
 });
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
 Route::get('/forestry-data/pencarian', [HomeController::class, 'searchByCategory'])->name('homepage.forestry.search');
-Route::get('/seed-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
-Route::get('/seed-search/{id}', [HomeController::class, 'productDetail'])->name('homepage.products.detail');
+Route::get('/product-search', [HomeController::class, 'seedSearch'])->name('homepage.seed.search');
+Route::get('/product-search/{id}', [HomeController::class, 'productDetail'])->name('homepage.products.detail');
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
 Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('homepage.contact.store');
+Route::post('/comment/store', [HomeController::class, 'commentStore'])->name('homepage.comment.store');
 
 // dashboard section
 Route::group(['middleware' => ['auth']], function () { 
@@ -87,8 +89,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/management-seeds/create', [SeedController::class, 'create'])->name('dashboard.seeds.create');
     Route::post('/management-seeds', [SeedController::class, 'store'])->name('dashboard.seeds.store');
     Route::get('/management-seeds/{id}/edit', [SeedController::class, 'edit'])->name('dashboard.seeds.edit');
+    Route::get('/management-seeds/{id}/show', [SeedController::class, 'show'])->name('dashboard.seeds.show');
     Route::post('/management-seeds/{id}/update', [SeedController::class, 'update'])->name('dashboard.seeds.update');
     Route::post('/management-seeds/{id}', [SeedController::class, 'destroy'])->name('dashboard.seeds.destroy');
+    Route::post('/management-show-comment/{id}/update', [SeedController::class, 'showComment'])->name('dashboard.comment.show');
+    Route::post('/management-hide-comment/{id}/update', [SeedController::class, 'hideComment'])->name('dashboard.comment.hide');
     
     Route::get('/media/management-photos', [PhotoController::class, 'index'])->name('dashboard.photos.index');
     Route::get('/media/management-photos/create', [PhotoController::class, 'create'])->name('dashboard.photos.create');

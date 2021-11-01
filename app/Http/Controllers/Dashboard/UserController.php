@@ -24,18 +24,24 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'display_name' => 'required',
-                'username' => 'required',
+                'username' => 'required|unique:users',
                 'password' => 'required|confirmed',
-                'email' => 'required|email',
-                'phone' => 'required'
+                'password_confirmation' => 'required|same:password',
+                'email' => 'required|email|unique:users',
+                'phone' => 'required|unique:users'
             ], [
                 'display_name.required' => 'Nama lengkap harus diisi!',
                 'username.required' => 'Username harus diisi!',
+                'username.unique' => 'Username sudah terdaftar',
                 'password.required' => 'Password harus diisi!',
-                // 'password.confirmed' => 'Konfirmasi password tidak cocok!',
+                'password.confirmed' => 'Konfirmasi password tidak cocok!',
+                'password_confirmation.required' => 'Konfirmasi password harus diisi!',
+                'password_confirmation.same' => 'Konfirmasi password tidak sama',
                 'email.required' => 'Email harus diisi!',
+                'email.unique' => 'Email sudah terdaftar',
                 'email.email' => 'Format penulisan harus berupa email!',
-                'phone.required' => 'Nomor telepon harus diisi!'
+                'phone.required' => 'Nomor telepon harus diisi!',
+                'phone.unique' => 'No. Handphone sudah terdaftar',
             ]);
 
             if($validator->fails()) {

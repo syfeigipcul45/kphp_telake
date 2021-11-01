@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Seed;
 use App\Models\Option;
 use App\Http\Controllers\Controller;
+use App\Models\CommentsProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -66,6 +67,12 @@ class SeedController extends Controller
         }
     }
 
+    public function show($id) {
+        $data['seed'] = Seed::find($id);
+        $data['comments'] = CommentsProduct::where('product_id', $id)->get();
+        return view('dashboard.seeds.show', $data);
+    }
+
     public function edit($id) {
         $data['seed'] = Seed::find($id);
         return view('dashboard.seeds.edit', $data);
@@ -101,5 +108,27 @@ class SeedController extends Controller
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
+    }
+
+    public function showComment($id)
+    {
+        $comment = CommentsProduct::find($id);
+
+        $updateData = [
+            "is_published" => 1
+        ];
+        $comment->update($updateData);
+        return redirect()->back()->with('success', 'Komentar berhasil ditampilkan');
+    }
+
+    public function hideComment($id)
+    {
+        $comment = CommentsProduct::find($id);
+
+        $updateData = [
+            "is_published" => 0
+        ];
+        $comment->update($updateData);
+        return redirect()->back()->with('success', 'Komentar berhasil tidak ditampilkan');
     }
 }
