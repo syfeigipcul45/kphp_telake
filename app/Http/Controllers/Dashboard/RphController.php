@@ -35,12 +35,12 @@ class RphController extends Controller
                 'title' => 'required',
                 'content' => 'required',
                 'sub_menus_id' => 'required',
-                'featured_image' => 'required'
+                // 'featured_image' => 'required'
             ], [
                 'title.required' => 'Judul berita harus diisi!',
                 'content.required' => 'Konten berita harus diisi!',
                 'sub_menus_id.required' => 'Submenu harus diisi!',
-                'featured_image.required' => 'Thumbnail berita harus diisi!'
+                // 'featured_image.required' => 'Thumbnail berita harus diisi!'
             ]);
 
             if ($validator->fails()) {
