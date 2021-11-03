@@ -14,9 +14,11 @@ use App\Http\Controllers\Dashboard\PhotoController;
 use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\DocumentCategoryController;
+use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\HeroController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\PageController;
+use App\Http\Controllers\Dashboard\RphController;
 use App\Http\Controllers\Dashboard\UserController;
 
 /*
@@ -45,6 +47,7 @@ Route::get('/profile/{slug}', [HomeController::class, 'profile'])->name('homepag
 Route::get('/dept/{slug}', [HomeController::class, 'dept'])->name('homepage.dept');
 Route::get('/rph/{slug}', [HomeController::class, 'rph'])->name('homepage.rph');
 Route::get('/event/{slug}', [HomeController::class, 'event'])->name('homepage.event');
+Route::get('/pages/{slug}',[HomeController::class, 'detailPage'])->name('homepage.pages');
 Route::group(['prefix'=>'media'], function() {
     Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
     Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');
@@ -56,6 +59,7 @@ Route::get('/product-search/{id}', [HomeController::class, 'productDetail'])->na
 Route::get('/contact', [HomeController::class, 'contact'])->name('homepage.contact');
 Route::post('/contact/store', [HomeController::class, 'contactStore'])->name('homepage.contact.store');
 Route::post('/comment/store', [HomeController::class, 'commentStore'])->name('homepage.comment.store');
+
 
 // dashboard section
 Route::group(['middleware' => ['auth']], function () { 
@@ -94,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/management-seeds/{id}', [SeedController::class, 'destroy'])->name('dashboard.seeds.destroy');
     Route::post('/management-show-comment/{id}/update', [SeedController::class, 'showComment'])->name('dashboard.comment.show');
     Route::post('/management-hide-comment/{id}/update', [SeedController::class, 'hideComment'])->name('dashboard.comment.hide');
+    Route::post('/management-destroy-comment/{id}', [SeedController::class, 'destroyComment'])->name('dashboard.comment.destroy');
     
     Route::get('/media/management-photos', [PhotoController::class, 'index'])->name('dashboard.photos.index');
     Route::get('/media/management-photos/create', [PhotoController::class, 'create'])->name('dashboard.photos.create');
@@ -130,19 +135,33 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
     Route::post('pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
 
-    Route::get('pages/rph', [PageController::class, 'rphIndex'])->name('dashboard.page.rph.index');
-    Route::get('pages/rph/create', [PageController::class, 'rphCreate'])->name('dashboard.page.rph.create');
-    Route::post('pages/rph', [PageController::class, 'rphStore'])->name('dashboard.page.rph.store');
-    Route::get('pages/rph/{id}/edit', [PageController::class, 'rphEdit'])->name('dashboard.page.rph.edit');
-    Route::post('pages/rph/{id}/update', [PageController::class, 'rphUpdate'])->name('dashboard.page.rph.update');
-    Route::post('pages/rph/{id}', [PageController::class, 'rphDestroy'])->name('dashboard.page.rph.destroy');
+    Route::get('management-rph', [PageController::class, 'rphIndex'])->name('dashboard.page.rph.index');
+    Route::get('management-rph/create', [PageController::class, 'rphCreate'])->name('dashboard.page.rph.create');
+    Route::post('management-rph', [PageController::class, 'rphStore'])->name('dashboard.page.rph.store');
+    Route::get('management-rph/{id}/edit', [PageController::class, 'rphEdit'])->name('dashboard.page.rph.edit');
+    Route::post('management-rph/{id}/update', [PageController::class, 'rphUpdate'])->name('dashboard.page.rph.update');
+    Route::post('management-rph/{id}', [PageController::class, 'rphDestroy'])->name('dashboard.page.rph.destroy');
 
-    Route::get('pages/events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
-    Route::get('pages/events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');
-    Route::post('pages/events', [PageController::class, 'eventStore'])->name('dashboard.page.events.store');
-    Route::get('pages/events/{id}/edit', [PageController::class, 'eventEdit'])->name('dashboard.page.events.edit');
-    Route::post('pages/events/{id}/update', [PageController::class, 'eventUpdate'])->name('dashboard.page.events.update');
-    Route::post('pages/events/{id}', [PageController::class, 'eventDestroy'])->name('dashboard.page.events.destroy');
+    Route::get('management-rph/pages', [RphController::class, 'index'])->name('dashboard.rph.index');
+    Route::get('management-rph/pages/create', [RphController::class, 'create'])->name('dashboard.rph.create');
+    Route::post('management-rph/pages/store', [RphController::class, 'store'])->name('dashboard.rph.store');
+    Route::get('management-rph/pages/{id}/edit', [RphController::class, 'edit'])->name('dashboard.rph.edit');
+    Route::post('management-rph/pages/{id}/update', [RphController::class, 'update'])->name('dashboard.rph.update');
+    Route::post('management-rph/pages/{id}/', [RphController::class, 'destroy'])->name('dashboard.rph.destroy');
+
+    Route::get('management-events/pages', [EventController::class, 'index'])->name('dashboard.event.index');
+    Route::get('management-events/pages/create', [EventController::class, 'create'])->name('dashboard.event.create');
+    Route::post('management-events/pages/store', [EventController::class, 'store'])->name('dashboard.event.store');
+    Route::get('management-events/pages/{id}/edit', [EventController::class, 'edit'])->name('dashboard.event.edit');
+    Route::post('management-events/pages/{id}/update', [EventController::class, 'update'])->name('dashboard.event.update');
+    Route::post('management-events/pages/{id}/', [EventController::class, 'destroy'])->name('dashboard.event.destroy');
+
+    Route::get('management-events', [PageController::class, 'eventIndex'])->name('dashboard.page.events.index');
+    Route::get('management-events/create', [PageController::class, 'eventCreate'])->name('dashboard.page.events.create');
+    Route::post('management-events', [PageController::class, 'eventStore'])->name('dashboard.page.events.store');
+    Route::get('management-events/{id}/edit', [PageController::class, 'eventEdit'])->name('dashboard.page.events.edit');
+    Route::post('management-events/{id}/update', [PageController::class, 'eventUpdate'])->name('dashboard.page.events.update');
+    Route::post('management-events/{id}', [PageController::class, 'eventDestroy'])->name('dashboard.page.events.destroy');
     
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');

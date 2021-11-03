@@ -80,8 +80,32 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.page.profiles.index') }}">Profil</a>
             <a class="collapse-item" href="{{ route('dashboard.page.depts.index') }}">Seksi</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.rph.index') }}">RPH</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Kegiatan</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item {{ Request::is('management-rph*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRPH" aria-expanded="true" aria-controls="collapseRPH">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>RPH</span>
+    </a>
+    <div id="collapseRPH" class="collapse {{ Request::is('management-rph*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.rph.index') }}">Halaman</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.rph.index') }}">Submenu</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item {{ Request::is('management-events*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>Kegiatan</span>
+    </a>
+    <div id="collapseEvents" class="collapse {{ Request::is('management-events*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.event.index') }}">Halaman</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Submenu</a>
         </div>
     </div>
 </li>

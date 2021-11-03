@@ -9,12 +9,12 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header d-flex align-items-center justify-content-between py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Daftar Sub Menu Wilayah</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Submenu RPH</h6>
         <a href="{{ route('dashboard.page.rph.create') }}" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-file"></i>
             </span>
-            <span class="text">Tambah Halaman</span>
+            <span class="text">Tambah Submenu</span>
         </a>
     </div>
     <div class="card-body">
@@ -35,7 +35,7 @@
                         <th>No</th>
                         <th>Nama Submenu</th>
                         <th>Slug</th>
-                        <th>Konten</th>
+                        <!-- <th>Konten</th> -->
                         <th>Urutan</th>
                         <th>Ubah Urutan</th>
                         <th>Aksi</th>
@@ -47,7 +47,7 @@
                         <td style="width: 5%;">{{ ++$key }}</td>
                         <td style="width: 20%;">{{ $item->name }}</td>
                         <td style="width: 20%;">{{ convertToSlug($item->name) }}</td>
-                        <td>{{ Str::limit(strip_tags($item->content,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td>
+                        <!-- <td>{{ Str::limit(strip_tags($item->content,'/<([a-z][a-z0-9]*)[^>]*?(\/?)>/si'), 50) }}</td> -->
                         <td>{{$item->order}}</td>
                         <td>
                             <div class="btn-group">
@@ -77,7 +77,7 @@
                         <th>No</th>
                         <th>Nama Submenu</th>
                         <th>Slug</th>
-                        <th>Konten</th>
+                        <!-- <th>Konten</th> -->
                         <th>Urutan</th>
                         <th>Ubah Urutan</th>
                         <th>Aksi</th>

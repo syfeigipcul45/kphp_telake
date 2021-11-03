@@ -11,6 +11,7 @@ use App\Models\CommentsProduct;
 use App\Models\Contact;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\Pages;
 use App\Models\SubMenu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,14 +54,22 @@ class HomeController extends Controller
 
     public function rph($slug)
     {
-        $data['data'] = SubMenu::where('slug', $slug)->first();
-        return view('homepage.submenu', $data);
+        $data['title'] = SubMenu::where('slug', $slug)->first();
+        $data['data'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')
+            ->where('sub_menus.slug', $slug)
+            ->latest()
+            ->paginate(8,['pages.*','sub_menus.parent_menu']);
+        return view('homepage.pages.page', $data);
     }
 
     public function event($slug)
     {
-        $data['data'] = SubMenu::where('slug', $slug)->first();
-        return view('homepage.submenu', $data);
+        $data['title'] = SubMenu::where('slug', $slug)->first();
+        $data['data'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')
+            ->where('sub_menus.slug', $slug)
+            ->latest()
+            ->paginate(8,['pages.*','sub_menus.parent_menu']);
+        return view('homepage.pages.page', $data);
     }
 
     public function mediaPhoto()
@@ -77,7 +86,7 @@ class HomeController extends Controller
 
     public function forestryData()
     {
-        $data['documents'] = Document::where('is_published','1')->orderBy('name', 'desc')->get();
+        $data['documents'] = Document::where('is_published', '1')->orderBy('name', 'desc')->get();
         $data['categories'] = DocumentCategory::orderBy('name', 'desc')->get();
         return view('homepage.forestry-data', $data);
     }
@@ -86,7 +95,7 @@ class HomeController extends Controller
     {
         $category_id = $request->category_id;
         $data['result'] = Document::where('category_id', 'like', '%' . $category_id . '%')
-        ->where('is_published','1')->get();
+            ->where('is_published', '1')->get();
         return json_encode($data);
     }
 
@@ -105,7 +114,8 @@ class HomeController extends Controller
         return view('homepage.seed-search', $data);
     }
 
-    public function productDetail($id) {
+    public function productDetail($id)
+    {
         $data['product'] = Seed::find($id);
         $data['comments'] = CommentsProduct::where('product_id', $id)->where('is_published', 1)->get();
         return view('homepage.products.show', $data);
@@ -138,22 +148,27 @@ class HomeController extends Controller
     public function commentStore(Request $request)
     {
         $is_published = 0;
-        if(Auth::check()) {
+        if (Auth::check()) {
             $is_published = 1;
         } else {
             $is_published = 0;
         }
-       
-            $data = [
-                "name"      => $request->name,
-                "comment"     => $request->comment,
-                "product_id"   => $request->product_id,
-                "is_published" => $is_published
-            ];
 
-            CommentsProduct::create($data);
+        $data = [
+            "name"      => $request->name,
+            "comment"     => $request->comment,
+            "product_id"   => $request->product_id,
+            "is_published" => $is_published
+        ];
 
-            return redirect()->back()->with('success', 'Komentar telah dikirim');
-        
+        CommentsProduct::create($data);
+
+        return redirect()->back()->with('success', 'Komentar telah dikirim');
+    }
+
+    public function detailPage($slug)
+    {
+        $data['data'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')->first(['pages.*','sub_menus.parent_menu']);
+        return view('homepage.pages.detail_page', $data);
     }
 }

@@ -131,4 +131,11 @@ class SeedController extends Controller
         $comment->update($updateData);
         return redirect()->back()->with('success', 'Komentar berhasil tidak ditampilkan');
     }
+
+    public function destroyComment($id)
+    {
+        $comment = CommentsProduct::find($id);
+        $comment->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Dihapus');
+    }
 }

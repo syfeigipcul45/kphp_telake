@@ -46,12 +46,15 @@
                                     <button type="submit" class="btn btn-sm btn-danger">hide</button>
                                 </form>
                                 @endif
+                                &nbsp;
+
                             </div>
-
-
-                            <!-- <a href="#" class="btn btn-danger btn-circle btn-sm remove-seeds" data-toggle="modal" data-target="#deleteModal" data-href="">
+                            <a href="#" class="btn btn-danger btn-circle btn-sm remove-seeds" data-toggle="modal" data-target="#deleteModal" data-href="{{route('dashboard.comment.destroy', $comment->id)}}">
                                 <i class="fas fa-trash"></i>
-                            </a> -->
+                            </a>
+
+
+
                         </td>
                     </tr>
                     @endforeach

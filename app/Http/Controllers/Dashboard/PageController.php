@@ -164,10 +164,10 @@ class PageController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'content' => 'required'
+                // 'content' => 'required'
             ], [
                 'name.required' => 'Nama submenu harus diisi!',
-                'content.required' => 'Konten submenu harus diisi!'
+                // 'content.required' => 'Konten submenu harus diisi!'
             ]);
 
             if($validator->fails()) {
@@ -176,7 +176,7 @@ class PageController extends Controller
             
             $data = [
                 "name" => $request->name,
-                "content" => $request->content,
+                "content" => '',
                 "parent_menu" => 'rph',
                 "slug" => convertToSlug($request->name)
             ];
@@ -201,7 +201,7 @@ class PageController extends Controller
 
         $updateData = [
             'name' => $request->name,
-            'content' => $request->content,
+            // 'content' => $request->content,
             'parent_menu' => 'rph',
             'slug' => convertToSlug($request->name)
         ];
@@ -234,10 +234,10 @@ class PageController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'content' => 'required'
+                // 'content' => 'required'
             ], [
                 'name.required' => 'Nama submenu harus diisi!',
-                'content.required' => 'Konten submenu harus diisi!'
+                // 'content.required' => 'Konten submenu harus diisi!'
             ]);
 
             if($validator->fails()) {
@@ -246,7 +246,7 @@ class PageController extends Controller
             
             $data = [
                 "name" => $request->name,
-                "content" => $request->content,
+                "content" => '',
                 "parent_menu" => 'event',
                 "slug" => convertToSlug($request->name)
             ];
@@ -282,7 +282,7 @@ class PageController extends Controller
 
         $updateData = [
             'name' => $request->name,
-            'content' => $request->content,
+            // 'content' => $request->content,
             'parent_menu' => 'event',
             'slug' => convertToSlug($request->name)
         ];

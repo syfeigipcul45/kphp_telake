@@ -76,10 +76,15 @@
                         @enderror
                     </div>
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-icon-split float-right">
+                        <span class="text">Simpan</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Multiple Images -->
-            <div class="card shadow mb-4">
+            <!-- <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Gambar</h6>
                 </div>
@@ -104,10 +109,10 @@
                         <i class="fa fa-plus imgAdd"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
     
             <!-- Bar Chart -->
-            <div class="card shadow mb-4">
+            <!-- <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Konten</h6>
                 </div>
@@ -122,7 +127,7 @@
                         <span class="text">Simpan</span>
                     </button>
                 </div>
-            </div>
+            </div> -->
     
         </div>
     
