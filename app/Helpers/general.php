@@ -131,3 +131,9 @@ if (! function_exists('shrinkText')) {
         return Str::limit($text, 225, '...');
     }
 }
+
+if (! function_exists('shrinkTitle')) {
+    function shrinkTitle($text) {
+        return Str::limit($text, 50, '...');
+    }
+}

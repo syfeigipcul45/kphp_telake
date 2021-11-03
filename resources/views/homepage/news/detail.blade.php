@@ -26,7 +26,7 @@
                             <i class="bx bx-user"></i> Dibuat oleh {{$news->userId->username}}
                         </div>
                         <div class="vcard">
-                            <span><i class="bx bx-time"></i> {{ \Carbon\Carbon::parse($news->created_at)->isoFormat('D MMMM Y') }}</span>
+                            <span><i class="bx bx-time"></i> {{ $news->created_at }}</span>
                         </div>
                     </div>
                     {!! $news->content !!}
@@ -42,7 +42,7 @@
                             <div class="meta-wrap">
                                 <div class="meta d-flex justify-content-between">
                                     <div><i class="bx bx-user"></i><span style="font-size: 12px;"> Dibuat oleh {{$item->userId->username}}</span></div>
-                                    <div><i class="bx bx-time"></i><span style="font-size: 12px;"> {{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</span></div>
+                                    <div><i class="bx bx-time"></i><span style="font-size: 12px;"> {{ $item->created_at}}</span></div>
                                 </div>
                             </div>
                         </div>

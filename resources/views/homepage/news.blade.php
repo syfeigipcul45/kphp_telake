@@ -22,7 +22,7 @@
               <img src="{{ $item->featured_image }}" class="img-fluid h-60 w-100" alt="">
             </div>
             <div class="member-info">
-              <h4>{{ $item->title }}</h4>
+              <h4>{{ shrinkTitle($item->title) }}</h4>
               <div class="d-flex align-items-center justify-content-between my-3">
                 <div class="d-flex align-items-center">
                   <i class="bx bx-user"></i>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="d-flex align-items-center">
                   <i class="bx bx-time"></i>
-                  <span class="ml-1">{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('D MMMM Y') }}</span>
+                  <span class="ml-1">{{ $item->created_at }}</span>
                 </div>
               </div>
               <hr>

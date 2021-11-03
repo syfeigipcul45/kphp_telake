@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function news()
     {
-        $data['news'] = Post::orderBy('created_at', 'desc')->paginate(4);
+        $data['news'] = Post::orderBy('created_at', 'desc')->paginate(8);
         return view('homepage.news', $data);
     }
 
