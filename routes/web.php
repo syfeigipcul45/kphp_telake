@@ -37,6 +37,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'doLogin'])->name('do.login');
 Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
 Route::post('/forgot-password', [AuthController::class, 'sendMail'])->name('forgot.password.sendmail');
+Route::get('/reset-password/{token}',[AuthController::class, 'showResetPasswordForm'])->name('reset.password');
+Route::post('/reset-password/',[AuthController::class, 'submitResetPasswordForm'])->name('reset.password.sendreset');
 Route::get('/logout', [AuthController::class, 'doLogout'])->name('do.logout');
 
 // homepage section

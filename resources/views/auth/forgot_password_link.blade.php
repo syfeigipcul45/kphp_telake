@@ -9,13 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>KPHP Kendilo - Login</title>
+    <title>PHP Kendilo - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('_dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('_dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -33,27 +31,37 @@
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
-                                    </div>
-                                    <form class="user" method="POST" action="{{ route('do.login') }}">
+                                    <!-- <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-2">Lupa kata sandi anda?</h1>
+                                        <p class="mb-4">Mohon masukkan email yang anda gunakan untuk masuk sistem, akan kami kirimkan informasi untuk perubahan password!</p>
+                                    </div> -->
+                                    <form class="user" action="{{ route('reset.password.sendreset') }}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="token" value="{{ $token }}">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Masukkan email" name="email" value="{{ old('email') }}">
+                                            <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukkan email anda" />
                                         </div>
+                                        @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Masukkan kata sandi" name="password">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukkan kata sandi" name="password">
                                         </div>
+                                        @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Ulangi kata sandi" name="password_confirmation">
+                                        </div>
+                                        @if ($errors->has('password_confirmation'))
+                                        <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                        @endif
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Masuk
+                                            Ubah Kata Sandi
                                         </button>
                                     </form>
                                     <br>
@@ -63,13 +71,13 @@
                                     </div>
                                     @endif
                                     @if (\Session::has('error'))
-                                        <div class="invalid-feedback text-center mt-3 d-block">
-                                            {!! \Session::get('error') !!}
-                                        </div>
+                                    <div class="invalid-feedback text-center mt-3 d-block">
+                                        {!! \Session::get('error') !!}
+                                    </div>
                                     @endif
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('forgot.password') }}">Lupa kata sandi?</a>
+                                        <a class="small" href="{{ route('login') }}">Sudah bisa masuk? Masuk!</a>
                                     </div>
                                 </div>
                             </div>
