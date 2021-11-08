@@ -123,19 +123,33 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/management-datas/{id}/update', [DataController::class, 'update'])->name('dashboard.datas.update');
     Route::post('/management-datas/{id}', [DataController::class, 'destroy'])->name('dashboard.datas.destroy');
   
-    Route::get('pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
-    Route::get('pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');
-    Route::post('pages/profiles', [PageController::class, 'profileStore'])->name('dashboard.page.profiles.store');
-    Route::get('pages/profiles/{id}/edit', [PageController::class, 'profileEdit'])->name('dashboard.page.profiles.edit');
-    Route::post('pages/profiles/{id}/update', [PageController::class, 'profileUpdate'])->name('dashboard.page.profiles.update');
-    Route::post('pages/profiles/{id}', [PageController::class, 'profileDestroy'])->name('dashboard.page.profiles.destroy');
+    // Route::get('pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
+    // Route::get('pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');
+    // Route::post('pages/profiles', [PageController::class, 'profileStore'])->name('dashboard.page.profiles.store');
+    // Route::get('pages/profiles/{id}/edit', [PageController::class, 'profileEdit'])->name('dashboard.page.profiles.edit');
+    // Route::post('pages/profiles/{id}/update', [PageController::class, 'profileUpdate'])->name('dashboard.page.profiles.update');
+    // Route::post('pages/profiles/{id}', [PageController::class, 'profileDestroy'])->name('dashboard.page.profiles.destroy');
 
-    Route::get('pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
-    Route::get('pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');
-    Route::post('pages/depts', [PageController::class, 'deptStore'])->name('dashboard.page.depts.store');
-    Route::get('pages/depts/{id}/edit', [PageController::class, 'deptEdit'])->name('dashboard.page.depts.edit');
-    Route::post('pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
-    Route::post('pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
+    // Route::get('pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
+    // Route::get('pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');
+    // Route::post('pages/depts', [PageController::class, 'deptStore'])->name('dashboard.page.depts.store');
+    // Route::get('pages/depts/{id}/edit', [PageController::class, 'deptEdit'])->name('dashboard.page.depts.edit');
+    // Route::post('pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
+    // Route::post('pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
+
+    Route::get('management-pages/profiles', [PageController::class, 'profileIndex'])->name('dashboard.page.profiles.index');
+    Route::get('management-pages/profiles/create', [PageController::class, 'profileCreate'])->name('dashboard.page.profiles.create');
+    Route::post('management-pages/profiles', [PageController::class, 'profileStore'])->name('dashboard.page.profiles.store');
+    Route::get('management-pages/profiles/{id}/edit', [PageController::class, 'profileEdit'])->name('dashboard.page.profiles.edit');
+    Route::post('management-pages/profiles/{id}/update', [PageController::class, 'profileUpdate'])->name('dashboard.page.profiles.update');
+    Route::post('management-pages/profiles/{id}', [PageController::class, 'profileDestroy'])->name('dashboard.page.profiles.destroy');
+
+    Route::get('management-pages/depts', [PageController::class, 'deptIndex'])->name('dashboard.page.depts.index');
+    Route::get('management-pages/depts/create', [PageController::class, 'deptCreate'])->name('dashboard.page.depts.create');
+    Route::post('management-pages/depts', [PageController::class, 'deptStore'])->name('dashboard.page.depts.store');
+    Route::get('management-pages/depts/{id}/edit', [PageController::class, 'deptEdit'])->name('dashboard.page.depts.edit');
+    Route::post('management-pages/depts/{id}/update', [PageController::class, 'deptUpdate'])->name('dashboard.page.depts.update');
+    Route::post('management-pages/depts/{id}', [PageController::class, 'deptDestroy'])->name('dashboard.page.depts.destroy');
 
     Route::get('management-rph', [PageController::class, 'rphIndex'])->name('dashboard.page.rph.index');
     Route::get('management-rph/create', [PageController::class, 'rphCreate'])->name('dashboard.page.rph.create');
