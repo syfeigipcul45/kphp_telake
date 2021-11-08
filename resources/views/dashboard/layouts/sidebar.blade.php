@@ -71,12 +71,12 @@
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item {{ Request::is('pages*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('management-pages*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-file"></i>
         <span>Halaman</span>
     </a>
-    <div id="collapsePages" class="collapse {{ Request::is('pages*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapsePages" class="collapse {{ Request::is('management-pages*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.page.profiles.index') }}">Profil</a>
             <a class="collapse-item" href="{{ route('dashboard.page.depts.index') }}">Seksi</a>
