@@ -30,6 +30,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Level</th>
                         <th>Nomor Telp.</th>
                         <!-- <th>Aksi</th> -->
                     </tr>
@@ -40,6 +41,15 @@
                         <td>{{ ++$key }}</td>
                         <td>{{ $item->display_name }}</td>
                         <td>{{ $item->email }}</td>
+                        <td>
+                            @if($item->roles[0]->name == 'superadmin')
+                            <span class="badge badge-pill badge-success">{{ $item->roles[0]->name }}</span>
+                            @elseif($item->roles[0]->name == 'admin')
+                            <span class="badge badge-pill badge-primary">{{ $item->roles[0]->name }}</span>
+                            @else
+                            <span class="badge badge-pill badge-secondary">{{ $item->roles[0]->name }}</span>
+                            @endif
+                        </td>
                         <td>{{ $item->phone ?? '-' }}</td>
                         <!-- <td class="text-center">
                             <a href="{{ route('dashboard.users.edit', $item->id) }}" class="btn btn-warning btn-circle btn-sm">
@@ -57,6 +67,7 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Level</th>
                         <th>Nomor Telp.</th>
                         <!-- <th>Aksi</th> -->
                     </tr>
