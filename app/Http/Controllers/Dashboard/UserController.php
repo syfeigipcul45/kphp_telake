@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -17,7 +18,8 @@ class UserController extends Controller
     }
 
     public function create() {
-        return view('dashboard.users.create');
+        $data['roles'] = Role::orderBy('id', 'asc')->get();
+        return view('dashboard.users.create', $data);
     }
 
     public function store(Request $request) {
@@ -56,7 +58,8 @@ class UserController extends Controller
                 "phone" => $request->phone
             ];
 
-            User::create($data);
+            $saveData = User::create($data);
+            $saveData->syncRoles($request->role_id);
             Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.users.index');
