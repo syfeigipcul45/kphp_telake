@@ -21,6 +21,17 @@
     Main Menu
 </div>
 
+@if(Auth::user()->roles[0]->name == 'user')
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-seeds*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.seeds.index') }}">
+        <i class="fas fa-fw fa-archive"></i>
+        <span>Produk</span></a>
+</li>
+@endif
+
+@php $level_access = ['superadmin', 'admin']; @endphp
+@if(in_array(Auth::user()->roles[0]->name, $level_access))
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-users*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.users.index') }}">
@@ -109,7 +120,9 @@
         </div>
     </div>
 </li>
+@endif
 
+@if(Auth::user()->roles[0]->name == 'superadmin')
 <!-- Divider -->
 <hr class="sidebar-divider">
 
@@ -147,6 +160,7 @@
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span></a>
 </li>
+@endif
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
