@@ -15,16 +15,32 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $developer = Role::create(['name' => 'developer']);
         $superadmin = Role::create(['name' => 'superadmin']);
         $admin = Role::create(['name' => 'admin']);
+        $user = Role::create(['name' => 'user']);
 
-        $userDeveloper = User::create([
-            'display_name' => 'Developer',
-            'username' => 'developer',
-            'email' => 'developer@'. env('APP_DOMAIN', 'test.com'),
-            'password' => bcrypt('@developer')
+        $roleSuperadmin = User::create([
+            'display_name' => 'Superadmin',
+            'username' => 'superadmin',
+            'email' => 'superadmin@'. env('APP_DOMAIN', 'test.com'),
+            'password' => bcrypt('@superadmin')
         ]);
-        $userDeveloper->syncRoles([$developer]);
+        $roleSuperadmin->syncRoles([$superadmin]);
+
+        $roleAdmin = User::create([
+            'display_name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'admin@'. env('APP_DOMAIN', 'test.com'),
+            'password' => bcrypt('@admin')
+        ]);
+        $roleAdmin->syncRoles([$admin]);
+
+        $roleUser = User::create([
+            'display_name' => 'User',
+            'username' => 'user',
+            'email' => 'user@'. env('APP_DOMAIN', 'test.com'),
+            'password' => bcrypt('@user')
+        ]);
+        $roleUser->syncRoles([$user]);
     }
 }
