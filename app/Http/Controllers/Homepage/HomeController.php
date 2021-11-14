@@ -78,6 +78,12 @@ class HomeController extends Controller
         return view('homepage.media.photo', $data);
     }
 
+    public function mediaPhotoById($id)
+    {
+        $data['photos'] = Media::where('id', $id)->orderBy('id', 'desc')->paginate(8);
+        return view('homepage.media.sub-photo', $data);
+    }
+
     public function mediaVideo()
     {
         $data['videos'] = Media::where('type', 'video')->orderBy('id', 'desc')->paginate(8);

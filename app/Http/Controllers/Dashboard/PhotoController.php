@@ -21,12 +21,13 @@ class PhotoController extends Controller
     }
 
     public function store(Request $request) {
+        $images = [];
         try {
             $validator = Validator::make($request->all(), [
-                'link_media' => 'required',
+                'images' => 'required',
                 'caption' => 'required'
             ], [
-                'link_media.required' => 'Upload foto atau link video tidak boleh kosong!',
+                'images.required' => 'Upload foto atau link video tidak boleh kosong!',
                 'caption.required' => 'Caption foto atau video tidak boleh kosong!'
             ]);
 
@@ -35,16 +36,19 @@ class PhotoController extends Controller
             }
             
             $data = [
-                'link_media' => $request->link_media,
                 'caption' => $request->caption,
                 'type' => 'photo'
             ];
 
-            if($request->hasFile('link_media')) {
-                $file = $request->file('link_media');
-                $path = Storage::disk('public')->put('media', $file);
-                $data['link_media'] = url('/') . '/storage/' . $path;;
+            if($request->hasFile('images')) {
+                for($i = 0; $i < count($request->images); $i++) {
+                    $file = $request->file('images')[$i];
+                    $path = Storage::disk('public')->put('media', $file);
+                    $image = url('/') . '/storage/' . $path;
+                    array_push($images, $image);
+                }
             }
+            $data['link_media'] = json_encode($images);
 
             Media::create($data);
             Session::flash('success', 'Data Berhasil Tersimpan');
@@ -65,19 +69,22 @@ class PhotoController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $images = [];
         $photo = Media::find($id);
 
         $updateData = [
             'caption' => $request->caption
         ];
 
-        if($request->hasFile('link_media')) {
-            $file = $request->file('link_media');
-            $path = Storage::disk('public')->put('posts/thumbnail', $file);
-            $updateData['link_media'] = url('/') . '/storage/' . $path;;
-        } else {
-            $updateData['link_media'] = $request->link_media;
+        if($request->hasFile('images')) {
+            for($i = 0; $i < count($request->images); $i++) {
+                $file = $request->file('images')[$i];
+                $path = Storage::disk('public')->put('media', $file);
+                $image = url('/') . '/storage/' . $path;
+                array_push($images, $image);
+            }
         }
+        $updateData['link_media'] = json_encode($images);
 
         $photo->update($updateData);
         Session::flash('success', 'Data Berhasil Diubah');

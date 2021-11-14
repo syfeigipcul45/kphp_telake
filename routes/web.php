@@ -52,6 +52,7 @@ Route::get('/event/{slug}', [HomeController::class, 'event'])->name('homepage.ev
 Route::get('/pages/{slug}',[HomeController::class, 'detailPage'])->name('homepage.pages');
 Route::group(['prefix'=>'media'], function() {
     Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
+    Route::get('photo/{id}', [HomeController::class, 'mediaPhotoById'])->name('homepage.media.photo.detail');
     Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');
 });
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');

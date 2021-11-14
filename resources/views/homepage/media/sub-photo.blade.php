@@ -19,20 +19,14 @@
 
       <div class="row no-gutters">
 
-        @foreach($photos as $key => $item)
-        @if(count(json_decode($item->link_media)) > 1)
+        @foreach($photos as $key => $value)
+        @foreach(json_decode($value->link_media) as $key => $item)
         <div class="col-xl-3 mb-3 cursor-pointer" data-aos="fade-left" data-aos-delay="100">
-          <a href="{{ route('homepage.media.photo.detail', $item->id) }}">
-            <img src="{{ json_decode($item->link_media)[0] }}" class="w-100 h-auto rounded" />
+          <a data-fancybox="gallery" data-src="{{ $item }}" data-caption="{{ $value->caption }}">
+            <img src="{{ $item }}" class="w-100 h-auto rounded" />
           </a>
         </div>
-        @else
-        <div class="col-xl-3 mb-3 cursor-pointer" data-aos="fade-left" data-aos-delay="100">
-          <a data-fancybox="gallery" data-src="{{ json_decode($item->link_media)[0] }}" data-caption="{{ $item->caption }}">
-            <img src="{{ json_decode($item->link_media)[0] }}" class="w-100 h-auto rounded" />
-          </a>
-        </div>
-        @endif
+        @endforeach
         @endforeach
 
         <div class="d-flex justify-content-center">

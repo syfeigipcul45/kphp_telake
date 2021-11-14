@@ -46,7 +46,7 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            <img src="{{ $item->link_media }}" alt="" class="img-fluid h-40" />
+                            <img src="{{ json_decode($item->link_media)[0] }}" alt="" class="img-fluid h-40" />
                         </td>
                         <td>{{ $item->caption }}</td>
                         <td class="text-center">
