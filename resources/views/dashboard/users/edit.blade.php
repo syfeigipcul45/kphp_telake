@@ -39,16 +39,45 @@
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>
+                        </div>                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly />
+                                @error('email')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" />
+                                <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" readonly/>
                                 @error('username')
                                 <small class="form-text error-input">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
+                        @if($user->roles[0]->name == 'superadmin')
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Level</label>
+                                <select name="role_id" class="form-control text-capitalize @error('role_id') invalid @enderror" required>
+                                    <option value=""> :: Pilih Level</option>
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->id }}" @if($user->roles[0]->name == $role->name) selected @endif>{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
+                                <small class="form-text error-input">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        @else
+                        <input type="hidden"  name="role_id" value="{{$user->roles[0]->id}}"/>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -71,15 +100,6 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}" readonly />
-                                @error('email')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nomor Telepon</label>

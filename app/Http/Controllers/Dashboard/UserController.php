@@ -71,6 +71,7 @@ class UserController extends Controller
 
     public function edit($id) {
         $data['user'] = User::find($id);
+        $data['roles'] = Role::orderBy('id', 'asc')->get();
         return view('dashboard.users.edit', $data);
     }
 
@@ -89,6 +90,7 @@ class UserController extends Controller
         }
 
         $user->update($updateData);
+        $user->syncRoles($request->role_id);
         Session::flash('success', 'Data Berhasil Diubah');
         return redirect()->route('dashboard.users.index');
     }
