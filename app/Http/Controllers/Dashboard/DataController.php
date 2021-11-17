@@ -46,7 +46,7 @@ class DataController extends Controller
 
             if($request->hasFile('file_url')) {
                 $file = $request->file('file_url');
-                $path = Storage::disk('public')->put('datas', $file);
+                $path = Storage::disk('public')->putFileAs('datas', $file, $file->getClientOriginalName());
                 $data['file_url'] = url('/') . '/storage/' . $path;;
             }
 
@@ -83,7 +83,9 @@ class DataController extends Controller
 
         if($request->hasFile('file_url')) {
             $file = $request->file('file_url');
-            $path = Storage::disk('public')->put('datas', $file);
+            $path = Storage::disk('public')->putFileAs('datas', $file, $file->getClientOriginalName());
+
+            Storage::disk('public')->delete('/datas/' . basename($request->old_file_url));
             $updateData['file_url'] = url('/') . '/storage/' . $path;;
         } else {
             $updateData['file_url'] = $request->old_file_url;
@@ -98,6 +100,8 @@ class DataController extends Controller
     public function destroy($id) {
         $document = Document::find($id);
         $document->delete();
+
+        Storage::disk('public')->delete('/datas/' . basename($document->file_url));
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();
