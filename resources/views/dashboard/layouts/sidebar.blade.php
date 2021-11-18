@@ -23,10 +23,50 @@
 
 @if(Auth::user()->roles[0]->name == 'user')
 <!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-news*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.news.index') }}">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>Berita</span></a>
+</li>
+
 <li class="nav-item {{ Request::is('management-seeds*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.seeds.index') }}">
         <i class="fas fa-fw fa-archive"></i>
         <span>Produk</span></a>
+</li>
+
+<!-- Nav Item - Charts -->
+<li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.datas.index') }}">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Data Kehutanan</span></a>
+</li>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
+        <i class="fas fa-fw fa-video"></i>
+        <span>Media</span>
+    </a>
+    <div id="collapseMedia" class="collapse {{ Request::is('media*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.photos.index') }}">Foto</a>
+            <a class="collapse-item" href="{{ route('dashboard.videos.index') }}">Video</a>
+        </div>
+    </div>
+</li>
+
+<li class="nav-item {{ Request::is('management-events*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
+        <i class="fas fa-fw fa-newspaper"></i>
+        <span>Kegiatan</span>
+    </a>
+    <div id="collapseEvents" class="collapse {{ Request::is('management-events*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.event.index') }}">Halaman</a>
+            <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Submenu</a>
+        </div>
+    </div>
 </li>
 @endif
 

@@ -20,6 +20,9 @@
       <div class="row no-gutters">
 
         @foreach($photos as $key => $value)
+        <h4 class="mb-4">
+          {{ $value->caption }}
+        </h4>
         @foreach(json_decode($value->link_media) as $key => $item)
         <div class="col-xl-3 mb-3 cursor-pointer" data-aos="fade-left" data-aos-delay="100">
           <a data-fancybox="gallery" data-src="{{ $item }}" data-caption="{{ $value->caption }}">
