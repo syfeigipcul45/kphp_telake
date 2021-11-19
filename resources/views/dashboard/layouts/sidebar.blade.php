@@ -29,12 +29,6 @@
         <span>Berita</span></a>
 </li>
 
-<li class="nav-item {{ Request::is('management-seeds*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('dashboard.seeds.index') }}">
-        <i class="fas fa-fw fa-archive"></i>
-        <span>Produk</span></a>
-</li>
-
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('management-datas*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.datas.index') }}">

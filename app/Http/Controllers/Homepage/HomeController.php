@@ -174,7 +174,7 @@ class HomeController extends Controller
 
     public function detailPage($slug)
     {
-        $data['data'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')->first(['pages.*','sub_menus.parent_menu']);
+        $data['data'] = Pages::where('slug', $slug)->first(['pages.*']);
         return view('homepage.pages.detail_page', $data);
     }
 }
