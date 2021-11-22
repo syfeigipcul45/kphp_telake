@@ -79,7 +79,7 @@
                             @endif
                         </div>
                         <div class="member-info">
-                            <h4>{{ $item->title }}</h4>
+                            <h4>{{ shrinkTitle($item->title) }}</h4>
                             <div class="d-flex align-items-center justify-content-between my-3">
                                 <div class="d-flex align-items-center">
                                     <i class="bx bx-user"></i>

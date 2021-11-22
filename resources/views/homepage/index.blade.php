@@ -146,7 +146,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-world"></i></div>
-            <h4><a href="">Pemerintah Provinsi Kalimantan Timur</a></h4>
+            <h4><a href="https://kaltimprov.go.id/" target="_blank">Pemerintah Provinsi Kalimantan Timur</a></h4>
             <p>Website resmi Pemerintah Provinsi Kalimantan Timur "Berani untuk Kaltim Berdaulat"</p>
           </div>
         </div>
@@ -154,7 +154,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="bx bxs-tree"></i></div>
-            <h4><a href="">Kementerian Lingkungan Hidup dan Kehutanan</a></h4>
+            <h4><a href="https://www.menlhk.go.id/" target="_blank">Kementerian Lingkungan Hidup dan Kehutanan</a></h4>
             <p>Website resmi Kementerian Lingkungan Hidup dan Kehutanan Republik Indonesia</p>
           </div>
         </div>
@@ -162,7 +162,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-expand"></i></div>
-            <h4><a href="">KPH Indonesia</a></h4>
+            <h4><a href="http://kph.menlhk.go.id/sinpasdok/" target="_blank">KPH Indonesia</a></h4>
             <p>Sinpasdok KPH+ Tersebar Di Tingkat Tapak Terkendali di Pusat</p>
           </div>
         </div>
@@ -170,7 +170,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-file"></i></div>
-            <h4><a href="">Form Permohonan Data</a></h4>
+            <h4><a href="" target="_blank">Form Permohonan Data</a></h4>
             <p>Formulir Permohonan Data dan Informasi UPTD KPHP Kendilo Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
         </div>
@@ -178,7 +178,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-box"></i></div>
-            <h4><a href="">Dinas Kehutanan Provinsi Kalimantan Timur</a></h4>
+            <h4><a href="https://dishut.kaltimprov.go.id/" target="_blank">Dinas Kehutanan Provinsi Kalimantan Timur</a></h4>
             <p>Website resmi Dinas Kehutanan Pemerintah Provinsi Kalimantan Timur</p>
           </div>
         </div>
@@ -186,7 +186,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-highlight"></i></div>
-            <h4><a href="">Form Pengaduan Masyarakat</a></h4>
+            <h4><a href="" target="_blank">Form Pengaduan Masyarakat</a></h4>
             <p>Formulir Pengaduan Masyarakat UPTD KPHP Kendilo Dinas Kehutanan Provinsi Kalimantan Timur</p>
           </div>
         </div>
