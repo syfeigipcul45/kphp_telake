@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Image;
 use App\Models\HeroImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -44,8 +45,18 @@ class HeroController extends Controller
 
             if($request->hasFile('thumbnail')) {
                 $file = $request->file('thumbnail');
-                $path = Storage::disk('public')->put('heroes/thumbnail', $file);
-                $data['url_hero'] = url('/') . '/storage/' . $path;;
+                $file_name = $file->getClientOriginalName();
+    
+                // original file
+                $img = Image::make($file);
+                $img->save(\public_path('storage/heroes/' . $file_name), 100);
+                
+                // compressed file
+                $img = Image::make($file);
+                $img->save(\public_path('storage/heroes/' . $file_name), 50);
+    
+                // store url to database
+                $data['url_hero'] = url('/') . '/storage/heroes/' . $file_name;
             }
 
             HeroImage::create($data);
@@ -74,8 +85,18 @@ class HeroController extends Controller
 
         if($request->hasFile('url_hero')) {
             $file = $request->file('url_hero');
-            $path = Storage::disk('public')->put('posts/thumbnail', $file);
-            $updateData['url_hero'] = url('/') . '/storage/' . $path;;
+            $file_name = $file->getClientOriginalName();
+
+            // original file
+            $img = Image::make($file);
+            $img->save(\public_path('storage/heroes/' . $file_name), 100);
+            
+            // compressed file
+            $img = Image::make($file);
+            $img->save(\public_path('storage/heroes/' . $file_name), 50);
+
+            // store url to database
+            $updateData['url_hero'] = url('/') . '/storage/heroes/' . $file_name;
         } else {
             $updateData['url_hero'] = $request->url_hero;
         }
