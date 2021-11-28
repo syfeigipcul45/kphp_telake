@@ -23,11 +23,12 @@ class HeroController extends Controller
     public function store(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
-                'thumbnail' => 'required',
+                'thumbnail' => 'required|max:5000',
                 'title' => 'required',
                 'description' => 'required'
             ], [
                 'thumbnail.required' => 'Gambar harus diisi!',
+                'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
                 'title.required' => 'Judul harus diisi!',
                 'description.required' => 'Deskripsi harus diisi!'
             ]);
@@ -66,24 +67,43 @@ class HeroController extends Controller
     public function update(Request $request, $id) {
         $hero_image = HeroImage::find($id);
 
-        $updateData = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'is_active' => 1
-        ];
+        try {
+            $validator = Validator::make($request->all(), [
+                'thumbnail' => 'required|max:5000',
+                'title' => 'required',
+                'description' => 'required'
+            ], [
+                'thumbnail.required' => 'Gambar harus diisi!',
+                'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
+                'title.required' => 'Judul harus diisi!',
+                'description.required' => 'Deskripsi harus diisi!'
+            ]);
 
-        if($request->hasFile('url_hero')) {
-            $file = $request->file('url_hero');
-            $path = Storage::disk('public')->put('posts/thumbnail', $file);
-            $updateData['url_hero'] = url('/') . '/storage/' . $path;;
-        } else {
-            $updateData['url_hero'] = $request->url_hero;
+            if($validator->fails()) {
+                return redirect()->back()->withInput()->withErrors($validator);
+            }
+
+            $updateData = [
+                'title' => $request->title,
+                'description' => $request->description,
+                'is_active' => 1
+            ];
+
+            if($request->hasFile('url_hero')) {
+                $file = $request->file('url_hero');
+                $path = Storage::disk('public')->put('posts/thumbnail', $file);
+                $updateData['url_hero'] = url('/') . '/storage/' . $path;;
+            } else {
+                $updateData['url_hero'] = $request->url_hero;
+            }
+
+            $hero_image->update($updateData);
+            Session::flash('success', 'Data Berhasil Diubah');
+
+            return redirect()->route('dashboard.hero.images.index');
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
         }
-
-        $hero_image->update($updateData);
-        Session::flash('success', 'Data Berhasil Diubah');
-
-        return redirect()->route('dashboard.hero.images.index');
     }
 
     public function destroy($id) {
