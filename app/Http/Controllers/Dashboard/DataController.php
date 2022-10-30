@@ -47,7 +47,7 @@ class DataController extends Controller
             if($request->hasFile('file_url')) {
                 $file = $request->file('file_url');
                 $path = Storage::disk('public')->putFileAs('datas', $file, $file->getClientOriginalName());
-                $data['file_url'] = url('/') . '/storage/' . $path;;
+                $data['file_url'] = url('/') . '/storage/' . $path;
             }
 
             Document::create($data);
