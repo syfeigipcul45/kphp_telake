@@ -51,7 +51,7 @@
         <div class="container" data-aos="fade-up">
 
           <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-          <div class="col-xl-12 col-lg-8">
+            <div class="col-xl-12 col-lg-8">
               <h1>{{ $item->title }}</h1>
             </div>
             <div class="col-xl-6 col-lg-8">
@@ -75,7 +75,7 @@
 
       <div class="row">
         <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-        <iframe width="560" height="315" src="{{ getYoutubeEmbedUrl(getOption()->profile_url) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="{{ getYoutubeEmbedUrl(getOption()->profile_url) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
           <h3>{{ getOption()->profile_title }}</h3>
@@ -89,7 +89,10 @@
   <!-- ======= Team Section ======= -->
   <section id="team" class="team">
     <div class="container" data-aos="fade-up">
-
+      <div class="section-title">
+        <!-- <h2>Berita</h2> -->
+        <p>Berita Terbaru</p>
+      </div>
       <div class="row">
 
         @foreach($news as $key => $item)
@@ -130,16 +133,17 @@
       </div>
 
     </div>
-  </section><!-- End Team Section -->
+  </section>
+  <!-- End Team Section -->
 
   <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
+  <!-- <section id="services" class="services">
     <div class="container" data-aos="fade-up">
 
-      <!-- <div class="section-title">
+      <div class="section-title">
         <h2>Services</h2>
         <p>Check our Services</p>
-      </div> -->
+      </div>
 
       <div class="row">
 
@@ -194,10 +198,11 @@
       </div>
 
     </div>
-  </section><!-- End Services Section -->
+  </section> -->
+  <!-- End Services Section -->
 
   <!-- ======= Team Section ======= -->
-  <section id="team" class="team">
+  <!-- <section id="team" class="team">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
@@ -227,7 +232,8 @@
       </div>
 
     </div>
-  </section><!-- End Team Section -->
+  </section> -->
+  <!-- End Team Section -->
 </main><!-- End #main -->
 @endsection
 
@@ -238,7 +244,7 @@
     autoplay: {
       delay: 5000
     },
-    speed:1000
+    speed: 1000
   });
 </script>
 @endsection

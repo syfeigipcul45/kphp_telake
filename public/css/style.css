@@ -9,7 +9,8 @@
 # General
 --------------------------------------------------------------*/
 body {
-    font-family: "Open Sans", sans-serif;
+    /* font-family: "Open Sans", sans-serif; */
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
     color: #444444;
   }
   
@@ -37,7 +38,7 @@ body {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: #ffc451;
+    background: #4a085a;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -46,16 +47,16 @@ body {
   
   .back-to-top i {
     font-size: 28px;
-    color: #151515;
+    color: #fff;
     line-height: 0;
   }
   
   .back-to-top:hover {
-    background: #151515;
+    background: #4a085a;
   }
   
   .back-to-top:hover i {
-    color: #ffc451;
+    color: #fff;
   }
   
   .back-to-top.active {
@@ -82,7 +83,7 @@ body {
     position: fixed;
     top: calc(50% - 0px);
     left: calc(50% - 30px);
-    border: 6px solid #ffc451;
+    border: 6px solid #bc15e6;
     border-top-color: #151515;
     border-bottom-color: #151515;
     border-radius: 50%;
@@ -126,10 +127,11 @@ body {
     transition: all 0.5s;
     z-index: 997;
     /* padding: 15px 0; */
+    background: #bc15e6;
   }
   
   #header.header-scrolled, #header.header-inner-pages {
-    background: rgba(0, 0, 0, 0.8);
+    background: #bc15e6;
   }
   
   #header .logo {
@@ -221,7 +223,7 @@ body {
   }
   
   .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-    color: #ffc451;
+    color: #4a085a;
   }
   
   .navbar .dropdown ul {
@@ -247,7 +249,7 @@ body {
     padding: 10px 20px;
     font-size: 14px;
     text-transform: none;
-    color: #151515;
+    color: #4a085a;
     font-weight: 400;
   }
   
@@ -256,7 +258,8 @@ body {
   }
   
   .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-    background-color: #ffc451;
+    background-color: #64097a;
+    color: #fff;
   }
   
   .navbar .dropdown:hover > ul {
@@ -512,14 +515,14 @@ body {
     font-family: "Poppins", sans-serif;
   }
   
-  .section-title h2::after {
+  /* .section-title h2::after {
     content: "";
     width: 120px;
     height: 1px;
     display: inline-block;
     background: #ffde9e;
     margin: 4px 10px;
-  }
+  } */
   
   .section-title p {
     margin: 0;
@@ -1169,16 +1172,18 @@ body {
   
   .team .member .member-info span {
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
-    color: #aaaaaa;
+    color: #000;
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
   }
   
   .team .member .member-info p {
-    font-style: italic;
+    /* font-style: italic; */
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
     font-size: 14px;
     line-height: 26px;
-    color: #777777;
+    color: #000;
   }
   
   .team .member:hover .social {
@@ -1196,8 +1201,8 @@ body {
   
   .contact .info i {
     font-size: 20px;
-    background: #ffc451;
-    color: #151515;
+    background: #bc15e6;
+    color: #fff;
     float: left;
     width: 44px;
     height: 44px;
@@ -1298,16 +1303,16 @@ body {
   }
   
   .contact .php-email-form button[type="submit"] {
-    background: #ffc451;
+    background: #bc15e6;
     border: 0;
     padding: 10px 24px;
-    color: #151515;
+    color: #fff;
     transition: 0.4s;
     border-radius: 4px;
   }
   
   .contact .php-email-form button[type="submit"]:hover {
-    background: #ffcd6b;
+    background: #4a085a;
   }
   
   @-webkit-keyframes animate-loading {
@@ -1381,7 +1386,7 @@ body {
   # Footer
   --------------------------------------------------------------*/
   #footer {
-    background: black;
+    background: #bc15e6;
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
@@ -1434,8 +1439,8 @@ body {
   }
   
   #footer .footer-top .social-links a:hover {
-    background: #ffc451;
-    color: #151515;
+    background: #bc15e6;
+    color: #fff;
     text-decoration: none;
   }
   
