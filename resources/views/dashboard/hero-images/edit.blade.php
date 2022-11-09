@@ -14,26 +14,30 @@
 
 <form action="{{ route('dashboard.hero.images.update', $hero_image->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
-
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Edit Gambar</h6>
                 </div>
                 <div class="card-body">
+                    @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-6">
-                            
+
                             <strong>Upload Thumbnail</strong>
                             <div class="card my-2">
                                 <label for="imageUpload" class="mb-0 cursor-pointer">
-                                    @if(!empty($hero_image->url_hero))
-                                    <img id="image-preview" class="card-img-top" src="{{ $hero_image->url_hero }}" alt="Card image cap" />
-                                    <input type="hidden" name="url_hero" value="{{ $hero_image->url_hero }}" />
+                                    @if($hero_image->getFirstMediaUrl('hero-image', 'thumb'))
+                                    <img id="image-preview" class="card-img-top" src="{{ $hero_image->getFirstMediaUrl('hero-image', 'thumb')}}" alt="Card image cap">
+                                    <input type="hidden" name="url_hero" value="{{ $hero_image->getFirstMediaUrl('hero-image', 'thumb')}}" />
                                     @else
                                     <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
                                     @endif
@@ -67,21 +71,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Status</label>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" id="status" class="custom-control-input" {{ $hero_image->is_active == 1 ? 'checked' : '' }} />
-                                    <input type="hidden" id="status-value" name="is_active" value="{{ old('is_active', $hero_image->is_active) }}" />
-                                    <label class="custom-control-label" for="status"></label>
-                                </div>
-                                @error('is_active')
-                                <small class="form-text error-input">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-icon-split float-right">
@@ -89,7 +78,7 @@
                     </button>
                 </div>
             </div>
-    
+
         </div>
     </div>
 </form>
@@ -101,11 +90,11 @@
         selector: 'textarea#content-news',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
-        height : "480"
+        height: "480"
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);

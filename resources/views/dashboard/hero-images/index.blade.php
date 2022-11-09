@@ -48,7 +48,7 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>
-                            <img src="{{ $item->url_hero }}" alt="" class="img-fluid h-40" />
+                            <img src="{{ $item->getFirstMediaUrl('hero-image', 'thumb') }}" alt="" class="img-fluid h-40" />
                         </td>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->description }}</td>

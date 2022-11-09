@@ -38,18 +38,22 @@ class HeroController extends Controller
             }
             
             $data = [
+                "url_hero" => "-",
                 "title" => $request->title,
                 "description" => $request->description,
                 "is_active" => 1
             ];
 
-            if($request->hasFile('thumbnail')) {
-                $file = $request->file('thumbnail');
-                $path = Storage::disk('public')->put('heroes/thumbnail', $file);
-                $data['url_hero'] = url('/') . '/storage/' . $path;;
-            }
+            // if($request->hasFile('thumbnail')) {
+            //     $file = $request->file('thumbnail');
+            //     $path = Storage::disk('public')->put('heroes/thumbnail', $file);
+            //     $data['url_hero'] = url('/') . '/storage/' . $path;;
+            // }
 
-            HeroImage::create($data);
+            $hero_image = HeroImage::create($data);
+            if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
+                $hero_image->addMediaFromRequest('thumbnail')->toMediaCollection('hero-image');
+            }
             Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.hero.images.index');
@@ -69,12 +73,12 @@ class HeroController extends Controller
 
         try {
             $validator = Validator::make($request->all(), [
-                'thumbnail' => 'required|max:5000',
+                'url_hero' => 'required|max:5000',
                 'title' => 'required',
                 'description' => 'required'
             ], [
-                'thumbnail.required' => 'Gambar harus diisi!',
-                'thumbnail.max' => 'Ukuran gambar maskimal 5MB',
+                'url_hero.required' => 'Gambar harus diisi!',
+                'url_hero.max' => 'Ukuran gambar maskimal 5MB',
                 'title.required' => 'Judul harus diisi!',
                 'description.required' => 'Deskripsi harus diisi!'
             ]);
@@ -89,12 +93,17 @@ class HeroController extends Controller
                 'is_active' => 1
             ];
 
-            if($request->hasFile('url_hero')) {
-                $file = $request->file('url_hero');
-                $path = Storage::disk('public')->put('posts/thumbnail', $file);
-                $updateData['url_hero'] = url('/') . '/storage/' . $path;;
-            } else {
-                $updateData['url_hero'] = $request->url_hero;
+            // if($request->hasFile('url_hero')) {
+            //     $file = $request->file('url_hero');
+            //     $path = Storage::disk('public')->put('posts/thumbnail', $file);
+            //     $updateData['url_hero'] = url('/') . '/storage/' . $path;;
+            // } else {
+            //     $updateData['url_hero'] = $request->url_hero;
+            // }
+
+            if ($request->hasFile('url_hero') && $request->file('url_hero')->isValid()) {
+                $hero_image->clearMediaCollection('hero-image');
+                $hero_image->addMedia($request->url_hero)->toMediaCollection('hero-image');
             }
 
             $hero_image->update($updateData);
@@ -102,13 +111,14 @@ class HeroController extends Controller
 
             return redirect()->route('dashboard.hero.images.index');
         } catch (\Exception $exception) {
-            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!'.$exception->getMessage());
         }
     }
 
     public function destroy($id) {
-        $post = HeroImage::find($id);
-        $post->delete();
+        $hero_image = HeroImage::find($id);
+        $hero_image->delete();
+        $hero_image->clearMediaCollection('hero-image');
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();

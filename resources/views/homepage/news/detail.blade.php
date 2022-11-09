@@ -4,6 +4,32 @@
 <title>{{$news->title}} - {{ env('APP_NAME') }}</title>
 @endsection
 
+@section('extraCss')
+<style>
+    .link-share a {
+        font-size: 18px;
+        display: inline-block;
+        background: #292929;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 4px;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+        margin-bottom: 10px;
+    }
+
+    .link-share a:hover {
+        background: #bc15e6;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+@endsection
+
 @section('content')
 <main id="main">
 
@@ -16,11 +42,16 @@
             <div class="row">
                 <div class="col-lg-8 single-content">
                     <p class="mb-5">
-                        <img src="{{ $news->featured_image }}" alt="" class="img-fluid" />
+                        <img src="{{ $news->getFirstMediaUrl('news', 'cover') }}" alt="" class="img-fluid" />
                     </p>
                     <h4 class="mb-4">
                         {{ $news->title }}
                     </h4>
+                    <div class="link-share mt-3">
+                        <a href="https://twitter.com/intent/tweet?text{{ $news->title}}&url={{ Request::url() }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="https://wa.me/?text={{ Request::url() }}" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                    </div>
                     <div class="post-meta d-flex justify-content-between mb-5">
                         <div class="bio-pic mr-3">
                             <i class="bx bx-user"></i> Dibuat oleh {{$news->userId->username}}

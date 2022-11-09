@@ -18,7 +18,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -46,9 +46,9 @@
                     @enderror
                 </div>
             </div>
-    
+
         </div>
-    
+
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
@@ -77,9 +77,9 @@
                         <strong>Upload Thumbnail</strong>
                         <div class="card my-2">
                             <label for="imageUpload" class="mb-0 cursor-pointer">
-                                @if(!empty($news->featured_image))
-                                <img id="image-preview" class="card-img-top" src="{{ $news->featured_image }}" alt="Card image cap">
-                                <input type="hidden" name="featured_image" value="{{ $news->featured_image }}" />
+                                @if($news->getFirstMediaUrl('news', 'thumb'))
+                                <img id="image-preview" class="card-img-top" src="{{ $news->getFirstMediaUrl('news', 'thumb')}}" alt="Card image cap">
+                                <input type="hidden" name="featured_image" value="{{ $news->getFirstMediaUrl('news', 'thumb')}}" />
                                 @else
                                 <img id="image-preview" class="card-img-top" src="https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png" alt="Card image cap">
                                 @endif
@@ -207,7 +207,7 @@
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);

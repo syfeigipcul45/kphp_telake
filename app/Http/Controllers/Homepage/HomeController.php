@@ -21,7 +21,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['news'] = Post::orderBy('created_at', 'desc')->limit(4)->get();
+        $data['news'] = Post::orderBy('created_at', 'desc')->limit(6)->get();
         $data['videos'] = Media::where('type', 'video')->latest()->limit(3)->get();
         $data['heroes'] = HeroImage::all();
         return view('homepage.index', $data);

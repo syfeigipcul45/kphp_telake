@@ -16,9 +16,14 @@
     @csrf
 
     <!-- Content Row -->
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-    
+
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -33,7 +38,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Bar Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -46,9 +51,9 @@
                     @enderror
                 </div>
             </div>
-    
+
         </div>
-    
+
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
@@ -86,18 +91,6 @@
                         @enderror
                     </div>
                     <hr>
-                    {{-- <div>
-                        <strong>Kategori</strong>
-                        <input type="email" class="form-control my-1" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item px-0 d-flex justify-content-between align-items-center">
-                                <span>Uncategorized</span>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -202,7 +195,7 @@
     });
 
     $('#status').change(function() {
-        if($('#status').is(':checked')) {
+        if ($('#status').is(':checked')) {
             $('#status-value').val(1);
         } else {
             $('#status-value').val(0);

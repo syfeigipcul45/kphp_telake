@@ -42,22 +42,26 @@ class NewsController extends Controller
                 "title" => $request->title,
                 "slug" => convertToSlug($request->title),
                 "content" => $request->content,
-                "is_published" => 1
+                "is_published" => 1,
+                "featured_image" => '-'
             ];
 
-            if($request->hasFile('featured_image')) {
-                $file = $request->file('featured_image');
-                $path = Storage::disk('public')->put('posts/thumbnail', $file);
-                $data['featured_image'] = url('/') . '/storage/' . $path;;
-            }
+            // if($request->hasFile('featured_image')) {
+            //     $file = $request->file('featured_image');
+            //     $path = Storage::disk('public')->put('posts/thumbnail', $file);
+            //     $data['featured_image'] = url('/') . '/storage/' . $path;;
+            // }
 
-            Post::create($data);
+            $news = Post::create($data);
+            if ($request->hasFile('featured_image') && $request->file('featured_image')->isValid()) {
+                $news->addMediaFromRequest('featured_image')->toMediaCollection('news');
+            }
             Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.news.index');
             
         } catch (\Exception $exception) {
-            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!');
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!'.$exception->getMessage());
         }
     }
 
@@ -75,12 +79,17 @@ class NewsController extends Controller
             'is_published' => 1
         ];
 
-        if($request->hasFile('featured_image')) {
-            $file = $request->file('featured_image');
-            $path = Storage::disk('public')->put('posts/thumbnail', $file);
-            $updateData['featured_image'] = url('/') . '/storage/' . $path;;
-        } else {
-            $updateData['featured_image'] = $request->featured_image;
+        // if($request->hasFile('featured_image')) {
+        //     $file = $request->file('featured_image');
+        //     $path = Storage::disk('public')->put('posts/thumbnail', $file);
+        //     $updateData['featured_image'] = url('/') . '/storage/' . $path;;
+        // } else {
+        //     $updateData['featured_image'] = $request->featured_image;
+        // }
+
+        if ($request->hasFile('featured_image') && $request->file('featured_image')->isValid()) {
+            $news->clearMediaCollection('news');
+            $news->addMedia($request->featured_image)->toMediaCollection('news');
         }
 
         $news->update($updateData);
@@ -90,8 +99,9 @@ class NewsController extends Controller
     }
 
     public function destroy($id) {
-        $post = Post::find($id);
-        $post->delete();
+        $news = Post::find($id);
+        $news->delete();
+        $news->clearMediaCollection('news');
         Session::flash('success', 'Data Berhasil Dihapus');
 
         return redirect()->back();

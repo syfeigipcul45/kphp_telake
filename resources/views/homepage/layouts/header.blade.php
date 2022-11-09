@@ -23,13 +23,13 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="dropdown"><a href="#" class="{{ Request::is('rph*') ? 'active' : '' }}"><span>RPH</span> <i class="bi bi-chevron-down"></i></a>
+            <!-- <li class="dropdown"><a href="#" class="{{ Request::is('rph*') ? 'active' : '' }}"><span>RPH</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     @foreach(getMenuRph() as $key => $item)
                     <li><a href="{{ route('homepage.rph', $item->slug) }}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
-            </li>
+            </li> -->
             <li><a class="nav-link {{ Request::is('news*') ? 'active' : '' }}" href="{{ route('homepage.news') }}">Berita</a></li>
             <li class="dropdown"><a href="#" class="{{ Request::is('event*') ? 'active' : '' }}"><span>Kegiatan</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
@@ -41,7 +41,7 @@
             <li class="dropdown"><a href="#" class="{{ Request::is('media*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                     <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li>
-                    <!-- <li><a href="{{ route('homepage.media.video') }}">Video</a></li> -->
+                    <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
                 </ul>
             </li>
             <li><a class="nav-link {{ Request::is('forestry-data*') ? 'active' : '' }}" href="{{ route('homepage.forestry') }}">Data Kehutanan</a></li>
