@@ -38,6 +38,53 @@
   .hero-image {
     height: 872px;
   }
+
+  .link-share a {
+    font-size: 18px;
+    display: inline-block;
+    background: #292929;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 4px;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+    margin-bottom: 10px;
+  }
+
+  .link-share a:hover {
+    background: #bc15e6;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .list-checked {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .list-checked-item {
+    position: relative;
+    /* padding-left: 2rem; */
+    font-size: 12px;
+    font-family: "Raleway", sans-serif;
+  }
+
+  .list-checked-item:not(:last-child) {
+    margin-bottom: .5rem;
+  }
+
+  .list-checked-item::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url("https://www.svgrepo.com/show/169312/check-mark.svg");
+    margin-right: 10px;
+  }
 </style>
 @endsection
 
@@ -74,7 +121,7 @@
 <main id="main">
 
   <!-- ======= About Section ======= -->
-  <section id="about" class="about">
+  <!-- <section id="about" class="about">
     <div class="container" data-aos="fade-up">
 
       <div class="row">
@@ -88,7 +135,8 @@
       </div>
 
     </div>
-  </section><!-- End About Section -->
+  </section> -->
+  <!-- End About Section -->
 
   <!-- ======= Team Section ======= -->
   <section id="team" class="team">
@@ -107,14 +155,14 @@
                   <img src="{{ $item->getFirstMediaUrl('news', 'preview') }}" class="img-fluid h-60 w-100" alt="">
                 </div>
                 <div class="member-info">
-                  <h4><a href="{{ route('homepage.news.detail', $item->slug) }}">{{ shrinkTitle($item->title) }}</a></h4>
+                  <h5><a href="{{ route('homepage.news.detail', $item->slug) }}">{{ shrinkTitle($item->title) }}</a></h5>
                   <div class="d-flex align-items-center justify-content-between my-3">
                     <!-- <div class="d-flex align-items-center">
                   <i class="bx bx-user"></i>
                   <span class="ml-1">{{$item->userId->username}}</span>
                 </div> -->
                     <div class="d-flex align-items-center">
-                      <i class="bx bx-time"></i>
+                      <i class="bx bxs-calendar"></i>
                       <span class="ml-1">{{ $item->created_at }}</span>
                     </div>
                   </div>
@@ -137,7 +185,26 @@
           </div>
         </div>
         <div class="col-lg-3">
-
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><i class='bx bxs-like'></i>Link Media</h5>
+              <hr>
+              <div class="link-share mt-3">
+                <a href="" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><i class='bx bx-globe'></i>Link Terkait</h5>
+              <hr>
+              <ul class="list-checked list-checked-primary">
+                <li class="list-checked-item"><a href="https://dishut.kaltimprov.go.id/" target="_blank">Dinas Kehutanan Prov. Kalimantan Timur</a></li>
+                <li class="list-checked-item"><a href="https://www.kaltimprov.go.id/" target="_blank">Website Prov. Kalimantan Timur</a></li>
+                <li class="list-checked-item"><a href="https://www.menlhk.go.id/" target="_blank">Kementerian LHK RI</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

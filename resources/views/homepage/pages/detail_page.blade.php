@@ -79,11 +79,11 @@
                             <h4>{{ $data->title }}</h4>
                             <div class="d-flex align-items-center justify-content-between my-3">
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-user"></i>
+                                    <i class="bx bxs-user"></i>
                                     <span class="ml-1">{{$data->userId->username}}</span>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-time"></i>
+                                    <i class="bx bxs-calendar"></i>
                                     <span class="ml-1">{{ $data->created_at }}</span>
                                 </div>
                             </div>

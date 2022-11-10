@@ -52,7 +52,7 @@
 
             <div class="row">
 
-                @foreach($data as $key => $item)
+                @forelse($data as $key => $item)
                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-img">
@@ -79,28 +79,30 @@
                             @endif
                         </div>
                         <div class="member-info">
-                            <h4>{{ shrinkTitle($item->title) }}</h4>
+                            <h4><a href="{{route('homepage.pages', $item->slug)}}">{{ shrinkTitle($item->title) }}</a></h4>
                             <div class="d-flex align-items-center justify-content-between my-3">
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-user"></i>
+                                    <i class="bx bxs-user"></i>
                                     <span class="ml-1">{{$item->userId->username}}</span>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-time"></i>
+                                    <i class="bx bxs-calendar"></i>
                                     <span class="ml-1">{{ $item->created_at }}</span>
                                 </div>
                             </div>
                             <hr>
-                            <p class="font-normal">
+                            <!-- <p class="font-normal">
                                 <?php echo shrinkText($item->content) ?>
                             </p>
                             <div>
                                 <a href="{{route('homepage.pages', $item->slug)}}" class="d-block ml-auto btn btn-brand float-right">Selengkapnya</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <p>Tidak Ada Data</p>
+                @endforelse
                 <div class="d-flex justify-content-center">
                     {{ $data->links('pagination::bootstrap-4') }}
                 </div>

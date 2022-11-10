@@ -54,10 +54,10 @@
                     </div>
                     <div class="post-meta d-flex justify-content-between mb-5">
                         <div class="bio-pic mr-3">
-                            <i class="bx bx-user"></i> Dibuat oleh {{$news->userId->username}}
+                            <i class="bx bxs-user"></i> Dibuat oleh {{$news->userId->username}}
                         </div>
                         <div class="vcard">
-                            <span><i class="bx bx-time"></i> {{ $news->created_at }}</span>
+                            <span><i class="bx bxs-calendar"></i> {{ $news->created_at }}</span>
                         </div>
                     </div>
                     {!! $news->content !!}
@@ -72,8 +72,8 @@
                             <h6 class="mb-2"><a href="{{ route('homepage.news.detail', $item->slug) }}">{{ $item->title }}</a></h6>
                             <div class="meta-wrap">
                                 <div class="meta d-flex justify-content-between">
-                                    <div><i class="bx bx-user"></i><span style="font-size: 12px;"> Dibuat oleh {{$item->userId->username}}</span></div>
-                                    <div><i class="bx bx-time"></i><span style="font-size: 12px;"> {{ $item->created_at}}</span></div>
+                                    <div><i class="bx bxs-user"></i><span style="font-size: 12px;"> Dibuat oleh {{$item->userId->username}}</span></div>
+                                    <div><i class="bx bxs-calendar"></i><span style="font-size: 12px;"> {{ $item->created_at}}</span></div>
                                 </div>
                             </div>
                         </div>

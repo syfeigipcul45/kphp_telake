@@ -58,7 +58,7 @@
     <div id="collapseEvents" class="collapse {{ Request::is('management-events*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('dashboard.event.index') }}">Halaman</a>
-            <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Submenu</a>
+            <!-- <a class="collapse-item" href="{{ route('dashboard.page.events.index') }}">Submenu</a> -->
         </div>
     </div>
 </li>
@@ -129,7 +129,7 @@
     </div>
 </li>
 
-<li class="nav-item {{ Request::is('management-rph*') ? 'active' : '' }}">
+<!-- <li class="nav-item {{ Request::is('management-rph*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRPH" aria-expanded="true" aria-controls="collapseRPH">
         <i class="fas fa-fw fa-newspaper"></i>
         <span>RPH</span>
@@ -140,7 +140,7 @@
             <a class="collapse-item" href="{{ route('dashboard.page.rph.index') }}">Submenu</a>
         </div>
     </div>
-</li>
+</li> -->
 
 <li class="nav-item {{ Request::is('management-events*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
@@ -181,12 +181,12 @@
 </li>
 
 <!-- Nav Item - Tables -->
-<li class="nav-item {{ Request::is('section-profile*') ? 'active' : '' }}">
+<!-- <li class="nav-item {{ Request::is('section-profile*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('dashboard.settings.profile') }}">
         <i class="fas fa-fw fa-user"></i>
         <span>Profil</span>
     </a>
-</li>
+</li> -->
 
 <!-- Nav Item - Tables -->
 <li class="nav-item {{ Request::is('settings*') ? 'active' : '' }}">

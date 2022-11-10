@@ -19,12 +19,12 @@
                         <strong>Telepon :</strong> {{ getOption()->phone }}<br>
                         <strong>Email :</strong> {{ getOption()->email }}<br>
                     </div>
-                    <div class="social-links mt-3">
+                    <!-- <div class="social-links mt-3">
                         <a href="{{ getOption()->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="{{ getOption()->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
                         <a href="{{ getOption()->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
                         <a href="{{ getOption()->youtube }}" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
