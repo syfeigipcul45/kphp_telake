@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -12,16 +13,25 @@ use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
-    public function index() {
-        $data['news'] = Post::orderBy('created_at', 'desc')->get();
+    public function index()
+    {
+        $author_id = Auth::user()->id;
+        $user = User::where('id', $author_id)->first();
+        if ($user->roles[0]->name == 'superadmin' || $user->roles[0]->name == 'admin') {
+            $data['news'] = Post::orderBy('created_at', 'desc')->get();
+        } else {
+            $data['news'] = Post::where('author_id', $author_id)->orderBy('created_at', 'desc')->get();
+        }
         return view('dashboard.news.index', $data);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('dashboard.news.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         try {
             $validator = Validator::make($request->all(), [
                 'title' => 'required',
@@ -33,10 +43,10 @@ class NewsController extends Controller
                 'featured_image.required' => 'Thumbnail berita harus diisi!'
             ]);
 
-            if($validator->fails()) {
+            if ($validator->fails()) {
                 return redirect()->back()->withInput()->withErrors($validator);
             }
-            
+
             $data = [
                 "author_id" => Auth::user()->id,
                 "title" => $request->title,
@@ -59,18 +69,19 @@ class NewsController extends Controller
             Session::flash('success', 'Data Berhasil Tersimpan');
 
             return redirect()->route('dashboard.news.index');
-            
         } catch (\Exception $exception) {
-            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!'.$exception->getMessage());
+            return redirect()->back()->with('error', 'Ada sesuatu yang salah di server!' . $exception->getMessage());
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $data['news'] = Post::find($id);
         return view('dashboard.news.edit', $data);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $news = Post::find($id);
 
         $updateData = [
@@ -98,7 +109,8 @@ class NewsController extends Controller
         return redirect()->route('dashboard.news.index');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $news = Post::find($id);
         $news->delete();
         $news->clearMediaCollection('news');

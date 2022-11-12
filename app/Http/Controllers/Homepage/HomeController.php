@@ -11,6 +11,7 @@ use App\Models\CommentsProduct;
 use App\Models\Contact;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\LinkTerkait;
 use App\Models\Pages;
 use App\Models\SubMenu;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class HomeController extends Controller
     {
         $data['news'] = Post::orderBy('created_at', 'desc')->limit(6)->get();
         $data['videos'] = Media::where('type', 'video')->latest()->limit(3)->get();
-        $data['heroes'] = HeroImage::all();
+        $data['heroes'] = HeroImage::orderBy('created_at', 'asc')->get();
+        $data['links'] = LinkTerkait::orderBy('nama_link', 'asc')->get();
         return view('homepage.index', $data);
     }
 

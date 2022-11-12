@@ -48,7 +48,7 @@
                         {{ $news->title }}
                     </h4>
                     <div class="link-share mt-3">
-                        <a href="https://twitter.com/intent/tweet?text{{ $news->title}}&url={{ Request::url() }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text={{ $news->title }}&url={{ Request::url() }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
                         <a href="https://wa.me/?text={{ Request::url() }}" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
                     </div>

@@ -194,6 +194,11 @@
         <i class="fas fa-fw fa-cog"></i>
         <span>Pengaturan</span></a>
 </li>
+<li class="nav-item {{ Request::is('settings*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('dashboard.link.index') }}">
+        <i class="fas fa-fw fa-link"></i>
+        <span>Link Terkait</span></a>
+</li>
 @endif
 
 <!-- Divider -->

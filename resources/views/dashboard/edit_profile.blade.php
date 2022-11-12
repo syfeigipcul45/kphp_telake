@@ -12,7 +12,7 @@
 </style>
 @endsection
 
-<form action="{{ route('dashboard.users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dashboard.profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Content Row -->

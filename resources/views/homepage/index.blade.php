@@ -3,6 +3,90 @@
 @section('extraCss')
 <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 <style>
+  @media (min-width: 320px) and (max-width: 575px) {
+    .carousel-caption {
+      position: relative;
+    }
+
+    .card .carousel-caption {
+      left: 0;
+      top: 0;
+      margin-bottom: 15px;
+    }
+
+    .card .carousel-caption img {
+      margin: 0 auto;
+    }
+
+    .carousel-control-prev {
+      left: 35%;
+      top: 105%;
+    }
+
+    .carousel-control-next {
+      right: 35%;
+      top: 105%;
+    }
+
+    .card .carousel-caption h3 {
+      margin-top: 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    .carousel-caption {
+      position: relative;
+    }
+
+    .card .carousel-caption {
+      left: 0;
+      top: 0;
+      margin-bottom: 15px;
+    }
+
+    .card .carousel-caption img {
+      margin: 0 auto;
+    }
+
+    .card .carousel-caption h3,
+    .card .carousel-caption small {
+      text-align: center;
+    }
+
+    .carousel-control-prev {
+      left: 35%;
+      top: 105%;
+    }
+
+    .carousel-control-next {
+      right: 35%;
+      top: 105%;
+    }
+  }
+
+  @media (min-width: 767px) and (max-width: 991px) {
+    .card .carousel-caption h3 {
+      margin-top: 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .carousel-text {
+    position: absolute;
+    right: 15%;
+    bottom: 50%;
+    top: 40%;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+  }
+
   .swiper {
     width: 100%;
     height: 100%;
@@ -35,9 +119,6 @@
     object-fit: cover;
   }
 
-  .hero-image {
-    height: 872px;
-  }
 
   .link-share a {
     font-size: 18px;
@@ -94,13 +175,33 @@
 
 @section('content')
 <!-- ======= Hero Section ======= -->
+<!-- <div id="carouselExample" class="carousel slide w-100" data-ride="carousel" data-interval="5000">
+  <div class="carousel-inner" style="height: 872px;">
+    @php $no=0; $active = ''; @endphp
+    @foreach($heroes as $key => $hero_image)
+    @if($no === $key)
+    @php $active = 'active'; @endphp
+    @else
+    @php $active = ''; @endphp
+    @endif
+    <div class="carousel-item {{ $active }}">
+      <img class="d-block w-100" style="height: 872px;" src="{{ $hero_image->getFirstMediaUrl("hero-image", "cover") }}" alt="First slide">
+      <div class="carousel-text d-none d-md-block">
+        <div class="container text-center wow zoomIn">
+          <h1 class="display-4" style="font-weight: bold;">{{ $hero_image->title }}</h1>
+          <h4 class="subhead">{{ $hero_image->description }}</h4>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>
+</div> -->
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
     @foreach($heroes as $item)
     <div class="swiper-slide">
-      <section class="hero d-flex align-items-center justify-content-center hero-image" style="background: url(<?= $item->getFirstMediaUrl("hero-image", "cover") ?>) top center;">
+      <section class="hero d-flex align-items-center justify-content-center" style="background: url(<?= $item->getFirstMediaUrl("hero-image", "cover") ?>) top center;">
         <div class="container" data-aos="fade-up">
-          <!-- <img class="d-block w-100" style="height: 872px;" src="{{ $item->getFirstMediaUrl("hero-image", "cover") }}" alt="First slide"> -->
           <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
             <div class="col-xl-12 col-lg-8">
               <h1>{{ $item->title }}</h1>
@@ -190,18 +291,19 @@
               <h5 class="card-title"><i class='bx bxs-like'></i>Link Media</h5>
               <hr>
               <div class="link-share mt-3">
-                <a href="" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                <a href="{{ getOption()->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="{{ getOption()->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="{{ getOption()->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="{{ getOption()->youtube }}" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title"><i class='bx bx-globe'></i>Link Terkait</h5>
+              <h5 class="card-title"><i class='bx bx-link-alt'></i>Link Terkait</h5>
               <hr>
               <ul class="list-checked list-checked-primary">
-                <li class="list-checked-item"><a href="https://dishut.kaltimprov.go.id/" target="_blank">Dinas Kehutanan Prov. Kalimantan Timur</a></li>
-                <li class="list-checked-item"><a href="https://www.kaltimprov.go.id/" target="_blank">Website Prov. Kalimantan Timur</a></li>
-                <li class="list-checked-item"><a href="https://www.menlhk.go.id/" target="_blank">Kementerian LHK RI</a></li>
+                @foreach($links as $link)
+                <li class="list-checked-item"><a href="{{ $link->url_link }}" target="_blank">{{ $link->nama_link }}</a></li>
+                @endforeach
               </ul>
             </div>
           </div>

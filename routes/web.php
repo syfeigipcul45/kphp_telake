@@ -16,6 +16,7 @@ use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\DocumentCategoryController;
 use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\HeroController;
+use App\Http\Controllers\Dashboard\LinkTerkaitController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\PageController;
 use App\Http\Controllers\Dashboard\RphController;
@@ -67,6 +68,8 @@ Route::post('/comment/store', [HomeController::class, 'commentStore'])->name('ho
 // dashboard section
 Route::group(['middleware' => ['auth']], function () { 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.main.index');
+    Route::get('profile/{id}/edit', [DashboardController::class, 'editProfile'])->name(('dashboard.profile.edit'));
+    Route::post('/profile/{id}/update', [DashboardController::class, 'updateProfile'])->name('dashboard.profile.update');
     
     Route::get('/management-users', [UserController::class, 'index'])->name('dashboard.users.index');
     Route::get('/management-users/create', [UserController::class, 'create'])->name('dashboard.users.create');
@@ -179,6 +182,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('management-events/{id}/edit', [PageController::class, 'eventEdit'])->name('dashboard.page.events.edit');
     Route::post('management-events/{id}/update', [PageController::class, 'eventUpdate'])->name('dashboard.page.events.update');
     Route::post('management-events/{id}', [PageController::class, 'eventDestroy'])->name('dashboard.page.events.destroy');
+
+    Route::get('management-link-terkait', [LinkTerkaitController::class, 'index'])->name('dashboard.link.index');
+    Route::get('management-link-terkait/create', [LinkTerkaitController::class, 'create'])->name('dashboard.link.create');
+    Route::post('management-link-terkait/store', [LinkTerkaitController::class, 'store'])->name('dashboard.link.store');
+    Route::get('management-link-terkait/{id}/edit', [LinkTerkaitController::class, 'edit'])->name('dashboard.link.edit');
+    Route::post('management-link-terkait/{id}/update', [LinkTerkaitController::class, 'update'])->name('dashboard.link.update');
+    Route::post('management-link-terkait/{id}/', [LinkTerkaitController::class, 'destroy'])->name('dashboard.link.destroy');
     
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');

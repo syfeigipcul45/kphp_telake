@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Pages;
 use App\Models\SubMenu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -15,10 +16,20 @@ class EventController extends Controller
 {
     public function index()
     {
-        $data['events'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')
-        ->where('sub_menus.parent_menu', 'event')
-        ->latest()
-        ->get(['pages.*', 'sub_menus.parent_menu']);
+        $author_id = Auth::user()->id;
+        $user = User::where('id', $author_id)->first();
+        if ($user->roles[0]->name == 'superadmin' || $user->roles[0]->name == 'admin') {
+            $data['events'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')
+                ->where('sub_menus.parent_menu', 'event')
+                ->latest()
+                ->get(['pages.*', 'sub_menus.parent_menu']);
+        } else {
+            $data['events'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')
+                ->where('sub_menus.parent_menu', 'event')
+                ->where('pages.author_id', $author_id)
+                ->latest()
+                ->get(['pages.*', 'sub_menus.parent_menu']);
+        }
         return view('dashboard.event.index', $data);
     }
 
@@ -54,8 +65,8 @@ class EventController extends Controller
                 "content" => $request->content,
             ];
 
-            if($request->hasFile('images')) {
-                for($i = 0; $i < count($request->images); $i++) {
+            if ($request->hasFile('images')) {
+                for ($i = 0; $i < count($request->images); $i++) {
                     $file = $request->file('images')[$i];
                     $path = Storage::disk('public')->put('pages/images', $file);
                     $image = url('/') . '/storage/' . $path;
@@ -86,13 +97,15 @@ class EventController extends Controller
         $images = [];
 
         $updateData = [
+            "author_id" => Auth::user()->id,
             'title' => $request->title,
+            "slug" => convertToSlug($request->title),
             'content' => $request->content,
-            'sub_menus_id' =>$request->sub_menus_id
+            'sub_menus_id' => $request->sub_menus_id
         ];
 
-        if($request->hasFile('images')) {
-            for($i = 0; $i < count($request->images); $i++) {
+        if ($request->hasFile('images')) {
+            for ($i = 0; $i < count($request->images); $i++) {
                 $file = $request->file('images')[$i];
                 $path = Storage::disk('public')->put('pages/images', $file);
                 $image = url('/') . '/storage/' . $path;
