@@ -154,9 +154,6 @@
         </div>
     </div>
 </li>
-@endif
-
-@if(Auth::user()->roles[0]->name == 'superadmin')
 <!-- Divider -->
 <hr class="sidebar-divider">
 
@@ -199,6 +196,10 @@
         <i class="fas fa-fw fa-link"></i>
         <span>Link Terkait</span></a>
 </li>
+@endif
+
+@if(Auth::user()->roles[0]->name == 'superadmin')
+
 @endif
 
 <!-- Divider -->
