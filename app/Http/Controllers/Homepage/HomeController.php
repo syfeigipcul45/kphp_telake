@@ -11,6 +11,8 @@ use App\Models\CommentsProduct;
 use App\Models\Contact;
 use App\Models\Document;
 use App\Models\DocumentCategory;
+use App\Models\Galeri;
+use App\Models\KategoriGaleri;
 use App\Models\LinkTerkait;
 use App\Models\Pages;
 use App\Models\SubMenu;
@@ -22,7 +24,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['news'] = Post::orderBy('created_at', 'desc')->limit(6)->get();
+        $data['news'] = Post::orderBy('created_at', 'desc')->limit(8)->get();
         $data['videos'] = Media::where('type', 'video')->latest()->limit(3)->get();
         $data['heroes'] = HeroImage::orderBy('created_at', 'asc')->get();
         $data['links'] = LinkTerkait::orderBy('nama_link', 'asc')->get();
@@ -178,5 +180,18 @@ class HomeController extends Controller
     {
         $data['data'] = Pages::join('sub_menus', 'pages.sub_menus_id', '=', 'sub_menus.id')->where('pages.slug', $slug)->first(['pages.*','sub_menus.parent_menu']);
         return view('homepage.pages.detail_page', $data);
+    }
+
+    public function gallery()
+    {
+        $data['categories'] = KategoriGaleri::orderBy('name','asc')->get();
+        return view('homepage.gallery.index', $data);
+    }
+
+    public function detailGallery($id) 
+    {
+        $data['galleries'] = Galeri::where('kategori_id', $id)->paginate(8);
+        $data['category_name'] = KategoriGaleri::find($id);
+        return view('homepage.gallery.detail', $data);
     }
 }

@@ -40,10 +40,12 @@
             </li>
             <li class="dropdown"><a href="#" class="{{ Request::is('media*') ? 'active' : '' }}"><span>Media</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li>
+                    <!-- <li><a href="{{ route('homepage.media.photo') }}">Foto</a></li> -->
+                    <li><a href="{{ route('homepage.gallery.index') }}">Galeri Foto</a></li>
                     <li><a href="{{ route('homepage.media.video') }}">Video</a></li>
                 </ul>
             </li>
+            <!-- <li><a class="nav-link {{ Request::is('gallery*') ? 'active' : '' }}" href="{{ route('homepage.gallery.index') }}">Galeri</a></li> -->
             <li><a class="nav-link {{ Request::is('forestry-data*') ? 'active' : '' }}" href="{{ route('homepage.forestry') }}">Data Kehutanan</a></li>
             <li><a class="nav-link {{ Request::is('seed-search*') ? 'active' : '' }}" href="{{ route('homepage.seed.search') }}">Cari Produk</a></li>
             <li><a class="nav-link {{ Request::is('contact*') ? 'active' : '' }}" href="{{ route('homepage.contact') }}">Kontak</a></li>

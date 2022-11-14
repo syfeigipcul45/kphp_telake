@@ -109,8 +109,22 @@
     </a>
     <div id="collapseMedia" class="collapse {{ Request::is('media*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('dashboard.photos.index') }}">Foto</a>
+            <!-- <a class="collapse-item" href="{{ route('dashboard.photos.index') }}">Foto</a> -->
             <a class="collapse-item" href="{{ route('dashboard.videos.index') }}">Video</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item {{ Request::is('management-gallery*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGallery" aria-expanded="true" aria-controls="collapseGallery">
+        <i class="fas fa-fw fa-images"></i>
+        <span>Gallery</span>
+    </a>
+    <div id="collapseGallery" class="collapse {{ Request::is('management-gallery*') ? 'show' : '' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route('dashboard.gallery.categories.index') }}">Kategori Galeri</a>
+            <a class="collapse-item" href="{{ route('dashboard.gallery.index') }}">Galeri</a>
         </div>
     </div>
 </li>

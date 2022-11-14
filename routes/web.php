@@ -15,6 +15,8 @@ use App\Http\Controllers\Dashboard\VideoController;
 use App\Http\Controllers\Dashboard\DataController;
 use App\Http\Controllers\Dashboard\DocumentCategoryController;
 use App\Http\Controllers\Dashboard\EventController;
+use App\Http\Controllers\Dashboard\GalleryCategoryController;
+use App\Http\Controllers\Dashboard\GalleryController;
 use App\Http\Controllers\Dashboard\HeroController;
 use App\Http\Controllers\Dashboard\LinkTerkaitController;
 use App\Http\Controllers\Dashboard\SettingController;
@@ -54,6 +56,8 @@ Route::get('/pages/{slug}',[HomeController::class, 'detailPage'])->name('homepag
 Route::group(['prefix'=>'media'], function() {
     Route::get('photo', [HomeController::class, 'mediaPhoto'])->name('homepage.media.photo');
     Route::get('photo/{id}', [HomeController::class, 'mediaPhotoById'])->name('homepage.media.photo.detail');
+    Route::get('gallery', [HomeController::class, 'gallery'])->name('homepage.gallery.index');
+    Route::get('gallery/{id}/detail', [HomeController::class, 'detailGallery'])->name('homepage.gallery.detail');
     Route::get('video', [HomeController::class, 'mediaVideo'])->name('homepage.media.video');
 });
 Route::get('/forestry-data', [HomeController::class, 'forestryData'])->name('homepage.forestry');
@@ -189,6 +193,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('management-link-terkait/{id}/edit', [LinkTerkaitController::class, 'edit'])->name('dashboard.link.edit');
     Route::post('management-link-terkait/{id}/update', [LinkTerkaitController::class, 'update'])->name('dashboard.link.update');
     Route::post('management-link-terkait/{id}/', [LinkTerkaitController::class, 'destroy'])->name('dashboard.link.destroy');
+
+    Route::get('/management-gallery', [GalleryController::class, 'index'])->name('dashboard.gallery.index');
+    Route::get('/management-gallery/create', [GalleryController::class, 'create'])->name('dashboard.gallery.create');
+    Route::post('/management-gallery', [GalleryController::class, 'store'])->name('dashboard.gallery.store');
+    Route::get('/management-gallery/{id}/edit', [GalleryController::class, 'edit'])->name('dashboard.gallery.edit');
+    Route::post('/management-gallery/{id}/update', [GalleryController::class, 'update'])->name('dashboard.gallery.update');
+    Route::post('/management-gallery/{id}', [GalleryController::class, 'destroy'])->name('dashboard.gallery.destroy');
+
+    Route::get('/management-gallery-categories', [GalleryCategoryController::class, 'index'])->name('dashboard.gallery.categories.index');
+    Route::get('/management-gallery-categories/create', [GalleryCategoryController::class, 'create'])->name('dashboard.gallery.categories.create');
+    Route::post('/management-gallery-categories', [GalleryCategoryController::class, 'store'])->name('dashboard.gallery.categories.store');
+    Route::get('/management-gallery-categories/{id}/edit', [GalleryCategoryController::class, 'edit'])->name('dashboard.gallery.categories.edit');
+    Route::post('/management-gallery-categories/{id}/update', [GalleryCategoryController::class, 'update'])->name('dashboard.gallery.categories.update');
+    Route::post('/management-gallery-categories/{id}', [GalleryCategoryController::class, 'destroy'])->name('dashboard.gallery.categories.destroy');
     
     Route::get('/hero-images', [HeroController::class, 'index'])->name('dashboard.hero.images.index');
     Route::get('/hero-images/create', [HeroController::class, 'create'])->name('dashboard.hero.images.create');
