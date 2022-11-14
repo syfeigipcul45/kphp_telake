@@ -37,7 +37,7 @@
 </li>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">
+<!-- <li class="nav-item {{ Request::is('media*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
         <i class="fas fa-fw fa-video"></i>
         <span>Media</span>
@@ -48,7 +48,7 @@
             <a class="collapse-item" href="{{ route('dashboard.videos.index') }}">Video</a>
         </div>
     </div>
-</li>
+</li> -->
 
 <li class="nav-item {{ Request::is('management-events*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
