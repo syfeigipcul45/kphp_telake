@@ -38,6 +38,28 @@
         height: 100%;
         object-fit: cover;
     }
+
+    .link-share a {
+        font-size: 18px;
+        display: inline-block;
+        background: #292929;
+        color: #fff;
+        line-height: 1;
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 4px;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+        margin-bottom: 10px;
+    }
+
+    .link-share a:hover {
+        background: #bc15e6;
+        color: #fff;
+        text-decoration: none;
+    }
 </style>
 @endsection
 
@@ -56,27 +78,32 @@
                     <div class="member" data-aos="fade-up" data-aos-delay="100">
                         <div class="member-info">
                             @if($data->parent_menu === 'rph')
-                                @if(!empty($data->featured_image))
-                                <img src="{{ $data->featured_image }}" class="img-fluid h-60 w-100" alt="">
-                                @endif
+                            @if(!empty($data->featured_image))
+                            <img src="{{ $data->featured_image }}" class="img-fluid h-60 w-100" alt="">
+                            @endif
                             @else
-                                @if(!empty(!empty(json_decode($data->featured_image))))
-                                <div class="row mb-5">
-                                    <div class="swiper mySwiper">
-                                        <div class="swiper-wrapper">
-                                            @foreach(json_decode($data->featured_image) as $key => $image)
-                                            <div class="swiper-slide">
-                                                <div class="col-md-6">
-                                                    <img src="{{ $image }}" alt="" class="img-fluid" />
-                                                </div>
+                            @if(!empty(!empty(json_decode($data->featured_image))))
+                            <div class="row mb-5">
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        @foreach(json_decode($data->featured_image) as $key => $image)
+                                        <div class="swiper-slide">
+                                            <div class="col-md-6">
+                                                <img src="{{ $image }}" alt="" class="img-fluid" />
                                             </div>
-                                            @endforeach                                        
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                @endif
+                            </div>
+                            @endif
                             @endif
                             <h4>{{ $data->title }}</h4>
+                            <div class="link-share mt-3">
+                                <a href="https://twitter.com/intent/tweet?text={{ $data->title }}&url={{ Request::url() }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::url() }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="https://wa.me/?text={{ Request::url() }}" target="_blank" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                            </div>
                             <div class="d-flex align-items-center justify-content-between my-3">
                                 <div class="d-flex align-items-center">
                                     <i class="bx bxs-user"></i>

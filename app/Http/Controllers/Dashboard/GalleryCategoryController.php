@@ -51,7 +51,8 @@ class GalleryCategoryController extends Controller
             }
             
             $data = [
-                'name' => $request->name
+                'name' => $request->name,
+                'slug' => convertToSlug($request->name)
             ];
 
             KategoriGaleri::create($data);
@@ -99,7 +100,8 @@ class GalleryCategoryController extends Controller
         $galeri = KategoriGaleri::find($id);
 
         $updateData = [
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => convertToSlug($request->name)
         ];
 
         $galeri->update($updateData);

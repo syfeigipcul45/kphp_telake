@@ -87,6 +87,7 @@ class NewsController extends Controller
         $updateData = [
             'title' => $request->title,
             'content' => $request->content,
+            "slug" => convertToSlug($request->title),
             'is_published' => 1
         ];
 

@@ -96,7 +96,7 @@
                                     @foreach($categories as $key => $item)
                                     <li class="nav-item">
                                         <span class="number">{{ ++$key }}</span>
-                                        <span class="list"><a href="{{ route('homepage.gallery.detail', $item->id)}}">{{ $item->name }}</a></span>
+                                        <span class="list"><a href="{{ route('homepage.gallery.detail', $item->slug)}}">{{ $item->name }}</a></span>
                                     </li>
                                     @endforeach
                                 </ul>

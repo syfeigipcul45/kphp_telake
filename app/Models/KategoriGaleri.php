@@ -10,6 +10,7 @@ class KategoriGaleri extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'slug'
     ];
 }

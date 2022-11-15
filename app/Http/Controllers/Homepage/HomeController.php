@@ -188,10 +188,11 @@ class HomeController extends Controller
         return view('homepage.gallery.index', $data);
     }
 
-    public function detailGallery($id) 
+    public function detailGallery($slug) 
     {
-        $data['galleries'] = Galeri::where('kategori_id', $id)->paginate(8);
-        $data['category_name'] = KategoriGaleri::find($id);
+        $id = KategoriGaleri::where('slug', $slug)->first();      
+        $data['category_name'] = KategoriGaleri::where('slug', $slug)->first();
+        $data['galleries'] = Galeri::where('kategori_id', $id->id)->paginate(8);
         return view('homepage.gallery.detail', $data);
     }
 }
