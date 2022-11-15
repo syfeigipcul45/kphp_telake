@@ -111,8 +111,8 @@ class EventController extends Controller
                 $image = url('/') . '/storage/' . $path;
                 array_push($images, $image);
             }
+            $updateData['featured_image'] = json_encode($images);
         }
-        $updateData['featured_image'] = json_encode($images);
 
         $event->update($updateData);
         Session::flash('success', 'Data Berhasil Diubah');

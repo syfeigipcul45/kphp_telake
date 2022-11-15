@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>KPHP Kendilo - Dashboard</title>
+    <title>KPHP Telake - Dashboard</title>
     @if(!empty(getOption()->favicon))
     <link href="{{ getOption()->favicon }}" rel="icon">
     <link href="{{ getOption()->logo }}" rel="apple-touch-icon">
